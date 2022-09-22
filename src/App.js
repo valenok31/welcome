@@ -15,7 +15,7 @@ function App() {
 
 function Menus () {
     return (
-        <div>
+        <div className='homeX'>
             Hi!
         </div>
     )
