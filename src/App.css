@@ -1,42 +1,70 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  height: 500px;
+  /*background-color: #c8a613;*/
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.field {
+  width: calc(100vw - 17px);
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: 1fr;
+  justify-items: center;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.field__playing {
+  display: grid;
+  gap: 15px;
+  width: 100%;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  justify-items: center;
+  align-items: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.field__left {
+  display: grid;
+  width: 100%;
+  height: 100vh;
+  padding: 0px;
+  justify-items: center;
+  align-items: center;
+  font-size: 20px;
 }
 
-.homeX{
-  background-color: indianred;
+.field__left-fixed {
+  position: fixed;
+  top: 50px;
+}
+
+.cell {
+  display: grid;
+  width: 300px;
+  height: 200px;
+  padding: 0px;
+  justify-items: center;
+  align-items: center;
+  font-size: 20px;
+background-color: indianred;
+
+
+}
+
+.cell div {
+  background-color: rgba(255, 255, 255, 0.51);
+  cursor: pointer;
+}
+
+.noneElem{
+  display: none;
+}
+
+.switchImages{
+  cursor: pointer;
 }
