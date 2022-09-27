@@ -1,5 +1,5 @@
 import {Link} from "react-router-dom";
-import axios from "axios";
+import * as axios from "axios";
 
 
 function Cell() {
@@ -15,9 +15,9 @@ export default function Ticketmaster() {
     startDateTime=&endDateTime=&countryCode=US&apikey=zj1LCjwJVG5B88c4HGfjkaY6PAMxz6nV`)
         .then(function (response) {
             // handle success
-            let inputAllData = response.data.page.totalElements;
-            let infoTest = response.data._embedded.events;
-            console.log(infoTest);
+/*            let inputAllData = response.data.page.totalElements;
+            let infoTest = response.data._embedded.events;*/
+            debugger;
 
         })
         .catch(function (error) {
