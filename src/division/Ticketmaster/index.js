@@ -2,8 +2,6 @@ import {Link, NavLink, Route, Routes} from "react-router-dom";
 import Ticketmaster from "../Ticketmaster/ticketmaster";
 
 
-
-
 function Home() {
     return (
         <div>
