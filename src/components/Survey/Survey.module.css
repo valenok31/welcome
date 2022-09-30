@@ -1,0 +1,25 @@
+.survey {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    justify-items: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.survey__navLink{
+    display: grid;
+    width: 100%;
+    height: 100%;
+    justify-items: center;
+    align-items: center;
+}
+
+
+.survey :first-child{
+    background-color: skyblue;
+}
+.survey :last-child{
+    background-color: coral;
+}

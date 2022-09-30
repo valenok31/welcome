@@ -1,9 +1,20 @@
 import React from "react";
+import style from './Survey.module.css'
+import {NavLink} from "react-router-dom";
 
-const Survey = () => {
-return (
-<div>Survey</div>
-)
+
+
+const Survey = (props) => {
+    return (
+        <div className={style.survey}>
+            <NavLink to={props.choiceLeft} className={style.survey__navLink}>
+                {props.choiceLeft}
+            </NavLink>
+            <NavLink to={props.choiceRight} className={style.survey__navLink}>
+                {props.choiceRight}
+            </NavLink>
+        </div>
+    )
 }
 
-export default  Survey;
+export default Survey;
