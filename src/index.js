@@ -1,17 +1,22 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
-import {BrowserRouter, Router} from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";
+import store from "./redux/redux-store";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-    <React.StrictMode>
+
+let rerenderEntireTree = (state) => {
+    debugger;
+    ReactDOM.render(
         <BrowserRouter>
-            <App/>
-        </BrowserRouter>
-    </React.StrictMode>
-);
+            <App state={state} store={store}/>
+        </BrowserRouter>, document.getElementById('root')
+    )
+}
+rerenderEntireTree(store.getState());
+store.subscribe(()=> {
+    let state = store.getState();
 
-reportWebVitals();
+    rerenderEntireTree(state)
+});
