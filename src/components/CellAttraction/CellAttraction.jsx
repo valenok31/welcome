@@ -19,7 +19,6 @@ function CellAttraction() {
 
     return (
         <div className='cell'>
-            123
             {eretel}
         </div>
     )
