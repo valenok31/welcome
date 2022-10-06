@@ -1,8 +1,9 @@
 const SET_LIST_ATTRACTIONS = 'SET_LIST_ATTRACTIONS';
+const SET_EVENT_API = 'SET_EVENT_API';
 
 
 const initialState = {
-    listAttractions: [],
+    listAttractions: ['TicketmasterTest!!!'],
 };
 
 
@@ -15,6 +16,12 @@ const siteManagement_reducer = (state = initialState, action) => {
                 listAttractions: action.listAttractions,
             }
 
+        case SET_EVENT_API:
+            return {
+                ...state,
+                listAttractions: action.listAttractions,
+            }
+
         default:
             return state;
     }
@@ -22,6 +29,10 @@ const siteManagement_reducer = (state = initialState, action) => {
 
 export const setListAttractions = (listAttractions) => ({
     type: SET_LIST_ATTRACTIONS, listAttractions
+});
+
+export const setEventAPI = (keywordSearch) => ({
+    type: SET_EVENT_API, keywordSearch
 });
 
 export default siteManagement_reducer;

@@ -2,9 +2,9 @@ import './App.css';
 import {NavLink, Route, Routes} from "react-router-dom"
 import Survey from "./components/Survey/Survey";
 import React from "react";
-import Ticketmaster from "./division/Ticketmaster/ticketmaster";
+import TicketmasterCont from "./components/Ticketmaster/TicketmasterCont";
 
-function App(props) {
+let App = (props) => {
 
 /*    let RoutePath = props.state.surveyTree.tree.map(el => {
         if(el.endTree){
@@ -21,7 +21,7 @@ function App(props) {
             </NavLink>
             <Routes>
                 <Route path='/' element={<Survey choiceLeft='nature' choiceRight='ticketmaster'/>} />
-                <Route path='/ticketmaster' element={<Ticketmaster/>} />
+                <Route path='/ticketmaster' element={<TicketmasterCont />} />
                 <Route path='/nature' element={<Survey choiceLeft='fewN' choiceRight='manyN'/>} />
             </Routes>
         </div>
