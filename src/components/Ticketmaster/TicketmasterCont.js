@@ -2,12 +2,14 @@ import React from "react";
 import {connect} from "react-redux";
 import Ticketmaster from "./Ticketmaster";
 import {setListAttractions} from "../../redux/siteManagement_reducer";
+import {eventsAPI} from "../../api/api";
 
 
 class TicketmasterCont extends React.Component {
 
     componentDidMount() {
-        this.props.setListAttractions('second Ticketmaster')
+        this.props.setListAttractions(eventsAPI.getStatus())
+
     }
 
     render() {
