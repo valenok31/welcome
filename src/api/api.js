@@ -17,7 +17,7 @@ export const eventsAPI = {
         startDateTime=&endDateTime=&countryCode=US&apikey=zj1LCjwJVG5B88c4HGfjkaY6PAMxz6nV`)
             .then(response => {
                 //debugger;
-                console.log(response.data.page.size);
+                //console.log(response.data.page.size);
                 return response.data.page.size;
             })
             .catch(

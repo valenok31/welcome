@@ -8,6 +8,7 @@ import {eventsAPI} from "../../api/api";
 class TicketmasterCont extends React.Component {
 
     componentDidMount() {
+        console.log(this.props.getCostCity)
         this.props.setListAttractions(eventsAPI.getStatus())
 
     }
@@ -16,7 +17,7 @@ class TicketmasterCont extends React.Component {
         return <>
             <Ticketmaster
                 getCostCity={this.props.getCostCity} //Копия базы городов
-                setListAttractions={this.props.setListAttractions}
+                //setListAttractions={this.props.setListAttractions}
             />
         </>
     }
@@ -24,9 +25,10 @@ class TicketmasterCont extends React.Component {
 
 let mapStateToProps = (state) => {
     return ({
-        getCostCity: state.siteManagement_reducer.listAttractions,
+        getCostCity: state.siteManagement_reducer.getListAttractions,
     })
 };
 
-export default connect(mapStateToProps,
-    {setListAttractions})(TicketmasterCont)
+let resultConnecting = connect(mapStateToProps, {setListAttractions})(TicketmasterCont);
+
+export default resultConnecting;

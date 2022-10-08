@@ -13,7 +13,7 @@ let rerenderEntireTree = (state) => {
     ReactDOM.render(
         <BrowserRouter>
             <Provider store={store}>
-            <App stat7e={state} api={eventsAPI}/>
+            <App api={eventsAPI}/>
             </Provider>
         </BrowserRouter>, document.getElementById('root')
     )
