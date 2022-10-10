@@ -6,14 +6,6 @@ import TicketmasterCont from "./components/Ticketmaster/TicketmasterCont";
 
 let App = (props) => {
 
-/*    let RoutePath = props.state.surveyTree.tree.map(el => {
-        if(el.endTree){
-            return <Route path={el.path} element={el.endTree}/>
-        }
-        return <Route path={el.path} element={<Survey choiceLeft={el.choiceLeft} choiceRight={el.choiceRight}/>}/>
-    })*/
-
-
     return (
         <div>
             <NavLink to="/">

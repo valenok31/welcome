@@ -4,7 +4,7 @@ const SET_EVENT_API = 'SET_EVENT_API';
 
 const initialState = {
     listAttractions: ['TicketmasterTest!!!'],
-    getListAttractions: ()=>{
+    get getListAttractions() {
         return this.listAttractions;
     }
 };

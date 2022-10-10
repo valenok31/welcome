@@ -8,12 +8,12 @@ import {eventsAPI} from "../../api/api";
 class TicketmasterCont extends React.Component {
 
     componentDidMount() {
-        console.log(this.props.getCostCity)
         this.props.setListAttractions(eventsAPI.getStatus())
-
+        console.log(eventsAPI.getStatus())
     }
 
     render() {
+
         return <>
             <Ticketmaster
                 getCostCity={this.props.getCostCity} //Копия базы городов
@@ -24,6 +24,7 @@ class TicketmasterCont extends React.Component {
 }
 
 let mapStateToProps = (state) => {
+    console.log(state.siteManagement_reducer.getListAttractions)
     return ({
         getCostCity: state.siteManagement_reducer.getListAttractions,
     })
