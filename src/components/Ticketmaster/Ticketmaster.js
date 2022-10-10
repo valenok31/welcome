@@ -6,6 +6,7 @@ export default function Ticketmaster(props) {
     return (
         <div id='fieldPlaying' className='field__playing'>
             {props.getCostCity}
+
         </div>
     )
 }

@@ -11,14 +11,14 @@ const instance = axios.create({
 
 export const eventsAPI = {
    get getStatus(){
-return 1324;
+//return 1324;
       axios.get(`https://app.ticketmaster.com/discovery/v2/events.json?classificationName=&size=102&
         startDateTime=&endDateTime=&countryCode=US&apikey=zj1LCjwJVG5B88c4HGfjkaY6PAMxz6nV`)
             .then(response => {
                 //debugger;
-                //console.log(response.data.page.size);
+                console.log('axios ' + response.data.page.size);
                 //return response.data.page.size;
-                return '2324';
+                //return '2324';
             })
             .catch(
                 (error)=>{
