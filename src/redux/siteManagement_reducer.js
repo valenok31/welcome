@@ -1,10 +1,12 @@
+import {eventsAPI} from "../api/api";
+
 const SET_LIST_ATTRACTIONS = 'SET_LIST_ATTRACTIONS';
 const SET_EVENT_API = 'SET_EVENT_API';
 
 
 const initialState = {
-    listAttractions: ['TicketmasterTest!!!'],
-    get getListAttractions() {
+    listAttractions: 'TicketmasterTest!!!',
+   get getListAttractions() {
         return this.listAttractions;
     }
 };
@@ -30,12 +32,27 @@ const siteManagement_reducer = (state = initialState, action) => {
     }
 };
 
-export const setListAttractions = (listAttractions) => ({
+export const getUsersRed = (listAttractions) => ({
     type: SET_LIST_ATTRACTIONS, listAttractions
 });
 
 export const setEventAPI = (keywordSearch) => ({
     type: SET_EVENT_API, keywordSearch
 });
+//
+
+export const setListAttractions = (pet) => {
+
+return (dispatch)=>{dispatch(getUsersRed(pet))}
+
+    /*                eventsAPI.getStatus.then(data => {
+                        dispatch(getUsersRed(data));
+                    });*/
+
+
+
+
+}
+
 
 export default siteManagement_reducer;
