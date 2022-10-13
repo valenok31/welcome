@@ -1,8 +1,8 @@
-import {combineReducers, legacy_createStore as createStore} from "redux";
+import {applyMiddleware, combineReducers, compose, legacy_createStore as createStore} from "redux";
 import surveyTree from './survey-tree';
 import dataFromTicketmaster from './data-from-ticketmaster';
 import siteManagement_reducer from "./siteManagement_reducer";
-
+import thunkMiddleware from "redux-thunk"
 
 let reducers = combineReducers({
     surveyTree: surveyTree,
@@ -10,6 +10,15 @@ let reducers = combineReducers({
     siteManagement_reducer:siteManagement_reducer,
 })
 
-let store = createStore(reducers);
+
+
+
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(reducers, composeEnhancers(applyMiddleware(thunkMiddleware)));
+
+//let store = createStore(reducers, applyMiddleware(thunkMiddleware));
+
+window.__store__ = store;
 
 export default store;

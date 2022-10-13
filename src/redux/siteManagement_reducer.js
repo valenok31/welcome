@@ -6,7 +6,7 @@ const SET_EVENT_API = 'SET_EVENT_API';
 
 const initialState = {
     listAttractions: 'TicketmasterTest!!!',
-   get getListAttractions() {
+    get getListAttractions() {
         return this.listAttractions;
     }
 };
@@ -43,12 +43,14 @@ export const setEventAPI = (keywordSearch) => ({
 
 export const setListAttractions = (pet) => {
 
-return (dispatch)=>{dispatch(getUsersRed(pet))}
+    return (dispatch) => {
+        //dispatch(getUsersRed(pet))
+        eventsAPI.getStatus().then(data => {
+            dispatch(getUsersRed(data));
+        });
 
-    /*                eventsAPI.getStatus.then(data => {
-                        dispatch(getUsersRed(data));
-                    });*/
 
+    }
 
 
 
