@@ -1,6 +1,7 @@
 import React from 'react';
 //import ReactDOM from 'react-dom';
-import { createRoot } from 'react-dom/client';
+//import { createRoot } from 'react-dom/client';
+import ReactDOM from "react-dom/client";
 import './index.css';
 import App from './App';
 import {BrowserRouter} from "react-router-dom";
@@ -11,8 +12,9 @@ import {Provider} from "react-redux";
 
 let rerenderEntireTree = (state) => {
 
-    const container = document.getElementById('root');
-    const root = createRoot(container);
+/*    const container = document.getElementById('root');
+    const root = createRoot(container);*/
+    const root = ReactDOM.createRoot(document.getElementById("root"));
     root.render(<BrowserRouter>
             <Provider store={store}>
                 <App api={eventsAPI}/>
