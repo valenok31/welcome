@@ -9,12 +9,12 @@ import store from "./redux/redux-store";
 import {eventsAPI} from "./api/api";
 import {Provider} from "react-redux";
 
-
+const root = ReactDOM.createRoot(document.getElementById("root"));
 let rerenderEntireTree = (state) => {
 
 /*    const container = document.getElementById('root');
     const root = createRoot(container);*/
-    const root = ReactDOM.createRoot(document.getElementById("root"));
+
     root.render(<BrowserRouter>
             <Provider store={store}>
                 <App api={eventsAPI}/>
