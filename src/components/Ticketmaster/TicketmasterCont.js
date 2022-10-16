@@ -26,7 +26,6 @@ class TicketmasterCont extends React.Component {
 let mapStateToProps = (state) => {
     return ({
         getCostCity: state.siteManagement_reducer.listAttractions,
-        stopAxios: state.siteManagement_reducer.stopAxios,
     })
 };
 

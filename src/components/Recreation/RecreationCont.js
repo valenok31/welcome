@@ -26,10 +26,9 @@ class RecreationCont extends React.Component {
 let mapStateToProps = (state) => {
     return ({
         getCostCity: state.siteManagement_reducer.listAttractions,
-        stopAxios: state.siteManagement_reducer.stopAxios,
     })
 };
 
-let resultConnecting = connect(mapStateToProps, {setListAttractions, getUsersRed})(RecreationCont);
+let resultConnectingR = connect(mapStateToProps, {setListAttractions, getUsersRed})(RecreationCont);
 
-export default resultConnecting;
+export default resultConnectingR;

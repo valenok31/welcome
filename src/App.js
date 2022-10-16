@@ -16,8 +16,8 @@ let App = (props) => {
             <Routes>
                 <Route path='/' element={<Survey choiceLeft='nature' choiceRight='ticketmaster'/>} />
                 <Route path='/ticketmaster' element={<TicketmasterCont />} />
-                <Route path='/nature' element={<Survey choiceLeft='fewN' choiceRight='manyN'/>} />
-                <Route path='/fewN' element={<RecreationCont />} />
+                <Route path='/nature' element={<Survey choiceLeft='recreation' choiceRight='manyN'/>} />
+                <Route path='/nature/recreation' element={<RecreationCont />} />
             </Routes>
         </div>
     )
