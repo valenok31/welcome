@@ -43,18 +43,21 @@ export const setEventAPI = (keywordSearch) => ({
 
 
 export const setListAttractions = (pet) => {
-
     return (dispatch) => {
         //dispatch(getUsersRed(pet))
         eventsAPI.getStatus().then(data => {
             dispatch(getUsersRed(data));
         });
-
-
     }
+}
 
-
-
+export const setListAttractionsR = (pet) => {
+    return (dispatch) => {
+        //dispatch(getUsersRed(pet))
+        eventsAPI.getAppRecreation().then(data => {
+            dispatch(getUsersRed(data));
+        });
+    }
 }
 
 
