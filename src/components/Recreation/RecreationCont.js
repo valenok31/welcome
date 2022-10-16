@@ -1,10 +1,10 @@
 import React from "react";
 import {connect} from "react-redux";
-import Ticketmaster from "./Ticketmaster";
+import Recreation from "./Recreation";
 import {getUsersRed, setListAttractions} from "../../redux/siteManagement_reducer";
 
 
-class TicketmasterCont extends React.Component {
+class RecreationCont extends React.Component {
 
     componentDidMount() {
         this.props.setListAttractions();
@@ -13,7 +13,7 @@ class TicketmasterCont extends React.Component {
 
     render() {
         return <>
-            <Ticketmaster
+            <Recreation
                 getCostCity={this.props.getCostCity}
                 setListAttractions={this.props.setListAttractions}
                 getUsersRed={this.props.getUsersRed}
@@ -30,6 +30,6 @@ let mapStateToProps = (state) => {
     })
 };
 
-let resultConnecting = connect(mapStateToProps, {setListAttractions, getUsersRed})(TicketmasterCont);
+let resultConnecting = connect(mapStateToProps, {setListAttractions, getUsersRed})(RecreationCont);
 
 export default resultConnecting;

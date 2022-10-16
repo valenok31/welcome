@@ -1,9 +1,8 @@
 import React from "react";
-import style from './Ticketmaster.module.css'
+import style from './Recreation.module.css'
 
-export default function Ticketmaster(props) {
-    let requestiv7 = props.getCostCity;
-    let mapRequestgg = requestiv7.map((r, i) => {
+export default function Recreation(props) {
+    let mapRequestgg = props.getCostCity.map((r, i) => {
         let image;
         for (let heig of r.images) {
             if (heig.height < 200 || heig.height > 600) {
