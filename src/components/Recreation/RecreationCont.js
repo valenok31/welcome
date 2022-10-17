@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import Recreation from "./Recreation";
-import {getUsersRed, setListAttractionsR} from "../../redux/siteManagement_reducer";
+import {getUsersRedR, setListAttractionsR} from "../../redux/recreation_siteManagement_reducer";
 
 
 class RecreationCont extends React.Component {
@@ -14,10 +14,9 @@ class RecreationCont extends React.Component {
     render() {
         return <>
             <Recreation
-                getCostCity={this.props.getCostCity}
+                getCostCity={this.props.getCostCityR}
                 setListAttractionsR={this.props.setListAttractionsR}
-                getUsersRed={this.props.getUsersRed}
-                stopAxios={this.props.stopAxios}
+                getUsersRed={this.props.getUsersRedR}
             />
         </>
     }
@@ -25,10 +24,10 @@ class RecreationCont extends React.Component {
 
 let mapStateToProps = (state) => {
     return ({
-        getCostCity: state.siteManagement_reducer.listAttractions,
+        getCostCityR: state.recreation_siteManagement_reducer.listAttractionsR,
     })
 };
 
-let resultConnectingR = connect(mapStateToProps, {setListAttractionsR, getUsersRed})(RecreationCont);
+let resultConnectingR = connect(mapStateToProps, {setListAttractionsR, getUsersRedR})(RecreationCont);
 
 export default resultConnectingR;

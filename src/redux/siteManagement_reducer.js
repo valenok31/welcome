@@ -6,9 +6,6 @@ const SET_EVENT_API = 'SET_EVENT_API';
 
 const initialState = {
     listAttractions: [],
-    get getListAttractions() {
-        return this.listAttractions;
-    },
 };
 
 
@@ -51,14 +48,6 @@ export const setListAttractions = (pet) => {
     }
 }
 
-export const setListAttractionsR = (pet) => {
-    return (dispatch) => {
-        //dispatch(getUsersRed(pet))
-        eventsAPI.getAppRecreation().then(data => {
-            dispatch(getUsersRed(data));
-        });
-    }
-}
 
 
 export default siteManagement_reducer;

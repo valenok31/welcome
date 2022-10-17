@@ -4,11 +4,11 @@ import React from "react";
 
 export const eventsAPI = {
     getStatus() {
-        const instance = axios.create({
+        const instanceT = axios.create({
             //withCredentials: true,
             baseURL: "https://app.ticketmaster.com/discovery/v2/events.json?size=10&countryCode=US&apikey=zj1LCjwJVG5B88c4HGfjkaY6PAMxz6nV",
         })
-        return instance.get()
+        return instanceT.get()
             .then(response => {
                 return response.data._embedded.events;
             })
@@ -17,11 +17,11 @@ export const eventsAPI = {
             })
     },
     getAppRecreation() {
-        const instance = axios.create({
+        const instanceR = axios.create({
             //withCredentials: true,
             baseURL: "https://ridb.recreation.gov/api/v1/recareas?limit=20&apikey=53351234-6c6c-4392-a4b8-d38d53df1462",
         })
-        return instance.get()
+        return instanceR.get()
             .then(response => {
                 return response.data.RECDATA;
             })

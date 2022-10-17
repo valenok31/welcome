@@ -3,10 +3,13 @@ import surveyTree from './survey-tree';
 import dataFromTicketmaster from './data-from-ticketmaster';
 import siteManagement_reducer from "./siteManagement_reducer";
 import thunkMiddleware from "redux-thunk"
+import recreation_siteManagement_reducer from "./recreation_siteManagement_reducer";
 
 let reducers = combineReducers({
     surveyTree: surveyTree,
     dataFromTicketmaster: dataFromTicketmaster,
+
+    recreation_siteManagement_reducer:recreation_siteManagement_reducer,
     siteManagement_reducer:siteManagement_reducer,
 })
 

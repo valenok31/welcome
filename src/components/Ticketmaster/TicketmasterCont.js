@@ -7,6 +7,7 @@ import {getUsersRed, setListAttractions} from "../../redux/siteManagement_reduce
 class TicketmasterCont extends React.Component {
 
     componentDidMount() {
+        console.log(this.props.getCostCity)
         this.props.setListAttractions();
     }
 
@@ -17,7 +18,6 @@ class TicketmasterCont extends React.Component {
                 getCostCity={this.props.getCostCity}
                 setListAttractions={this.props.setListAttractions}
                 getUsersRed={this.props.getUsersRed}
-                stopAxios={this.props.stopAxios}
             />
         </>
     }
