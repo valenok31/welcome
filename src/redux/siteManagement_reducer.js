@@ -39,10 +39,10 @@ export const setEventAPI = (keywordSearch) => ({
 });
 
 
-export const setListAttractions = (pet) => {
+export const setListAttractions = (per) => {
     return (dispatch) => {
         //dispatch(getUsersRed(pet))
-        eventsAPI.getStatus().then(data => {
+        eventsAPI.getStatus(per).then(data => {
             dispatch(getUsersRed(data));
         });
     }

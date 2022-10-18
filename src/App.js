@@ -14,10 +14,12 @@ let App = (props) => {
                 home
             </NavLink>
             <Routes>
-                <Route path='/' element={<Survey choiceLeft='nature' choiceRight='ticketmaster'/>} />
-                <Route path='/ticketmaster' element={<TicketmasterCont />} />
-                <Route path='/nature' element={<Survey choiceLeft='recreation' choiceRight='manyN'/>} />
-                <Route path='/nature/recreation' element={<RecreationCont />} />
+                <Route path='/' element={<Survey choiceLeft='nature' choiceRight='ticketmaster'/>}/>
+                <Route path='/ticketmaster' element={<Survey choiceLeft='ticketmaster20' choiceRight='ticketmaster5'/>}/>
+                <Route path='/ticketmaster/ticketmaster20' element={<TicketmasterCont per="20"/>}/>
+                <Route path='/ticketmaster/ticketmaster5' element={<TicketmasterCont per="5"/>}/>
+                <Route path='/nature' element={<Survey choiceLeft='recreation' choiceRight='manyN'/>}/>
+                <Route path='/nature/recreation' element={<RecreationCont/>}/>
             </Routes>
         </div>
     )

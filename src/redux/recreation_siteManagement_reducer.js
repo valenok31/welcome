@@ -48,5 +48,4 @@ export const setListAttractionsR = (pet) => {
     }
 }
 
-
 export default recreation_siteManagement_reducer;
