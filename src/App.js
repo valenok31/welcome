@@ -6,7 +6,7 @@ import TicketmasterCont from "./components/Ticketmaster/TicketmasterCont";
 import RecreationCont from "./components/Recreation/RecreationCont";
 
 
-let App = (props) => {
+let App = () => {
 
     return (
         <div>
@@ -15,7 +15,8 @@ let App = (props) => {
             </NavLink>
             <Routes>
                 <Route path='/' element={<Survey choiceLeft='nature' choiceRight='ticketmaster'/>}/>
-                <Route path='/ticketmaster' element={<Survey choiceLeft='ticketmaster20' choiceRight='ticketmaster5'/>}/>
+                <Route path='/ticketmaster'
+                       element={<Survey choiceLeft='ticketmaster20' choiceRight='ticketmaster5'/>}/>
                 <Route path='/ticketmaster/ticketmaster20' element={<TicketmasterCont per="20"/>}/>
                 <Route path='/ticketmaster/ticketmaster5' element={<TicketmasterCont per="5"/>}/>
                 <Route path='/nature' element={<Survey choiceLeft='recreation' choiceRight='manyN'/>}/>

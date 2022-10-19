@@ -9,7 +9,7 @@ const initialState = {
 };
 
 
-const recreation_siteManagement_reducer = (state = initialState, action) => {
+const recreation_reducer = (state = initialState, action) => {
     switch (action.type) {
 
         case SET_LIST_ATTRACTIONSR:
@@ -48,4 +48,4 @@ export const setListAttractionsR = (pet) => {
     }
 }
 
-export default recreation_siteManagement_reducer;
+export default recreation_reducer;

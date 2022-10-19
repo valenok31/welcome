@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import Recreation from "./Recreation";
-import {getUsersRedR, setListAttractionsR} from "../../redux/recreation_siteManagement_reducer";
+import {getUsersRedR, setListAttractionsR} from "../../redux/recreation_reducer";
 
 
 class RecreationCont extends React.Component {
@@ -24,7 +24,7 @@ class RecreationCont extends React.Component {
 
 let mapStateToProps = (state) => {
     return ({
-        getCostCityR: state.recreation_siteManagement_reducer.listAttractionsR,
+        getCostCityR: state.recreation_reducer.listAttractionsR,
     })
 };
 

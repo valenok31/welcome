@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import Ticketmaster from "./Ticketmaster";
-import {getUsersRed, setListAttractions} from "../../redux/siteManagement_reducer";
+import {getUsersRed, setListAttractions} from "../../redux/ticketmaster_reducer";
 
 
 class TicketmasterCont extends React.Component {
@@ -25,7 +25,7 @@ class TicketmasterCont extends React.Component {
 
 let mapStateToProps = (state) => {
     return ({
-        getCostCity: state.siteManagement_reducer.listAttractions,
+        getCostCity: state.ticketmaster_reducer.listAttractions,
     })
 };
 
