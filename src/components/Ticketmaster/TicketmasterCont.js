@@ -1,23 +1,22 @@
 import React from "react";
 import {connect} from "react-redux";
 import Ticketmaster from "./Ticketmaster";
-import {getUsersRed, setListAttractions} from "../../redux/ticketmaster_reducer";
+import {handleFetchEvents} from "../../redux/ticketmaster_reducer";
 
 
 class TicketmasterCont extends React.Component {
 
     componentDidMount() {
         console.log(this.props.per)
-        this.props.setListAttractions(this.props.per);
+        this.props.handleFetchEvents(this.props.per);
     }
 
 
     render() {
         return <>
             <Ticketmaster
-                getCostCity={this.props.getCostCity}
-                setListAttractions={this.props.setListAttractions}
-                getUsersRed={this.props.getUsersRed}
+                getEventsTicketmaster={this.props.getEventsTicketmaster}
+                handleFetchEvents={this.props.handleFetchEvents}
             />
         </>
     }
@@ -25,10 +24,10 @@ class TicketmasterCont extends React.Component {
 
 let mapStateToProps = (state) => {
     return ({
-        getCostCity: state.ticketmaster_reducer.listAttractions,
+        getEventsTicketmaster: state.ticketmaster_reducer.eventsTicketmaster,
     })
 };
 
-let resultConnecting = connect(mapStateToProps, {setListAttractions, getUsersRed})(TicketmasterCont);
+let resultConnecting = connect(mapStateToProps, {handleFetchEvents})(TicketmasterCont);
 
 export default resultConnecting;

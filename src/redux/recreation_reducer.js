@@ -1,4 +1,4 @@
-import {eventsAPI} from "../api/api";
+import {fetchEvents} from "../api/api";
 
 const SET_LIST_ATTRACTIONSR = 'SET_LIST_ATTRACTIONSR';
 const SET_EVENT_APIR = 'SET_EVENT_APIR';
@@ -41,8 +41,7 @@ export const setEventAPI = (keywordSearch) => ({
 
 export const setListAttractionsR = (pet) => {
     return (dispatch) => {
-        //dispatch(getUsersRed(pet))
-        eventsAPI.getAppRecreation().then(data => {
+        fetchEvents.getAppRecreation().then(data => {
             dispatch(getUsersRedR(data));
         });
     }

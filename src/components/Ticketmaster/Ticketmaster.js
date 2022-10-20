@@ -2,7 +2,7 @@ import React from "react";
 import style from './Ticketmaster.module.css'
 
 export default function Ticketmaster(props) {
-    let requestiv7 = props.getCostCity;
+    let requestiv7 = props.getEventsTicketmaster;
     let mapRequestgg = requestiv7.map((r, i) => {
         let image;
         for (let heig of r.images) {

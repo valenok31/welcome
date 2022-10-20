@@ -2,18 +2,17 @@ import * as axios from "axios";
 import React from "react";
 
 
-export const eventsAPI = {
-    getStatus(size = 5) {
-        const instanceT = axios.create({
-            //withCredentials: true,
+export const fetchEvents = {
+    fromTicketmaster(size = 5) {
+        const instanceTicketmaster = axios.create({
             baseURL: "https://app.ticketmaster.com/discovery/v2/",
         })
-        return instanceT.get(`events.json?size=${size}&countryCode=US&apikey=zj1LCjwJVG5B88c4HGfjkaY6PAMxz6nV`)
+        return instanceTicketmaster.get(`events.json?size=${size}&countryCode=US&apikey=zj1LCjwJVG5B88c4HGfjkaY6PAMxz6nV`)
             .then(response => {
                 return response.data._embedded.events;
             })
             .catch((err) => {
-                console.log(err.messages)
+                console.log(err.message)
             })
     },
     getAppRecreation() {
