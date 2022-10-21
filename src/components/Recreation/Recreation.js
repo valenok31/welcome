@@ -3,10 +3,18 @@ import style from './Recreation.module.css'
 import axios from "axios";
 
 export default function Recreation(props) {
-    let mapRequestgg = props.getCostCity.map((r, i) => {
+    let mapRequestgg = props.getEventsRecreation.map((r, i) => {
         let image = 'https://avatanplus.com/files/resources/mid/581ccfb952d8e158308b6bfb.jpg';
 
-        return ()=>{
+
+        return <div id={i} key={i} className={style.boxMap}
+                    style={{background: `url('${image}') no-repeat center/cover`}}>
+            {r.RecAreaName}
+        </div>
+
+
+
+/*        return ()=>{
            return axios
             .get(`https://ridb.recreation.gov/api/v1/recareas/${r.RecAreaID}/media?apikey=53351234-6c6c-4392-a4b8-d38d53df1462`)
                 .then(function (response) {
@@ -22,7 +30,7 @@ export default function Recreation(props) {
                         {r.RecAreaName}
                     </div>
                 });
-        }
+        }*/
     })
     console.log(mapRequestgg);
     return (

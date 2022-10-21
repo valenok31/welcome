@@ -1,7 +1,6 @@
 import * as axios from "axios";
 import React from "react";
 
-
 export const fetchEvents = {
     fromTicketmaster(size = 5) {
         const instanceTicketmaster = axios.create({
@@ -15,12 +14,12 @@ export const fetchEvents = {
                 console.log(err.message)
             })
     },
-    getAppRecreation() {
-        const instanceR = axios.create({
+    fromRecreation() {
+        const instanceRecreation = axios.create({
             //withCredentials: true,
             baseURL: "https://ridb.recreation.gov/api/v1/recareas?limit=5&apikey=53351234-6c6c-4392-a4b8-d38d53df1462",
         })
-        return instanceR.get()
+        return instanceRecreation.get()
             .then(response => {
                 return response.data.RECDATA;
             })
@@ -28,6 +27,4 @@ export const fetchEvents = {
                 console.log(err.messages)
             })
     },
-
-
 }

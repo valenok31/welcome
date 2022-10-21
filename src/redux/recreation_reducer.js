@@ -1,48 +1,33 @@
 import {fetchEvents} from "../api/api";
 
-const SET_LIST_ATTRACTIONSR = 'SET_LIST_ATTRACTIONSR';
-const SET_EVENT_APIR = 'SET_EVENT_APIR';
-
+const SET_EVENTS_RECREATION = 'SET_EVENTS_RECREATION';
 
 const initialState = {
-    listAttractionsR: [],
+    eventsRecreation: [],
 };
-
 
 const recreation_reducer = (state = initialState, action) => {
     switch (action.type) {
 
-        case SET_LIST_ATTRACTIONSR:
+        case SET_EVENTS_RECREATION:
             return {
                 ...state,
-                listAttractionsR: action.listAttractionsR,
+                eventsRecreation: action.eventsRecreation,
             }
-
-        case SET_EVENT_APIR:
-            return {
-                ...state,
-                listAttractionsR: action.listAttractionsR,
-            }
-
 
         default:
             return state;
     }
 };
 
-export const getUsersRedR = (listAttractionsR) => ({
-    type: SET_LIST_ATTRACTIONSR, listAttractionsR
+export const setEventsRecreation = (eventsRecreation) => ({
+    type: SET_EVENTS_RECREATION, eventsRecreation
 });
 
-export const setEventAPI = (keywordSearch) => ({
-    type: SET_EVENT_APIR, keywordSearch
-});
-
-
-export const setListAttractionsR = (pet) => {
+export const handleFetchEvents = (pet) => {
     return (dispatch) => {
-        fetchEvents.getAppRecreation().then(data => {
-            dispatch(getUsersRedR(data));
+        fetchEvents.fromRecreation().then(data => {
+            dispatch(setEventsRecreation(data));
         });
     }
 }

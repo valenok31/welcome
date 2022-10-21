@@ -3,14 +3,11 @@ import {connect} from "react-redux";
 import Ticketmaster from "./Ticketmaster";
 import {handleFetchEvents} from "../../redux/ticketmaster_reducer";
 
-
 class TicketmasterCont extends React.Component {
 
     componentDidMount() {
-        console.log(this.props.per)
-        this.props.handleFetchEvents(this.props.per);
+        this.props.handleFetchEvents(this.props.size);
     }
-
 
     render() {
         return <>
