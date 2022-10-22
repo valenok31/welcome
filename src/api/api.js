@@ -27,4 +27,20 @@ export const fetchEvents = {
                 console.log(err.messages)
             })
     },
+    fromRecreationImages(RecAreaID) {
+        const instanceRecreation = axios.create({
+            //withCredentials: true,
+            baseURL: `https://ridb.recreation.gov/api/v1/recareas/${RecAreaID}/media?apikey=53351234-6c6c-4392-a4b8-d38d53df1462`,
+        })
+        return instanceRecreation.get()
+            .then(response => {
+
+                return response.data.RECDATA[0].URL;
+
+            })
+            .catch((err) => {
+                //console.log(err)
+                return ['https://avatanplus.com/files/resources/mid/581ccfb952d8e158308b6bfb.jpg']
+            })
+    },
 }

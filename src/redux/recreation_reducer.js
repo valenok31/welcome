@@ -1,9 +1,11 @@
 import {fetchEvents} from "../api/api";
 
 const SET_EVENTS_RECREATION = 'SET_EVENTS_RECREATION';
+const SET_EVENTS_RECREATION_IMAGES = 'SET_EVENTS_RECREATION_IMAGES';
 
 const initialState = {
     eventsRecreation: [],
+    eventsRecreationImages: [],
 };
 
 const recreation_reducer = (state = initialState, action) => {
@@ -13,6 +15,11 @@ const recreation_reducer = (state = initialState, action) => {
             return {
                 ...state,
                 eventsRecreation: action.eventsRecreation,
+            }
+        case SET_EVENTS_RECREATION_IMAGES:
+            return {
+                ...state,
+                eventsRecreationImages: [...state.eventsRecreationImages, action.eventsRecreationImages],
             }
 
         default:
@@ -24,10 +31,24 @@ export const setEventsRecreation = (eventsRecreation) => ({
     type: SET_EVENTS_RECREATION, eventsRecreation
 });
 
+export const setEventsRecreationImages = (eventsRecreationImages) => ({
+    type: SET_EVENTS_RECREATION_IMAGES, eventsRecreationImages
+});
+
 export const handleFetchEvents = (pet) => {
     return (dispatch) => {
         fetchEvents.fromRecreation().then(data => {
             dispatch(setEventsRecreation(data));
+        });
+    }
+}
+
+export const handleFetchEventsImages = (RecAreaID) => {
+
+    return (dispatch) => {
+        fetchEvents.fromRecreationImages(RecAreaID).then(data => {
+            //console.log(data);
+            dispatch(setEventsRecreationImages(data));
         });
     }
 }
