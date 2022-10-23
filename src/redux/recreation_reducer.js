@@ -5,7 +5,7 @@ const SET_EVENTS_RECREATION_IMAGES = 'SET_EVENTS_RECREATION_IMAGES';
 
 const initialState = {
     eventsRecreation: [],
-    eventsRecreationImages: [{id:10136323, url:"https://cdn.recreation.gov/public/2021/06/03/15/56/f1c31f95-1eaa-4cf3-8cfe-c4ed36c80367.jpeg"}],
+    eventsRecreationImages: [{id:'10136323', url:"https://sportcubes.ru/images/nofoto.jpg"}],
 };
 
 const recreation_reducer = (state = initialState, action) => {
