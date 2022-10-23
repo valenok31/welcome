@@ -35,12 +35,12 @@ export const fetchEvents = {
         return instanceRecreation.get()
             .then(response => {
 
-                return response.data.RECDATA[0].URL;
+                return response.data.RECDATA[0];
 
             })
             .catch((err) => {
                 //console.log(err)
-                return ['https://avatanplus.com/files/resources/mid/581ccfb952d8e158308b6bfb.jpg']
+                return {EntityID:RecAreaID, URL:'https://avatanplus.com/files/resources/mid/581ccfb952d8e158308b6bfb.jpg'}
             })
     },
 }

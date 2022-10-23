@@ -6,13 +6,23 @@ export default function Recreation(props) {
 
     let mapRequestgg = props.getEventsRecreation.map((r, i) => {
         let image = 'https://avatanplus.com/files/resources/mid/581ccfb952d8e158308b6bfb.jpg';
-        if (!props.getEventsRecreationImages) {
+/*        if (!props.getEventsRecreationImages[r.RecAreaID]) {
             props.handleFetchEventsImages(r.RecAreaID);
+        }*/
+
+        for (let arrImages of props.getEventsRecreationImages) {
+/*            console.log(arrImages.id);
+            console.log(r.RecAreaID);*/
+            if(arrImages.id == r.RecAreaID){
+                console.log('excellent!!')
+                image = arrImages.url;
+            }
+
         }
 
-        console.log(props.getEventsRecreationImages);
+
         return <div id={i} key={i} className={style.boxMap}
-                    style={{background: `url('${props.getEventsRecreationImages[1]}') no-repeat center/cover`}}>
+                    style={{background: `url('${image}') no-repeat center/cover`}}>
             {r.RecAreaName}
         </div>
 
@@ -35,7 +45,7 @@ export default function Recreation(props) {
                         });
                 }*/
     })
-
+    //console.log(props.getEventsRecreationImages);
     return (
         <div id='fieldPlaying' className={style.field__playing}>
             {mapRequestgg}
