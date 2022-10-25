@@ -1,8 +1,11 @@
 import * as axios from "axios";
 import React from "react";
+import {setUpdateCrutch} from "../redux/recreation_reducer";
 
 export const fetchEvents = {
+
     fromTicketmaster(size = 5) {
+        setUpdateCrutch(1);
         const instanceTicketmaster = axios.create({
             baseURL: "https://app.ticketmaster.com/discovery/v2/",
         })
@@ -15,10 +18,10 @@ export const fetchEvents = {
             })
     },
     fromRecreation() {
-
+        setUpdateCrutch(2);
         const instanceRecreation = axios.create({
             //withCredentials: true,
-            baseURL: "https://ridb.recreation.gov/api/v1/recareas?limit=2&offset=1&apikey=53351234-6c6c-4392-a4b8-d38d53df1462",
+            baseURL: "https://ridb.recreation.gov/api/v1/recareas?limit=4&offset=3&apikey=53351234-6c6c-4392-a4b8-d38d53df1462",
         })
         return instanceRecreation.get()
             .then(response => {
@@ -29,6 +32,7 @@ export const fetchEvents = {
             })
     },
     fromRecreationImages(RecAreaID) {
+        setUpdateCrutch(3);
         const instanceRecreation = axios.create({
             //withCredentials: true,
             baseURL: `https://ridb.recreation.gov/api/v1/recareas/${RecAreaID}/media?apikey=53351234-6c6c-4392-a4b8-d38d53df1462`,
@@ -36,11 +40,12 @@ export const fetchEvents = {
         return instanceRecreation.get()
             .then(response => {
 
-                return response.data.RECDATA[0];
+                //return response.data.RECDATA[0];
+                return {EntityID:RecAreaID, URL:response.data.RECDATA[0].URL}
 
             })
             .catch((err) => {
-                //console.log(err)
+                console.log(err)
                 return {EntityID:RecAreaID, URL:'https://avatanplus.com/files/resources/mid/581ccfb952d8e158308b6bfb.jpg'}
             })
     },

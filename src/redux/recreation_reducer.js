@@ -10,7 +10,7 @@ const initialState = {
         {id: '101363239', url: "https://sportcubes.ru/images/nofoto.jpg"},
         {id: '1013', url: "https://sportcubes.ru/images/nofoto.jpg"},
     ],
-    updateCrutch: [],
+    updateCrutch: '0',
     getEventsRecreationImages(){
        return this.eventsRecreationImages;
     },
@@ -29,8 +29,8 @@ const recreation_reducer = (state = initialState, action) => {
             return {
                 ...state,
                 eventsRecreationImages: [...state.eventsRecreationImages, {
-                    id: action.eventsRecreationImages.EntityID,
-                    url: action.eventsRecreationImages.URL
+                    id: action.data.EntityID,
+                    url: action.data.URL
                 }],
 
 
@@ -39,7 +39,7 @@ const recreation_reducer = (state = initialState, action) => {
         case UPDATE_CRUTCH:
             return {
                 ...state,
-                updateCrutch: [...state.updateCrutch, action.updateCrutch]
+                updateCrutch: action.rr
             }
 
         default:
@@ -51,12 +51,12 @@ export const setEventsRecreation = (eventsRecreation) => ({
     type: SET_EVENTS_RECREATION, eventsRecreation
 });
 
-export const setEventsRecreationImages = (eventsRecreationImages) => ({
-    type: SET_EVENTS_RECREATION_IMAGES, eventsRecreationImages
+export const setEventsRecreationImages = (data) => ({
+    type: SET_EVENTS_RECREATION_IMAGES, data
 });
 
-export const updateCrutch = (updateCrutch) => ({
-    type: UPDATE_CRUTCH, updateCrutch
+export const setUpdateCrutch = (rr) => ({
+    type: UPDATE_CRUTCH, rr
 });
 
 
@@ -64,6 +64,7 @@ export const handleFetchEvents = (pet) => {
     return (dispatch) => {
         fetchEvents.fromRecreation().then(data => {
             dispatch(setEventsRecreation(data));
+            dispatch(setUpdateCrutch(2));
         });
     }
 }
@@ -72,8 +73,9 @@ export const handleFetchEventsImages = (RecAreaID) => {
 
     return (dispatch) => {
         fetchEvents.fromRecreationImages(RecAreaID).then(data => {
-            //console.log(data);
+            console.log(data);
             dispatch(setEventsRecreationImages(data));
+            dispatch(setUpdateCrutch(3));
         });
     }
 }
