@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import Recreation from "./Recreation";
-import {handleFetchEvents, handleFetchEventsImages} from "../../redux/recreation_reducer";
+import {handleFetchEvents, handleFetchEventsImages, updateCrutch} from "../../redux/recreation_reducer";
 
 class RecreationCont extends React.Component {
 
@@ -15,6 +15,7 @@ class RecreationCont extends React.Component {
                 getEventsRecreation={this.props.getEventsRecreation}
                 getEventsRecreationImages={this.props.getEventsRecreationImages}
                 handleFetchEventsImages={this.props.handleFetchEventsImages}
+                updateCrutch={this.props.updateCrutch}
             />
         </>
     }
@@ -23,10 +24,10 @@ class RecreationCont extends React.Component {
 let mapStateToProps = (state) => {
     return ({
         getEventsRecreation: state.recreation_reducer.eventsRecreation,
-        getEventsRecreationImages: state.recreation_reducer.eventsRecreationImages,
+        getEventsRecreationImages: state.recreation_reducer.getEventsRecreationImages(),
     })
 };
 
-let resultConnectingR = connect(mapStateToProps, {handleFetchEvents, handleFetchEventsImages})(RecreationCont);
+let resultConnectingR = connect(mapStateToProps, {handleFetchEvents, handleFetchEventsImages, updateCrutch})(RecreationCont);
 
 export default resultConnectingR;

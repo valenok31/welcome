@@ -2,13 +2,19 @@ import {fetchEvents} from "../api/api";
 
 const SET_EVENTS_RECREATION = 'SET_EVENTS_RECREATION';
 const SET_EVENTS_RECREATION_IMAGES = 'SET_EVENTS_RECREATION_IMAGES';
+const UPDATE_CRUTCH = 'UPDATE_CRUTCH';
 
 const initialState = {
     eventsRecreation: [],
     eventsRecreationImages: [
-        {id: '10136323', url: "https://sportcubes.ru/images/nofoto.jpg"},
+        {id: '101363239', url: "https://sportcubes.ru/images/nofoto.jpg"},
         {id: '1013', url: "https://sportcubes.ru/images/nofoto.jpg"},
     ],
+    updateCrutch: [],
+    getEventsRecreationImages(){
+       return this.eventsRecreationImages;
+    },
+
 };
 
 const recreation_reducer = (state = initialState, action) => {
@@ -26,6 +32,14 @@ const recreation_reducer = (state = initialState, action) => {
                     id: action.eventsRecreationImages.EntityID,
                     url: action.eventsRecreationImages.URL
                 }],
+
+
+            }
+
+        case UPDATE_CRUTCH:
+            return {
+                ...state,
+                updateCrutch: [...state.updateCrutch, action.updateCrutch]
             }
 
         default:
@@ -40,6 +54,11 @@ export const setEventsRecreation = (eventsRecreation) => ({
 export const setEventsRecreationImages = (eventsRecreationImages) => ({
     type: SET_EVENTS_RECREATION_IMAGES, eventsRecreationImages
 });
+
+export const updateCrutch = (updateCrutch) => ({
+    type: UPDATE_CRUTCH, updateCrutch
+});
+
 
 export const handleFetchEvents = (pet) => {
     return (dispatch) => {
