@@ -5,7 +5,10 @@ const SET_EVENTS_RECREATION_IMAGES = 'SET_EVENTS_RECREATION_IMAGES';
 
 const initialState = {
     eventsRecreation: [],
-    eventsRecreationImages: [{id:'10136323', url:"https://sportcubes.ru/images/nofoto.jpg"}],
+    eventsRecreationImages: [
+        {id: '10136323', url: "https://sportcubes.ru/images/nofoto.jpg"},
+        {id: '1013', url: "https://sportcubes.ru/images/nofoto.jpg"},
+    ],
 };
 
 const recreation_reducer = (state = initialState, action) => {
@@ -19,7 +22,10 @@ const recreation_reducer = (state = initialState, action) => {
         case SET_EVENTS_RECREATION_IMAGES:
             return {
                 ...state,
-                eventsRecreationImages: [...state.eventsRecreationImages, {id: action.eventsRecreationImages.EntityID, url: action.eventsRecreationImages.URL}],
+                eventsRecreationImages: [...state.eventsRecreationImages, {
+                    id: action.eventsRecreationImages.EntityID,
+                    url: action.eventsRecreationImages.URL
+                }],
             }
 
         default:

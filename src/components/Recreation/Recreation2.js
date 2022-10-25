@@ -3,8 +3,6 @@ import style from './Recreation.module.css'
 
 export default function Recreation(props) {
     console.log(props.getEventsRecreationImages);
-
-
     let mapRequestgg = props.getEventsRecreation.map((r, i) => {
         let image = 'https://avatanplus.com/files/resources/mid/581ccfb952d8e158308b6bfb.jpg';
 
