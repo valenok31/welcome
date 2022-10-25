@@ -12,8 +12,14 @@ export default function Recreation(props) {
         let image = 'https://avatanplus.com/files/resources/mid/581ccfb952d8e158308b6bfb.jpg';
 
         let user = props.getEventsRecreationImages.find(item => r.RecAreaID == item.id);
-        //console.log(user)
-        user ? image = user.url : props.handleFetchEventsImages(r.RecAreaID)
+        if (user===undefined){
+            console.log(user)
+            props.handleFetchEventsImages(r.RecAreaID);
+        }else{
+            image=user.url
+        }
+
+       // user ? image = 'https://avatanplus.com/files/resources/mid/581ccfb952d8e158308b6bfb.jpg' : props.handleFetchEventsImages(r.RecAreaID);
 
 
         return <div id={i} key={i} className={style.boxMap}
