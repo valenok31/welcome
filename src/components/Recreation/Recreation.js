@@ -2,8 +2,8 @@ import React from "react";
 import style from './Recreation.module.css'
 
 export default function Recreation(props) {
-   //console.log(props.updateCrutch);
-
+    //console.log(props.updateCrutch);
+    let kn = 0;
 
 
     //debugger;
@@ -12,14 +12,16 @@ export default function Recreation(props) {
         let image = 'https://avatanplus.com/files/resources/mid/581ccfb952d8e158308b6bfb.jpg';
 
         let user = props.getEventsRecreationImages.find(item => r.RecAreaID == item.id);
-        if (user===undefined){
-            console.log(user)
+        if (user === undefined) {
+            console.log(kn++)
             props.handleFetchEventsImages(r.RecAreaID);
-        }else{
-            image=user.url
+            //console.log('after '+props.getEventsRecreationImages)
+        } else {
+            //console.log(kn++)
+            image = user.url
         }
 
-       // user ? image = 'https://avatanplus.com/files/resources/mid/581ccfb952d8e158308b6bfb.jpg' : props.handleFetchEventsImages(r.RecAreaID);
+        // user ? image = 'https://avatanplus.com/files/resources/mid/581ccfb952d8e158308b6bfb.jpg' : props.handleFetchEventsImages(r.RecAreaID);
 
 
         return <div id={i} key={i} className={style.boxMap}

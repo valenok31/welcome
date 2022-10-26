@@ -6,15 +6,15 @@ const UPDATE_CRUTCH = 'UPDATE_CRUTCH';
 
 const initialState = {
     eventsRecreation: [],
-    eventsRecreationImages: [
+    eventsRecreationImages3: [
         {id: '101363239', url: "https://sportcubes.ru/images/nofoto.jpg"},
         {id: '1013', url: "https://sportcubes.ru/images/nofoto.jpg"},
     ],
+    eventsRecreationImages: [],
     updateCrutch: '0',
     getEventsRecreationImages(){
        return this.eventsRecreationImages;
     },
-
 };
 
 const recreation_reducer = (state = initialState, action) => {
@@ -28,11 +28,11 @@ const recreation_reducer = (state = initialState, action) => {
         case SET_EVENTS_RECREATION_IMAGES:
             return {
                 ...state,
-                eventsRecreationImages: [...state.eventsRecreationImages, {
+/*                eventsRecreationImages: [...state.eventsRecreationImages, {
                     id: action.data.EntityID,
                     url: action.data.URL
-                }],
-
+                }],*/
+                eventsRecreationImages: [...state.eventsRecreationImages, action.data],
 
             }
 
@@ -64,7 +64,7 @@ export const handleFetchEvents = (pet) => {
     return (dispatch) => {
         fetchEvents.fromRecreation().then(data => {
             dispatch(setEventsRecreation(data));
-            dispatch(setUpdateCrutch(2));
+            //dispatch(setUpdateCrutch(2));
         });
     }
 }
@@ -73,9 +73,9 @@ export const handleFetchEventsImages = (RecAreaID) => {
 
     return (dispatch) => {
         fetchEvents.fromRecreationImages(RecAreaID).then(data => {
-            console.log(data);
+            //console.log(data);
             dispatch(setEventsRecreationImages(data));
-            dispatch(setUpdateCrutch(3));
+            //dispatch(setUpdateCrutch(3));
         });
     }
 }

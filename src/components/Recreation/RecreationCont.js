@@ -7,7 +7,7 @@ class RecreationCont extends React.Component {
 
     componentDidMount() {
         this.props.handleFetchEvents();
-        this.props.setUpdateCrutch(1);
+        //this.props.setUpdateCrutch(1);
     }
 
     render() {
@@ -17,7 +17,8 @@ class RecreationCont extends React.Component {
                 getEventsRecreationImages={this.props.getEventsRecreationImages}
                 handleFetchEventsImages={this.props.handleFetchEventsImages}
                 setUpdateCrutch={this.props.setUpdateCrutch}
-                updateCrutch={this.props.updateCrutch}
+                kn={this.props.kn}
+                //updateCrutch={this.props.updateCrutch}
             />
         </>
     }
@@ -26,11 +27,16 @@ class RecreationCont extends React.Component {
 let mapStateToProps = (state) => {
     return ({
         getEventsRecreation: state.recreation_reducer.eventsRecreation,
-        getEventsRecreationImages: state.recreation_reducer.getEventsRecreationImages(),
-        updateCrutch: state.recreation_reducer.updateCrutch,
+        //getEventsRecreationImages: state.recreation_reducer.getEventsRecreationImages(),
+        getEventsRecreationImages: state.recreation_reducer.eventsRecreationImages,
+        //updateCrutch: state.recreation_reducer.updateCrutch,
     })
 };
 
-let resultConnectingR = connect(mapStateToProps, {handleFetchEvents, handleFetchEventsImages, setUpdateCrutch})(RecreationCont);
+let resultConnectingR = connect(mapStateToProps, {
+    handleFetchEvents,
+    handleFetchEventsImages,
+    setUpdateCrutch
+})(RecreationCont);
 
 export default resultConnectingR;

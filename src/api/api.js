@@ -5,7 +5,7 @@ import {setUpdateCrutch} from "../redux/recreation_reducer";
 export const fetchEvents = {
 
     fromTicketmaster(size = 5) {
-        setUpdateCrutch(1);
+        //setUpdateCrutch(1);
         const instanceTicketmaster = axios.create({
             baseURL: "https://app.ticketmaster.com/discovery/v2/",
         })
@@ -18,9 +18,8 @@ export const fetchEvents = {
             })
     },
     fromRecreation() {
-        setUpdateCrutch(2);
+        //setUpdateCrutch(2);
         const instanceRecreation = axios.create({
-            //withCredentials: true,
             baseURL: "https://ridb.recreation.gov/api/v1/recareas?limit=3&offset=3&apikey=53351234-6c6c-4392-a4b8-d38d53df1462",
         })
         return instanceRecreation.get()
@@ -28,25 +27,22 @@ export const fetchEvents = {
                 return response.data.RECDATA;
             })
             .catch((err) => {
-                //console.log(err.messages)
             })
     },
     fromRecreationImages(RecAreaID) {
-        setUpdateCrutch(3);
+        //setUpdateCrutch(3);
         const instanceRecreation = axios.create({
-            //withCredentials: true,
             baseURL: `https://ridb.recreation.gov/api/v1/recareas/${RecAreaID}/media?apikey=53351234-6c6c-4392-a4b8-d38d53df1462`,
         })
         return instanceRecreation.get()
             .then((response) => {
-                //console.log(response)
-                //return response.data.RECDATA[0];
-                return {EntityID:RecAreaID, URL:response.data.RECDATA[0].URL}
+                //return {EntityID:RecAreaID, URL:response.data.RECDATA[0].URL}
+                return {id:RecAreaID, url:response.data.RECDATA[0].URL}
 
             })
             .catch((err) => {
-                //console.log(err)
-                return {EntityID:RecAreaID, URL:'https://avatanplus.com/files/resources/mid/581ccfb952d8e158308b6bfb.jpg'}
+                //return {EntityID:RecAreaID, URL:'https://avatanplus.com/files/resources/mid/581ccfb952d8e158308b6bfb.jpg'}
+                return {id:RecAreaID, url:'https://avatanplus.com/files/resources/mid/581ccfb952d8e158308b6bfb.jpg'}
             })
     },
 }
