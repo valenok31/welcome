@@ -7,6 +7,8 @@ import {
     handleFetchEventsImages,
     setUpdateCrutch
 } from "../../redux/recreation_reducer";
+import style from "./Recreation.module.css";
+import HightRecreation from "./HightRecreation";
 
 class RecreationCont extends React.Component {
 
@@ -16,16 +18,25 @@ class RecreationCont extends React.Component {
     }
 
     render() {
+
+        let arrImg = [];
+        this.props.getEventsRecreation.map((r) => {
+            arrImg.push(r.RecAreaID);
+        })
+        if (arrImg.length > 0) {
+            return (
+                <div id='fieldPlaying' className={style.field__playing}>
+                    <HightRecreation arrImg={arrImg}
+                                     handleFetchArr={this.props.handleFetchArr}
+                                     getEventsRecreation={this.props.getEventsRecreation}
+                                     getEventsRecreationImages={this.props.getEventsRecreationImages}
+                    />
+                </div>
+            )
+        }
+
+
         return <>
-            <Recreation
-                getEventsRecreation={this.props.getEventsRecreation}
-                getEventsRecreationImages={this.props.getEventsRecreationImages}
-                handleFetchEventsImages={this.props.handleFetchEventsImages}
-                setUpdateCrutch={this.props.setUpdateCrutch}
-                handleFetchArr={this.props.handleFetchArr}
-                kn={this.props.kn}
-                //updateCrutch={this.props.updateCrutch}
-            />
         </>
     }
 }

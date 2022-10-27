@@ -9,7 +9,7 @@ class HightRecreation extends React.Component {
     }
 
     render() {
-        console.log(this.props.arrImg)
+        //console.log(this.props.arrImg)
         console.log(this.props.getEventsRecreationImages)
        let arrI =  this.props.getEventsRecreationImages;
         let mapRequestgg = this.props.getEventsRecreation.map((r, i) => {
