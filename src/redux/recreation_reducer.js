@@ -12,8 +12,8 @@ const initialState = {
     ],
     eventsRecreationImages: [],
     updateCrutch: '0',
-    getEventsRecreationImages(){
-       return this.eventsRecreationImages;
+    getEventsRecreationImages() {
+        return this.eventsRecreationImages;
     },
 };
 
@@ -28,10 +28,10 @@ const recreation_reducer = (state = initialState, action) => {
         case SET_EVENTS_RECREATION_IMAGES:
             return {
                 ...state,
-/*                eventsRecreationImages: [...state.eventsRecreationImages, {
-                    id: action.data.EntityID,
-                    url: action.data.URL
-                }],*/
+                /*                eventsRecreationImages: [...state.eventsRecreationImages, {
+                                    id: action.data.EntityID,
+                                    url: action.data.URL
+                                }],*/
                 eventsRecreationImages: [...state.eventsRecreationImages, action.data],
 
             }
@@ -79,5 +79,21 @@ export const handleFetchEventsImages = (RecAreaID) => {
         });
     }
 }
+
+export const handleFetchArr = (arrImg) => {
+    return (dispatch) => {
+        arrImg.map((RecAreaID) => {
+           // debugger;
+            fetchEvents.fromArrImages(RecAreaID).then(data => {
+                //console.log(data);
+                dispatch(setEventsRecreationImages(data));
+                //dispatch(setUpdateCrutch(3));
+            });
+
+
+        })
+    }
+}
+
 
 export default recreation_reducer;

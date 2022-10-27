@@ -20,7 +20,7 @@ export const fetchEvents = {
     fromRecreation() {
 
         const instanceRecreation = axios.create({
-            baseURL: "https://ridb.recreation.gov/api/v1/recareas?limit=30&offset=3&apikey=53351234-6c6c-4392-a4b8-d38d53df1462",
+            baseURL: "https://ridb.recreation.gov/api/v1/recareas?limit=3&offset=3&apikey=53351234-6c6c-4392-a4b8-d38d53df1462",
         })
         return instanceRecreation.get()
             .then(response => {
@@ -30,6 +30,26 @@ export const fetchEvents = {
             })
     },
     fromRecreationImages(RecAreaID) {
+        //setUpdateCrutch(3);
+        const instanceRecreation = axios.create({
+            baseURL: `https://ridb.recreation.gov/api/v1/recareas/${RecAreaID}/media?apikey=53351234-6c6c-4392-a4b8-d38d53df1462`,
+        })
+        return instanceRecreation.get()
+            .then((response) => {
+                //return {EntityID:RecAreaID, URL:response.data.RECDATA[0].URL}
+                return {id: RecAreaID, url: response.data.RECDATA[0].URL}
+
+            })
+            .catch((err) => {
+                //return {EntityID:RecAreaID, URL:'https://avatanplus.com/files/resources/mid/581ccfb952d8e158308b6bfb.jpg'}
+                return {id: RecAreaID, url: 'https://avatanplus.com/files/resources/mid/581ccfb952d8e158308b6bfb.jpg'}
+            })
+    },
+
+
+
+
+    fromArrImages(RecAreaID) {
         //setUpdateCrutch(3);
         const instanceRecreation = axios.create({
             baseURL: `https://ridb.recreation.gov/api/v1/recareas/${RecAreaID}/media?apikey=53351234-6c6c-4392-a4b8-d38d53df1462`,
