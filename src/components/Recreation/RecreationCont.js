@@ -8,7 +8,6 @@ import {
     setUpdateCrutch
 } from "../../redux/recreation_reducer";
 import style from "./Recreation.module.css";
-import HightRecreation from "./HightRecreation";
 
 class RecreationCont extends React.Component {
 
@@ -26,7 +25,7 @@ class RecreationCont extends React.Component {
         if (arrImg.length > 0) {
             return (
                 <div id='fieldPlaying' className={style.field__playing}>
-                    <HightRecreation arrImg={arrImg}
+                    <Recreation arrImg={arrImg}
                                      handleFetchArr={this.props.handleFetchArr}
                                      getEventsRecreation={this.props.getEventsRecreation}
                                      getEventsRecreationImages={this.props.getEventsRecreationImages}

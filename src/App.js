@@ -5,7 +5,6 @@ import React from "react";
 import TicketmasterCont from "./components/Ticketmaster/TicketmasterCont";
 import RecreationCont from "./components/Recreation/RecreationCont";
 
-
 let App = () => {
     return (
         <div>
