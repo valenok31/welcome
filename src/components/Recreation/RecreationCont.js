@@ -1,5 +1,5 @@
 import React from "react";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import Recreation from "./Recreation";
 import {
     handleFetchArr,
@@ -26,9 +26,9 @@ class RecreationCont extends React.Component {
             return (
                 <div id='fieldPlaying' className={style.field__playing}>
                     <Recreation arrImg={arrImg}
-                                     handleFetchArr={this.props.handleFetchArr}
-                                     getEventsRecreation={this.props.getEventsRecreation}
-                                     getEventsRecreationImages={this.props.getEventsRecreationImages}
+                        handleFetchArr={this.props.handleFetchArr}
+                        getEventsRecreation={this.props.getEventsRecreation}
+                        getEventsRecreationImages={this.props.getEventsRecreationImages}
                     />
                 </div>
             )

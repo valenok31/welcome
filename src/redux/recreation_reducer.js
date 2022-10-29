@@ -1,14 +1,15 @@
-import {fetchEvents} from "../api/api";
+import { fetchEvents } from "../api/api";
 
 const SET_EVENTS_RECREATION = 'SET_EVENTS_RECREATION';
+const SET_EVENTS_RECREATION_IMG = 'SET_EVENTS_RECREATION_IMG';
 const SET_EVENTS_RECREATION_IMAGES = 'SET_EVENTS_RECREATION_IMAGES';
 const UPDATE_CRUTCH = 'UPDATE_CRUTCH';
 
 const initialState = {
     eventsRecreation: [],
     eventsRecreationImages3: [
-        {id: '101363239', url: "https://sportcubes.ru/images/nofoto.jpg"},
-        {id: '1013', url: "https://sportcubes.ru/images/nofoto.jpg"},
+        /* {id: '101363239', url: "https://sportcubes.ru/images/nofoto.jpg"},
+         {id: '1013', url: "https://sportcubes.ru/images/nofoto.jpg"},*/
     ],
     eventsRecreationImages: [],
     updateCrutch: '0',
@@ -25,6 +26,14 @@ const recreation_reducer = (state = initialState, action) => {
                 ...state,
                 eventsRecreation: action.eventsRecreation,
             }
+
+        case SET_EVENTS_RECREATION_IMG:
+            return {
+                ...state,
+                eventsRecreation: action.eventsRecreation,
+                
+            }
+
         case SET_EVENTS_RECREATION_IMAGES:
             return {
                 ...state,
@@ -83,7 +92,7 @@ export const handleFetchEventsImages = (RecAreaID) => {
 export const handleFetchArr = (arrImg) => {
     return (dispatch) => {
         arrImg.map((RecAreaID) => {
-           // debugger;
+            // debugger;
             fetchEvents.fromArrImages(RecAreaID).then(data => {
                 //console.log(data);
                 dispatch(setEventsRecreationImages(data));
