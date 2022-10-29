@@ -16,7 +16,7 @@ class HightRecreation extends React.Component {
         let mapRequestgg = this.props.getEventsRecreation.map((r, i) => {
 
             let image = 'https://avatanplus.com/files/resources/mid/581ccfb952d8e158308b6bfb.jpg';
-            let im = arrI.find(function (item) { console.log(item.id === r.RecAreaID); return r.RecAreaID == item.id })
+            let im = arrI.find(function (item) {return r.RecAreaID == item.id })
 
             if (im !== undefined) {
                 image = im.url;
@@ -27,7 +27,7 @@ class HightRecreation extends React.Component {
                 {r.RecAreaName}
             </div>
         })
-        console.log('im')
+        
         return <>
             {mapRequestgg}
         </>
