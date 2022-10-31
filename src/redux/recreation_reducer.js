@@ -24,7 +24,7 @@ const recreation_reducer = (state = initialState, action) => {
         case SET_EVENTS_RECREATION:
             return {
                 ...state,
-                eventsRecreation: [...state.eventsRecreation, action.eventsRecreation[0]]
+                eventsRecreation: action.eventsRecreation
             }
 
         case SET_EVENTS_RECREATION_IMG:
