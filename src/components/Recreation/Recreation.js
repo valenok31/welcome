@@ -27,7 +27,7 @@ class HightRecreation extends React.Component {
                 {r.RecAreaName}
             </div>
         })
-        
+
         return <>
             {mapRequestgg}
         </>
