@@ -9,10 +9,6 @@ class HightRecreation extends React.Component {
     }
 
     render() {
-        //console.log(this.props.arrImg)
-       // console.log(this.props.getEventsRecreation)
-
-
  
        let arrI = this.props.getEventsRecreationImages;
 
@@ -24,6 +20,7 @@ class HightRecreation extends React.Component {
             if (im !== undefined) {
                 image = im.url;
             }
+            this.props.setEventsImagesURL(i,image);
             this.props.getEventsRecreation[i].url=image;
             return <div id={r.RecAreaID} key={i} className={style.boxMap}
                 style={{ background: `url('${image}') no-repeat center/cover` }}>

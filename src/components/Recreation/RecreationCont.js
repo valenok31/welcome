@@ -5,7 +5,8 @@ import {
     handleFetchArr,
     handleFetchEvents,
     handleFetchEventsImages,
-    setUpdateCrutch
+    setUpdateCrutch,
+    setEventsImagesURL
 } from "../../redux/recreation_reducer";
 import style from "./Recreation.module.css";
 
@@ -29,6 +30,7 @@ class RecreationCont extends React.Component {
                         handleFetchArr={this.props.handleFetchArr}
                         getEventsRecreation={this.props.getEventsRecreation}
                         getEventsRecreationImages={this.props.getEventsRecreationImages}
+                        setEventsImagesURL={this.props.setEventsImagesURL}
                     />
                 </div>
             )
@@ -53,7 +55,8 @@ let resultConnectingR = connect(mapStateToProps, {
     handleFetchEvents,
     handleFetchEventsImages,
     setUpdateCrutch,
-    handleFetchArr
+    handleFetchArr,
+    setEventsImagesURL
 })(RecreationCont);
 
 export default resultConnectingR;

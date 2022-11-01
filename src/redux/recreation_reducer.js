@@ -1,7 +1,7 @@
 import { fetchEvents } from "../api/api";
 
 const SET_EVENTS_RECREATION = 'SET_EVENTS_RECREATION';
-const SET_EVENTS_RECREATION_IMG = 'SET_EVENTS_RECREATION_IMG';
+const SET_EVENTS_IMAGES_URL = 'SET_EVENTS_IMAGES_URL';
 const SET_EVENTS_RECREATION_IMAGES = 'SET_EVENTS_RECREATION_IMAGES';
 const UPDATE_CRUTCH = 'UPDATE_CRUTCH';
 
@@ -27,10 +27,10 @@ const recreation_reducer = (state = initialState, action) => {
                 eventsRecreation: action.eventsRecreation
             }
 
-        case SET_EVENTS_RECREATION_IMG:
+        case SET_EVENTS_IMAGES_URL:
             return {
                 ...state,
-                eventsRecreation: action.eventsRecreation,
+                eventsRecreation: [...state.eventsRecreation, eventsRecreation[action.recAreaID].url=action.eventsImagesURL],
 
             }
 
@@ -44,6 +44,8 @@ const recreation_reducer = (state = initialState, action) => {
                 eventsRecreationImages: [...state.eventsRecreationImages, action.data],
 
             }
+
+
 
         case UPDATE_CRUTCH:
             return {
@@ -62,6 +64,10 @@ export const setEventsRecreation = (eventsRecreation) => ({
 
 export const setEventsRecreationImages = (data) => ({
     type: SET_EVENTS_RECREATION_IMAGES, data
+});
+
+export const setEventsImagesURL = (recAreaID,eventsImagesURL) => ({
+    type: SET_EVENTS_IMAGES_URL, recAreaID,eventsImagesURL
 });
 
 export const setUpdateCrutch = (rr) => ({
