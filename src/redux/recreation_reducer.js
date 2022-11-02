@@ -28,10 +28,9 @@ const recreation_reducer = (state = initialState, action) => {
             }
 
         case SET_EVENTS_IMAGES_URL:
+            state.eventsRecreation[action.recAreaID].url=action.eventsImagesURL
             return {
                 ...state,
-                eventsRecreation: [...state.eventsRecreation, eventsRecreation[action.recAreaID].url=action.eventsImagesURL],
-
             }
 
         case SET_EVENTS_RECREATION_IMAGES:

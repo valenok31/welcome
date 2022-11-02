@@ -9,23 +9,39 @@ class HightRecreation extends React.Component {
     }
 
     render() {
- 
-       let arrI = this.props.getEventsRecreationImages;
+
+        let arrI = this.props.getEventsRecreationImages;
 
         let mapRequestgg = this.props.getEventsRecreation.map((r, i) => {
 
-            let image = 'https://avatanplus.com/files/resources/mid/581ccfb952d8e158308b6bfb.jpg';
-            let im = arrI.find(function (item) {return r.RecAreaID == item.id })
+            let image //= 'https://avatanplus.com/files/resources/mid/581ccfb952d8e158308b6bfb.jpg';
+            let im = arrI.find(function (item) { return r.RecAreaID == item.id })
 
             if (im !== undefined) {
                 image = im.url;
             }
-            this.props.setEventsImagesURL(i,image);
-            this.props.getEventsRecreation[i].url=image;
+           /* if (this.props.getEventsRecreation[i].url == image) {
+                image = this.props.getEventsRecreation[i].url;
+            } else {
+                //console.log(image);
+                this.props.setEventsImagesURL(i, image);
+            }*/
+           // console.log(this.props.getEventsRecreation[i].url);
+            if (!this.props.getEventsRecreation[i].url || this.props.getEventsRecreation[i].url == 'https://avatanplus.com/files/resources/mid/581ccfb952d8e158308b6bfb.jpg') {
+                this.props.setEventsImagesURL(i, image);
+                return;
+            } else {
+                image = this.props.getEventsRecreation[i].url;
+            //this.props.getEventsRecreation[i].url=image;
             return <div id={r.RecAreaID} key={i} className={style.boxMap}
                 style={{ background: `url('${image}') no-repeat center/cover` }}>
                 {r.RecAreaName}
             </div>
+            }
+
+
+
+
         })
 
         return <>
