@@ -74,9 +74,9 @@ export const setUpdateCrutch = (rr) => ({
 });
 
 
-export const handleFetchEvents = (pet) => {
+export const handleFetchEvents = (limit) => {
     return (dispatch) => {
-        fetchEvents.fromRecreation().then(data => {
+        fetchEvents.fromRecreation(limit).then(data => {
             dispatch(setEventsRecreation(data));
             //dispatch(setUpdateCrutch(2));
         });

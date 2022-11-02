@@ -13,7 +13,7 @@ import style from "./Recreation.module.css";
 class RecreationCont extends React.Component {
 
     componentDidMount() {
-        this.props.handleFetchEvents();
+        this.props.handleFetchEvents(30);
         //this.props.setUpdateCrutch(1);
     }
 
