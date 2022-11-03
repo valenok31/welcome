@@ -14,7 +14,6 @@ class RecreationCont extends React.Component {
 
     componentDidMount() {
         this.props.handleFetchEvents(30);
-        //this.props.setUpdateCrutch(1);
     }
 
     render() {
@@ -46,8 +45,6 @@ let mapStateToProps = (state) => {
     return ({
         getEventsRecreation: state.recreation_reducer.eventsRecreation,
         getEventsRecreationImages: state.recreation_reducer.getEventsRecreationImages(),
-        //getEventsRecreationImages: state.recreation_reducer.eventsRecreationImages,
-        //updateCrutch: state.recreation_reducer.updateCrutch,
     })
 };
 
