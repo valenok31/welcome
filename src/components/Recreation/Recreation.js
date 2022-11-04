@@ -11,7 +11,6 @@ class HightRecreation extends React.Component {
     render() {
 
         let arrI = this.props.getEventsRecreationImages;
-
         let mapRequestgg = this.props.getEventsRecreation.map((r, i) => {
 
             let image //= 'https://avatanplus.com/files/resources/mid/581ccfb952d8e158308b6bfb.jpg';
