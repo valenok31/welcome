@@ -28,9 +28,10 @@ const recreation_reducer = (state = initialState, action) => {
             }
 
         case SET_EVENTS_IMAGES_URL:
-            state.eventsRecreation[action.recAreaID].url=action.eventsImagesURL
+            state.eventsRecreation[action.recAreaID].url = action.eventsImagesURL
             return {
                 ...state,
+                eventsRecreation: state.eventsRecreation
             }
 
         case SET_EVENTS_RECREATION_IMAGES:
@@ -65,8 +66,8 @@ export const setEventsRecreationImages = (data) => ({
     type: SET_EVENTS_RECREATION_IMAGES, data
 });
 
-export const setEventsImagesURL = (recAreaID,eventsImagesURL) => ({
-    type: SET_EVENTS_IMAGES_URL, recAreaID,eventsImagesURL
+export const setEventsImagesURL = (recAreaID, eventsImagesURL) => ({
+    type: SET_EVENTS_IMAGES_URL, recAreaID, eventsImagesURL
 });
 
 export const setUpdateCrutch = (rr) => ({

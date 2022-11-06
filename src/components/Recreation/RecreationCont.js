@@ -13,7 +13,10 @@ import style from "./Recreation.module.css";
 class RecreationCont extends React.Component {
 
     componentDidMount() {
-        this.props.handleFetchEvents();
+        if(this.props.getEventsRecreation){
+            this.props.handleFetchEvents();
+        }
+        
     }
 
     render() {
@@ -37,6 +40,7 @@ class RecreationCont extends React.Component {
 
 
         return <>
+        <div>return</div>
         </>
     }
 }

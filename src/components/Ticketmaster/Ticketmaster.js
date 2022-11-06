@@ -14,12 +14,6 @@ export default function Ticketmaster(props) {
         }
         return <EventCell id={id} image={image} name={eventTicketmaster.name} />
 
-        /* return <div id={id} key={id} className={style.boxMap}
-                     style={{background: `url(${image}) no-repeat center/cover`}}>
-             {eventTicketmaster.name}
- 
-             
-         </div>*/
 
     })
     return (
