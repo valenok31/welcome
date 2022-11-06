@@ -13,7 +13,7 @@ import style from "./Recreation.module.css";
 class RecreationCont extends React.Component {
 
     componentDidMount() {
-        if(this.props.getEventsRecreation){
+        if(this.props.getEventsRecreation.length===0){
             this.props.handleFetchEvents();
         }
         
