@@ -1,5 +1,6 @@
 import React from "react";
 import style from './Ticketmaster.module.css'
+import EventCell from "./../EventCell/EventCell";
 
 export default function Ticketmaster(props) {
     let getEventsTicketmaster = props.getEventsTicketmaster;
@@ -11,10 +12,14 @@ export default function Ticketmaster(props) {
             }
             image = eventImages.url;
         }
-        return <div id={id} key={id} className={style.boxMap}
-                    style={{background: `url(${image}) no-repeat center/cover`}}>
-            {eventTicketmaster.name}
-        </div>
+        return <EventCell id={id} image={image} name={eventTicketmaster.name} />
+
+        /* return <div id={id} key={id} className={style.boxMap}
+                     style={{background: `url(${image}) no-repeat center/cover`}}>
+             {eventTicketmaster.name}
+ 
+             
+         </div>*/
 
     })
     return (

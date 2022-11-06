@@ -1,0 +1,9 @@
+.boxMap{
+    display: grid;
+    width: 200px;
+    height: 200px;
+    justify-items: center;
+    align-items: center;
+    background-color: skyblue;
+    text-align: center;
+}

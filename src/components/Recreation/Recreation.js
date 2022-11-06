@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { handleFetchArr } from "../../redux/recreation_reducer";
 import style from "./Recreation.module.css";
+import EventCell from "./../EventCell/EventCell";
 
 class HightRecreation extends React.Component {
     componentDidMount() {
@@ -26,10 +27,12 @@ class HightRecreation extends React.Component {
                 return;
             } else {
                 image = this.props.getEventsRecreation[i].url;
-                return <div id={r.RecAreaID} key={i} className={style.boxMap}
+
+                return <EventCell id={r.RecAreaID} image={image} name={r.RecAreaName} />
+                /*return <div id={r.RecAreaID} key={i} className={style.boxMap}
                     style={{ background: `url('${image}') no-repeat center/cover` }}>
                     {r.RecAreaName}
-                </div>
+                </div>*/
             }
         })
 
