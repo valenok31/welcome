@@ -20,20 +20,17 @@ class HightRecreation extends React.Component {
                 image = im.url;
             }
 
-            if (!this.props.getEventsRecreation[i].url || this.props.getEventsRecreation[i].url == 'https://avatanplus.com/files/resources/mid/581ccfb952d8e158308b6bfb.jpg') {
+            //if (!this.props.getEventsRecreation[i].url || this.props.getEventsRecreation[i].url == 'https://avatanplus.com/files/resources/mid/581ccfb952d8e158308b6bfb.jpg') {
+            if (!this.props.getEventsRecreation[i].url) {
                 this.props.setEventsImagesURL(i, image);
                 return;
             } else {
                 image = this.props.getEventsRecreation[i].url;
-            return <div id={r.RecAreaID} key={i} className={style.boxMap}
-                style={{ background: `url('${image}') no-repeat center/cover` }}>
-                {r.RecAreaName}
-            </div>
+                return <div id={r.RecAreaID} key={i} className={style.boxMap}
+                    style={{ background: `url('${image}') no-repeat center/cover` }}>
+                    {r.RecAreaName}
+                </div>
             }
-
-
-
-
         })
 
         return <>

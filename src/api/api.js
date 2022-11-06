@@ -18,11 +18,11 @@ export const fetchEvents = {
             })
     },
 
-    fromRecreation(limit=6) {
+    fromRecreation(limit=11,offset=10) {
         const instanceRecreation = axios.create({
             baseURL: `https://ridb.recreation.gov/api/v1/`,
         })
-        return instanceRecreation.get(`recareas?limit=${limit}&offset=0&apikey=53351234-6c6c-4392-a4b8-d38d53df1462`)
+        return instanceRecreation.get(`recareas?limit=${limit}&offset=${offset}&apikey=53351234-6c6c-4392-a4b8-d38d53df1462`)
             .then(response => {
                 return response.data.RECDATA;
             })
