@@ -18,7 +18,7 @@ export const fetchEvents = {
             })
     },
 
-    fromRecreation(limit=11,offset=10) {
+    fromRecreation(limit=10,offset=10) {
         const instanceRecreation = axios.create({
             baseURL: `https://ridb.recreation.gov/api/v1/`,
         })

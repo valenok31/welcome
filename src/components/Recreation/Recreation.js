@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { handleFetchArr } from "../../redux/recreation_reducer";
 import EventCell from "./../EventCell/EventCell";
+import Paginator from "../Paginator/Paginator";
 
 class HightRecreation extends React.Component {
     componentDidMount() {
@@ -33,6 +34,7 @@ class HightRecreation extends React.Component {
 
         return <>
             {mapRequestgg}
+            <Paginator/>
         </>
     }
 }
