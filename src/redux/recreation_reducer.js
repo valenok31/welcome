@@ -4,6 +4,8 @@ const SET_EVENTS_RECREATION = 'SET_EVENTS_RECREATION';
 const SET_EVENTS_IMAGES_URL = 'SET_EVENTS_IMAGES_URL';
 const SET_EVENTS_RECREATION_IMAGES = 'SET_EVENTS_RECREATION_IMAGES';
 const UPDATE_CRUTCH = 'UPDATE_CRUTCH';
+const SET_TOTAL_COUNT = 'SET_TOTAL_COUNT';
+const SET_LIMIT_PAGE = 'SET_LIMIT_PAGE';
 
 const initialState = {
     eventsRecreation: [],
@@ -16,6 +18,9 @@ const initialState = {
     getEventsRecreationImages() {
         return this.eventsRecreationImages;
     },
+    totalCount: 0,
+    limitPage: 10,
+
 };
 
 const recreation_reducer = (state = initialState, action) => {
@@ -26,6 +31,13 @@ const recreation_reducer = (state = initialState, action) => {
                 ...state,
                 eventsRecreation: action.eventsRecreation
             }
+
+        case SET_TOTAL_COUNT:
+            return {
+                ...state,
+                totalCount: action.totalCount
+            }
+
 
         case SET_EVENTS_IMAGES_URL:
             state.eventsRecreation[action.recAreaID].url = action.eventsImagesURL
@@ -74,12 +86,16 @@ export const setUpdateCrutch = (rr) => ({
     type: UPDATE_CRUTCH, rr
 });
 
+export const setTotalCount = (totalCount) => ({
+    type: SET_TOTAL_COUNT, totalCount
+});
+
 
 export const handleFetchEvents = (limit) => {
     return (dispatch) => {
         fetchEvents.fromRecreation(limit).then(data => {
-            dispatch(setEventsRecreation(data));
-            //dispatch(setUpdateCrutch(2));
+            dispatch(setEventsRecreation(data.RECDATA));
+            dispatch(setTotalCount(data.METADATA.RESULTS.TOTAL_COUNT));
         });
     }
 }

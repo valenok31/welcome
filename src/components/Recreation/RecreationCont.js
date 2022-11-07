@@ -9,14 +9,15 @@ import {
     setEventsImagesURL
 } from "../../redux/recreation_reducer";
 import style from "./Recreation.module.css";
+import Paginator from "../Paginator/Paginator";
 
 class RecreationCont extends React.Component {
 
     componentDidMount() {
-        if(this.props.getEventsRecreation.length===0){
-            this.props.handleFetchEvents();
+        if (this.props.getEventsRecreation.length === 0) {
+            this.props.handleFetchEvents(this.props.getLimitPage);
         }
-        
+
     }
 
     render() {
@@ -26,7 +27,7 @@ class RecreationCont extends React.Component {
             arrImg.push(r.RecAreaID);
         })
         if (arrImg.length > 0) {
-            return (
+            return (<>
                 <div id='fieldPlaying' className={style.field__playing}>
                     <Recreation arrImg={arrImg}
                         handleFetchArr={this.props.handleFetchArr}
@@ -35,12 +36,14 @@ class RecreationCont extends React.Component {
                         setEventsImagesURL={this.props.setEventsImagesURL}
                     />
                 </div>
+                <Paginator getTotalCount={this.props.getTotalCount} getLimitPage={this.props.getLimitPage}/>
+            </>
             )
         }
 
 
         return <>
-        <div>return</div>
+            <div>return</div>
         </>
     }
 }
@@ -49,6 +52,8 @@ let mapStateToProps = (state) => {
     return ({
         getEventsRecreation: state.recreation_reducer.eventsRecreation,
         getEventsRecreationImages: state.recreation_reducer.getEventsRecreationImages(),
+        getTotalCount: state.recreation_reducer.totalCount,
+        getLimitPage: state.recreation_reducer.limitPage,       
     })
 };
 
