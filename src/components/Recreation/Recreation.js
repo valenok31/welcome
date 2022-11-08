@@ -9,6 +9,12 @@ class HightRecreation extends React.Component {
         this.props.handleFetchArr(this.props.arrImg);
     }
 
+ /*   componentDidUpdate(prevProps) {
+        if (this.props.getCurrentPage !== prevProps.getCurrentPage) {
+            this.props.handleFetchArr(this.props.arrImg);
+        }
+    }*/
+
     render() {
 
         let arrI = this.props.getEventsRecreationImages;

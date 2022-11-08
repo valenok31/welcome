@@ -6,6 +6,7 @@ const SET_EVENTS_RECREATION_IMAGES = 'SET_EVENTS_RECREATION_IMAGES';
 const UPDATE_CRUTCH = 'UPDATE_CRUTCH';
 const SET_TOTAL_COUNT = 'SET_TOTAL_COUNT';
 const SET_LIMIT_PAGE = 'SET_LIMIT_PAGE';
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 
 const initialState = {
     eventsRecreation: [],
@@ -20,6 +21,7 @@ const initialState = {
     },
     totalCount: 0,
     limitPage: 10,
+    currentPage: 10,
 
 };
 
@@ -38,6 +40,11 @@ const recreation_reducer = (state = initialState, action) => {
                 totalCount: action.totalCount
             }
 
+        case SET_CURRENT_PAGE:
+            return {
+                ...state,
+                currentPage: action.currentPage
+            }
 
         case SET_EVENTS_IMAGES_URL:
             state.eventsRecreation[action.recAreaID].url = action.eventsImagesURL
@@ -90,10 +97,13 @@ export const setTotalCount = (totalCount) => ({
     type: SET_TOTAL_COUNT, totalCount
 });
 
+export const setCurrentPage = (currentPage) => ({
+    type: SET_CURRENT_PAGE, currentPage
+});
 
-export const handleFetchEvents = (limit) => {
+export const handleFetchEvents = (limit, offset) => {
     return (dispatch) => {
-        fetchEvents.fromRecreation(limit).then(data => {
+        fetchEvents.fromRecreation(limit, offset).then(data => {
             dispatch(setEventsRecreation(data.RECDATA));
             dispatch(setTotalCount(data.METADATA.RESULTS.TOTAL_COUNT));
         });
