@@ -3,6 +3,7 @@ import { fetchEvents } from "../api/api";
 const SET_EVENTS_RECREATION = 'SET_EVENTS_RECREATION';
 const SET_EVENTS_IMAGES_URL = 'SET_EVENTS_IMAGES_URL';
 const SET_EVENTS_RECREATION_IMAGES = 'SET_EVENTS_RECREATION_IMAGES';
+const DELET_EVENTS_RECREATION_IMAGES = 'DELET_EVENTS_RECREATION_IMAGES';
 const UPDATE_CRUTCH = 'UPDATE_CRUTCH';
 const SET_TOTAL_COUNT = 'SET_TOTAL_COUNT';
 const SET_LIMIT_PAGE = 'SET_LIMIT_PAGE';
@@ -56,14 +57,16 @@ const recreation_reducer = (state = initialState, action) => {
         case SET_EVENTS_RECREATION_IMAGES:
             return {
                 ...state,
-                /*                eventsRecreationImages: [...state.eventsRecreationImages, {
-                                    id: action.data.EntityID,
-                                    url: action.data.URL
-                                }],*/
                 eventsRecreationImages: [...state.eventsRecreationImages, action.data],
 
             }
+        case DELET_EVENTS_RECREATION_IMAGES:
+            debugger;
+            return {
+                ...state,
+                eventsRecreationImages: [],
 
+            }
 
 
         case UPDATE_CRUTCH:
@@ -85,6 +88,10 @@ export const setEventsRecreationImages = (data) => ({
     type: SET_EVENTS_RECREATION_IMAGES, data
 });
 
+export const deleteEventsRecreationImages = () => ({
+    type: DELET_EVENTS_RECREATION_IMAGES
+});
+
 export const setEventsImagesURL = (recAreaID, eventsImagesURL) => ({
     type: SET_EVENTS_IMAGES_URL, recAreaID, eventsImagesURL
 });
@@ -104,6 +111,7 @@ export const setCurrentPage = (currentPage) => ({
 export const handleFetchEvents = (limit, offset) => {
     return (dispatch) => {
         fetchEvents.fromRecreation(limit, offset).then(data => {
+            dispatch(setEventsRecreation([]));
             dispatch(setEventsRecreation(data.RECDATA));
             dispatch(setTotalCount(data.METADATA.RESULTS.TOTAL_COUNT));
         });

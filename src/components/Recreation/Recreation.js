@@ -1,19 +1,20 @@
 import React from "react";
-import { connect } from "react-redux";
-import { handleFetchArr } from "../../redux/recreation_reducer";
+import {connect} from "react-redux";
+import {handleFetchArr} from "../../redux/recreation_reducer";
 import EventCell from "./../EventCell/EventCell";
 
 
-class HightRecreation extends React.Component {
+class Recreation extends React.Component {
     componentDidMount() {
-        this.props.handleFetchArr(this.props.arrImg);
+        //this.props.deleteEventsRecreationImages();
+        //this.props.handleFetchArr(this.props.arrImg);
     }
 
- /*   componentDidUpdate(prevProps) {
-        if (this.props.getCurrentPage !== prevProps.getCurrentPage) {
-            this.props.handleFetchArr(this.props.arrImg);
-        }
-    }*/
+      componentDidUpdate(prevProps) {
+           if (this.props.getCurrentPage !== prevProps.getCurrentPage) {
+               this.props.handleFetchArr(this.props.arrImg);
+           }
+       }
 
     render() {
 
@@ -21,7 +22,9 @@ class HightRecreation extends React.Component {
         let mapRequestgg = this.props.getEventsRecreation.map((r, i) => {
 
             let image //= 'https://avatanplus.com/files/resources/mid/581ccfb952d8e158308b6bfb.jpg';
-            let im = arrI.find(function (item) { return r.RecAreaID == item.id })
+            let im = arrI.find(function (item) {
+                return r.RecAreaID == item.id
+            })
 
             if (im !== undefined) {
                 image = im.url;
@@ -34,7 +37,7 @@ class HightRecreation extends React.Component {
                 return;
             } else {
                 image = this.props.getEventsRecreation[i].url;
-                return <EventCell id={r.RecAreaID} image={image} name={r.RecAreaName} />
+                return <EventCell id={r.RecAreaID} image={image} name={r.RecAreaName}/>
             }
         })
 
@@ -48,11 +51,12 @@ let mapStateToProps = (state) => {
     return ({
         getEventsRecreation: state.recreation_reducer.eventsRecreation,
         getEventsRecreationImages: state.recreation_reducer.getEventsRecreationImages(),
+        getCurrentPage: state.recreation_reducer.currentPage,
     })
 };
 
 let resultConnectingR = connect(mapStateToProps, {
     handleFetchArr
-})(HightRecreation);
+})(Recreation);
 
 export default resultConnectingR;
