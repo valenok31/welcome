@@ -6,37 +6,35 @@ import EventCell from "./../EventCell/EventCell";
 
 class Recreation extends React.Component {
     componentDidMount() {
-        //this.props.deleteEventsRecreationImages();
-        //this.props.handleFetchArr(this.props.arrImg);
+        this.props.handleFetchArr(this.props.arrImg);
     }
 
-      componentDidUpdate(prevProps) {
-           if (this.props.getCurrentPage !== prevProps.getCurrentPage) {
-               this.props.handleFetchArr(this.props.arrImg);
-           }
-       }
+    componentDidUpdate(prevProps) {
+        if (this.props.getCurrentPage !== prevProps.getCurrentPage) {
+            this.props.handleFetchArr(this.props.arrImg);
+        }
+    }
 
     render() {
 
         let arrI = this.props.getEventsRecreationImages;
         let mapRequestgg = this.props.getEventsRecreation.map((r, i) => {
-
-            let image //= 'https://avatanplus.com/files/resources/mid/581ccfb952d8e158308b6bfb.jpg';
+            let image;
             let im = arrI.find(function (item) {
-                return r.RecAreaID == item.id
+                return r.RecAreaID === item.id
             })
 
             if (im !== undefined) {
                 image = im.url;
             }
 
-            //if (!this.props.getEventsRecreation[i].url || this.props.getEventsRecreation[i].url == 'https://avatanplus.com/files/resources/mid/581ccfb952d8e158308b6bfb.jpg') {
+           // if (!this.props.getEventsRecreation[i].url || this.props.getEventsRecreation[i].url == 'https://avatanplus.com/files/resources/mid/581ccfb952d8e158308b6bfb.jpg') {
             if (!this.props.getEventsRecreation[i].url) {
-                //debugger;
                 this.props.setEventsImagesURL(i, image);
                 return;
             } else {
                 image = this.props.getEventsRecreation[i].url;
+               // console.log(image)
                 return <EventCell id={r.RecAreaID} image={image} name={r.RecAreaName}/>
             }
         })
