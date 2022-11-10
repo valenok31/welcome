@@ -9,11 +9,11 @@ class Recreation extends React.Component {
         this.props.handleFetchArr(this.props.arrImg);
     }
 
-    componentDidUpdate(prevProps) {
+/*    componentDidUpdate(prevProps) {
         if (this.props.getCurrentPage !== prevProps.getCurrentPage) {
             this.props.handleFetchArr(this.props.arrImg);
         }
-    }
+    }*/
 
     render() {
 

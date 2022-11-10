@@ -13,13 +13,13 @@ import Paginator from "../Paginator/Paginator";
 class RecreationCont extends React.Component {
 
     componentDidMount() {
-        let offset = this.props.getCurrentPage * this.props.getLimitPage - 10;
+        let offset = this.props.getCurrentPage * this.props.getLimitPage - this.props.getLimitPage;
         this.props.handleFetchEvents(this.props.getLimitPage, offset);
     }
 
     componentDidUpdate(prevProps) {
         if (this.props.getCurrentPage !== prevProps.getCurrentPage) {
-            let offset = this.props.getCurrentPage * this.props.getLimitPage - 10;
+            let offset = this.props.getCurrentPage * this.props.getLimitPage - this.props.getLimitPage;
             this.props.handleFetchEvents(this.props.getLimitPage, offset);
         }
     }
