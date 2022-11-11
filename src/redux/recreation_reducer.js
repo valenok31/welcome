@@ -13,7 +13,7 @@ const initialState = {
         return this.eventsRecreationImages;
     },
     totalCount: 0,
-    limitPage: 3,
+    limitPage: 50,
     currentPage: 1,
 };
 
