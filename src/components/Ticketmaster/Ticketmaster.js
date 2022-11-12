@@ -12,13 +12,12 @@ export default function Ticketmaster(props) {
             }
             image = eventImages.url;
         }
-        return <EventCell id={id} image={image} name={eventTicketmaster.name} />
+        return <EventCell id={id} image={image} name={eventTicketmaster.name}/>
 
 
     })
-    return (
-        <div id='fieldPlaying' className={style.field__playing}>
+    return (<>
             {handleEventsTicketmaster}
-        </div>
+        </>
     )
 }

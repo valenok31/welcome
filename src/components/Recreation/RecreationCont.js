@@ -9,6 +9,7 @@ import {
 } from "../../redux/recreation_reducer";
 import style from "./Recreation.module.css";
 import Paginator from "../Paginator/Paginator";
+import Preloader from "../Preloader/Preloader";
 
 class RecreationCont extends React.Component {
 
@@ -33,27 +34,36 @@ class RecreationCont extends React.Component {
         })
         if (arrImg.length > 0) {
 
+            let visio;
+            console.log(this.props.getIsLoading)
+            if (!this.props.getIsLoading) {
+                visio = <Recreation arrImg={arrImg}
+                                    handleFetchArr={this.props.handleFetchArr}
+                                    getEventsRecreation={this.props.getEventsRecreation}
+                                    getEventsRecreationImages={this.props.getEventsRecreationImages}
+                                    setEventsImagesURL={this.props.setEventsImagesURL}
+                                    getCurrentPage={this.props.getCurrentPage}
+                />
+            } else {
+                visio = <Preloader/>
+            }
+
+
             return <>
                 <div id='fieldPlaying' className={style.field__playing}>
-                    <Recreation arrImg={arrImg}
-                                handleFetchArr={this.props.handleFetchArr}
-                                getEventsRecreation={this.props.getEventsRecreation}
-                                getEventsRecreationImages={this.props.getEventsRecreationImages}
-                                setEventsImagesURL={this.props.setEventsImagesURL}
-                                getCurrentPage={this.props.getCurrentPage}
-                    />
+                    {visio}
                 </div>
                 <Paginator
                     getTotalCount={this.props.getTotalCount}
                     getLimitPage={this.props.getLimitPage}
                     getCurrentPage={this.props.getCurrentPage}
                     setCurrentPage={this.props.setCurrentPage}
-                    deepPage = {999/this.props.getLimitPage}/>
+                    deepPage={999 / this.props.getLimitPage}/>
             </>
         }
 
         return <>
-            <div>return</div>
+            <Preloader/>
         </>
     }
 }
@@ -65,6 +75,7 @@ let mapStateToProps = (state) => {
         getTotalCount: state.recreation_reducer.totalCount,
         getLimitPage: state.recreation_reducer.limitPage,
         getCurrentPage: state.recreation_reducer.currentPage,
+        getIsLoading: state.ticketmaster_reducer.isLoading,
     })
 };
 

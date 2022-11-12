@@ -5,6 +5,7 @@ const SET_EVENTS_IMAGES_URL = 'SET_EVENTS_IMAGES_URL';
 const SET_EVENTS_RECREATION_IMAGES = 'SET_EVENTS_RECREATION_IMAGES';
 const SET_TOTAL_COUNT = 'SET_TOTAL_COUNT';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
+const TOGGLE_IS_LOADING = 'TOGGLE_IS_LOADING';
 
 const initialState = {
     eventsRecreation: [],
@@ -13,8 +14,9 @@ const initialState = {
         return this.eventsRecreationImages;
     },
     totalCount: 0,
-    limitPage: 10,
+    limitPage: 5,
     currentPage: 0,
+    isLoading: false,
 };
 
 const recreation_reducer = (state = initialState, action) => {
@@ -53,6 +55,12 @@ const recreation_reducer = (state = initialState, action) => {
                 eventsRecreationImages: [...state.eventsRecreationImages, action.data],
             }
 
+        case TOGGLE_IS_LOADING:
+            return {
+                ...state,
+                isLoading: action.isLoading,
+            }
+
         default:
             return state;
     }
@@ -78,11 +86,14 @@ export const setCurrentPage = (currentPage) => ({
     type: SET_CURRENT_PAGE, currentPage
 });
 
+export const toggleIsLoading = (isLoading) => ({type: TOGGLE_IS_LOADING, isLoading});
 
 
 export const handleFetchEvents = (limit, offset) => {
     return (dispatch) => {
+        dispatch(toggleIsLoading(true));
         fetchEvents.fromRecreation(limit, offset).then(data => {
+            dispatch(toggleIsLoading(false));
             dispatch(setEventsRecreation([]));
             dispatch(setEventsRecreation(data.RECDATA));
             dispatch(setTotalCount(data.METADATA.RESULTS.TOTAL_COUNT));
