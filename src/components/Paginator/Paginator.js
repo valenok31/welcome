@@ -3,17 +3,20 @@ import React from "react";
 function Paginator (props){
 let arrPage=[];
     let countPage =  Math.ceil(props.getTotalCount/props.getLimitPage);
-for(let i=1; i<=countPage; i++){
+    if(countPage>props.deepPage){
+        countPage = props.deepPage;
+    }
+for(let i=0; i<=countPage; i++){
     arrPage.push(i)
 }
 countPage = arrPage.map(k=>{
     if(props.getCurrentPage===k){
-        return <span><b>{k}</b> </span>
+        return <span><b>{k+1}</b> </span>
     }
 
     return <span onClick={()=>{
         props.setCurrentPage(k); 
-    }}>{k} </span>
+    }}>{k+1} </span>
 })
     return <div>{countPage}</div>
 }

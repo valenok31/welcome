@@ -3,15 +3,16 @@ import React from "react";
 
 export const fetchEvents = {
 
-    fromTicketmaster(size = 5) {
+    fromTicketmaster(size = 5, page = 0) {
         const instanceTicketmaster = axios.create({
             baseURL: "https://app.ticketmaster.com/discovery/v2/",
         })
-        return instanceTicketmaster.get(`events.json?size=${size}&countryCode=US&apikey=zj1LCjwJVG5B88c4HGfjkaY6PAMxz6nV`)
+        return instanceTicketmaster.get(`events.json?size=${size}&page=${page}&countryCode=US&apikey=zj1LCjwJVG5B88c4HGfjkaY6PAMxz6nV`)
             .then(response => {
-                return response.data._embedded.events;
+                return response.data;
             })
             .catch((err) => {
+                //console.log('hgakjshkwl')
                 console.log(err.message)
             })
     },

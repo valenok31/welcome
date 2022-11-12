@@ -14,7 +14,7 @@ const initialState = {
     },
     totalCount: 0,
     limitPage: 10,
-    currentPage: 1,
+    currentPage: 0,
 };
 
 const recreation_reducer = (state = initialState, action) => {

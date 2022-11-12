@@ -18,6 +18,7 @@ class Recreation extends React.Component {
     render() {
 
         let arrI = this.props.getEventsRecreationImages;
+
         let mapRequestgg = this.props.getEventsRecreation.map((r, i) => {
             let image;
             let im = arrI.find(function (item) {
@@ -28,13 +29,14 @@ class Recreation extends React.Component {
                 image = im.url;
             }
 
-            if (!this.props.getEventsRecreation[i].url || this.props.getEventsRecreation[i].url == 'https://avatanplus.com/files/resources/mid/581ccfb952d8e158308b6bfb.jpg') {
-           // if (!this.props.getEventsRecreation[i].url) {
+            console.log(this.props.getEventsRecreation[i].url)
+           // if (!this.props.getEventsRecreation[i].url || this.props.getEventsRecreation[i].url == 'https://avatanplus.com/files/resources/mid/581ccfb952d8e158308b6bfb.jpg') {
+            if (!this.props.getEventsRecreation[i].url) {
                 this.props.setEventsImagesURL(i, image);
                 return;
             } else {
                 image = this.props.getEventsRecreation[i].url;
-               // console.log(image)
+
                 return <EventCell id={r.RecAreaID} image={image} name={r.RecAreaName}/>
             }
         })
