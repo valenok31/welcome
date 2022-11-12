@@ -35,7 +35,7 @@ class RecreationCont extends React.Component {
         if (arrImg.length > 0) {
 
             let visio;
-            console.log(this.props.getIsLoading)
+            // console.log(this.props.getIsLoading)
             if (!this.props.getIsLoading) {
                 visio = <Recreation arrImg={arrImg}
                                     handleFetchArr={this.props.handleFetchArr}
@@ -43,6 +43,7 @@ class RecreationCont extends React.Component {
                                     getEventsRecreationImages={this.props.getEventsRecreationImages}
                                     setEventsImagesURL={this.props.setEventsImagesURL}
                                     getCurrentPage={this.props.getCurrentPage}
+                                    getLimitPage={this.props.getLimitPage}
                 />
             } else {
                 visio = <Preloader/>

@@ -108,6 +108,7 @@ export const handleFetchArr = (arrImg) => {
                 dispatch(setEventsRecreationImages(data));
             });
         })
+
     }
 }
 
