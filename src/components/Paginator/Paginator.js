@@ -13,9 +13,11 @@ countPage = arrPage.map(k=>{
     if(props.getCurrentPage===k){
         return <span><b>{k+1}</b> </span>
     }
-
+if(props.getCurrentPage+5<k || props.getCurrentPage-5>k){
+    return;
+}
     return <span onClick={()=>{
-        props.setCurrentPage(k); 
+        props.setCurrentPage(k);
     }}>{k+1} </span>
 })
     return <div>{countPage}</div>
