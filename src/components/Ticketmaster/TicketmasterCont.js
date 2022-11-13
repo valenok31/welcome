@@ -21,7 +21,7 @@ class TicketmasterCont extends React.Component {
 
     render() {
         let visio;
-        console.log(this.props.getIsLoading)
+        //console.log(this.props.getIsLoading)
         if (!this.props.getIsLoading) {
             visio = <Ticketmaster
                 getEventsTicketmaster={this.props.getEventsTicketmaster}
