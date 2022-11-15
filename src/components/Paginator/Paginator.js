@@ -1,4 +1,5 @@
 import React from "react";
+import style from './Paginator.module.css'
 
 function Paginator(props) {
     let arrPage = [];
@@ -32,7 +33,7 @@ function Paginator(props) {
             props.setCurrentPage(k);
         }}>{k + 1} </span>
     })
-    return <div>{countPage}</div>
+    return <div className={style.paginator}>{countPage}</div>
 }
 
 export default Paginator;
