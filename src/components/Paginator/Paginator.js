@@ -19,10 +19,9 @@ function Paginator(props) {
                 props.setCurrentPage(0);
             }}>1...</span>
         }
-        console.log(props.deepPage)
-        if (props.getCurrentPage + 7 <= k && k === Math.ceil(props.deepPage)-1) {
+        if (props.getCurrentPage + 7 <= k && k === Math.ceil(props.deepPage) - 1) {
             return <span onClick={() => {
-                props.setCurrentPage(Math.ceil(props.deepPage)-1);
+                props.setCurrentPage(Math.ceil(props.deepPage) - 1);
             }}>...{Math.ceil(props.deepPage)}</span>
         }
 
