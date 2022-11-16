@@ -4,7 +4,7 @@ import EventCell from "./../EventCell/EventCell";
 
 export default function Ticketmaster(props) {
     let getEventsTicketmaster = props.getEventsTicketmaster;
-    let handleEventsTicketmaster = getEventsTicketmaster.map((eventTicketmaster, id) => {
+    let handleEventsTicketmaster = getEventsTicketmaster.map((eventTicketmaster) => {
         let image;
         for (let eventImages of eventTicketmaster.images) {
             if (eventImages.height < 200 || eventImages.height > 600) {
@@ -12,7 +12,7 @@ export default function Ticketmaster(props) {
             }
             image = eventImages.url;
         }
-        return <EventCell id={id} image={image} name={eventTicketmaster.name}/>
+        return <EventCell id={eventTicketmaster.id} image={image} name={eventTicketmaster.name}/>
 
 
     })
