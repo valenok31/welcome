@@ -4,16 +4,19 @@ import style from "../EventCell/EventCell.module.css";
 import {NavLink, useHistory, useLocation} from "react-router-dom";
 
 
-
 class EventMainPage extends React.Component {
 
 
     render() {
         let chapterGet;
-let id = window.location.pathname.split('/')[2];
-let chapter = window.location.pathname.split('/')[1];
-if(chapter === 'ticketmaster'){chapterGet = this.props.getEventsTicketmaster}
-if(chapter === 'recreation'){chapterGet = this.props.getEventsRecreation}
+        let id = window.location.pathname.split('/')[2];
+        let chapter = window.location.pathname.split('/')[1];
+        if (chapter === 'ticketmaster') {
+            chapterGet = this.props.getEventsTicketmaster
+        }
+        if (chapter === 'recreation') {
+            chapterGet = this.props.getEventsRecreation
+        }
 
 
         let image;
@@ -24,10 +27,12 @@ if(chapter === 'recreation'){chapterGet = this.props.getEventsRecreation}
         if (im !== undefined) {
             image = im;
         }
-        console.log(image)
-        return <><div>
-        234
-        </div>
+
+        console.log(Object.entries(image))
+        return <>
+            <div>
+                {image.name}
+            </div>
         </>
     }
 }
@@ -42,7 +47,6 @@ let mapStateToProps = (state) => {
 let resultConnecting = connect(mapStateToProps, {})(EventMainPage);
 
 export default resultConnecting;
-
 
 
 /*
