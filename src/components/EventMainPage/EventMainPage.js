@@ -32,6 +32,8 @@ class EventMainPage extends React.Component {
         return <>
             <div>
                 {image.name}
+                <hr/>
+                {image.classifications[0].genre.name}
             </div>
         </>
     }
