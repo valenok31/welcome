@@ -28,12 +28,28 @@ class EventMainPage extends React.Component {
             image = im;
         }
 
-        console.log(Object.entries(image))
+        let adres = {};
+        adres.city = image._embedded.venues[0].city.name ?? 'undefined';
+        adres.country = image._embedded.venues[0].country.countryCode ?? 'undefined';
+        adres.state = '';
+        if (adres.country == 'US') {
+            adres.state = image._embedded.venues[0].state.name + ', ' ?? 'undefined';
+        }
+
+
+        adres.address = image._embedded.venues[0].address.line1 ?? 'undefined';
+
+
         return <>
             <div>
-                {image.name}
+                <img src={image.images[0].url ?? 'undefined'}/>
+            </div>
+            <div>
+                {image.name ?? 'undefined'}
                 <hr/>
-                {image.classifications[0].genre.name}
+                {image.classifications[0].segment.name ?? 'undefined'} - {image.classifications[0].genre.name ?? 'undefined'}
+                <br/>
+                {adres.address}, {adres.city}, {adres.state}{adres.country}
             </div>
         </>
     }

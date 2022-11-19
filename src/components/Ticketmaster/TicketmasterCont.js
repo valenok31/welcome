@@ -9,7 +9,7 @@ import Preloader from "../Preloader/Preloader";
 class TicketmasterCont extends React.Component {
 
     componentDidMount() {
-        this.props.setCurrentPage(0);
+        //this.props.setCurrentPage(0);
         this.props.handleFetchEvents(this.props.getLimitPage, this.props.getCurrentPage);
     }
 
@@ -21,7 +21,7 @@ class TicketmasterCont extends React.Component {
 
     render() {
         let visio;
-        //console.log(this.props.getIsLoading)
+
         if (!this.props.getIsLoading) {
             visio = <Ticketmaster
                 getEventsTicketmaster={this.props.getEventsTicketmaster}
