@@ -28,9 +28,10 @@ class RecreationCont extends React.Component {
 
     render() {
         let arrImg = [];
+        console.log(this.props.getEventsRecreation)
         this.props.getEventsRecreation.map((r) => {
             arrImg.push(r.RecAreaID);
-            //console.log(arrImg)
+
         })
         if (arrImg.length > 0) {
 

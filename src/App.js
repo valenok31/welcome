@@ -5,6 +5,8 @@ import React from "react";
 import TicketmasterCont from "./components/Ticketmaster/TicketmasterCont";
 import RecreationCont from "./components/Recreation/RecreationCont";
 import EventMainPage from "./components/EventMainPage/EventMainPage";
+import NormalizerForTicketmaster from "./components/Ticketmaster/NormalizerForTicketmaster";
+import NormalizerForRecreation from "./components/Recreation/NormalizerForRecreation";
 
 let App = () => {
     return (
@@ -23,8 +25,8 @@ let App = () => {
                 <Route path='/' element={<Survey choiceLeft='recreation' choiceRight='ticketmaster'/>}/>
                 <Route path='/ticketmaster' element={<TicketmasterCont/>}/>
                 <Route path='/recreation' element={<RecreationCont/>}/>
-                <Route path='/ticketmaster/*' element={<EventMainPage/>}/>
-                <Route path='/recreation/*' element={<EventMainPage/>}/>
+                <Route path='/ticketmaster/*' element={<NormalizerForTicketmaster/>}/>
+                <Route path='/recreation/*' element={<NormalizerForRecreation/>}/>
 
             </Routes>
         </div>

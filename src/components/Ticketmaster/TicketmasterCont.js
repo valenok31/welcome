@@ -5,6 +5,7 @@ import Ticketmaster from "./Ticketmaster";
 import {handleFetchEvents, setCurrentPage} from "../../redux/ticketmaster_reducer";
 import Paginator from "../Paginator/Paginator";
 import Preloader from "../Preloader/Preloader";
+import SearchTicketmaster from "../SearchTicketmaster/SearchTicketmaster";
 
 class TicketmasterCont extends React.Component {
 
@@ -20,6 +21,9 @@ class TicketmasterCont extends React.Component {
     }
 
     render() {
+
+
+
         let visio;
 
         if (!this.props.getIsLoading) {
@@ -31,7 +35,9 @@ class TicketmasterCont extends React.Component {
             visio = <Preloader/>
         }
 
-        return <><div id='fieldPlaying' className={style.field__playing}>
+        return <>
+            <SearchTicketmaster/>
+            <div id='fieldPlaying' className={style.field__playing}>
             {visio}
         </div>
             <Paginator

@@ -6,6 +6,7 @@ const SET_EVENTS_RECREATION_IMAGES = 'SET_EVENTS_RECREATION_IMAGES';
 const SET_TOTAL_COUNT = 'SET_TOTAL_COUNT';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const TOGGLE_IS_LOADING = 'TOGGLE_IS_LOADING';
+const SET_NORMALIZER_RECAREA = 'SET_NORMALIZER_RECAREA';
 
 const initialState = {
     eventsRecreation: [],
@@ -17,6 +18,7 @@ const initialState = {
     limitPage: 5,
     currentPage: 0,
     isLoading: false,
+    normalizerRecArea:[],
 };
 
 const recreation_reducer = (state = initialState, action) => {
@@ -61,6 +63,12 @@ const recreation_reducer = (state = initialState, action) => {
                 isLoading: action.isLoading,
             }
 
+        case SET_NORMALIZER_RECAREA:
+            return {
+                ...state,
+                normalizerRecArea: [...state.normalizerRecArea, action.normalizerRecArea],
+            }
+
         default:
             return state;
     }
@@ -84,6 +92,10 @@ export const setTotalCount = (totalCount) => ({
 
 export const setCurrentPage = (currentPage) => ({
     type: SET_CURRENT_PAGE, currentPage
+});
+
+export const setNormalizerRecArea = (normalizerRecArea) => ({
+    type: SET_NORMALIZER_RECAREA, normalizerRecArea
 });
 
 export const toggleIsLoading = (isLoading) => ({type: TOGGLE_IS_LOADING, isLoading});
@@ -112,5 +124,15 @@ export const handleFetchArr = (arrImg) => {
     }
 }
 
+export const handleFetchRecArea = (RecAreaID) => {
+    //debugger;
+    return (dispatch) => {
+        //dispatch(toggleIsLoading(true));
+            fetchEvents.fromRecreationRecArea(RecAreaID).then(data => {
+               // dispatch(toggleIsLoading(false));
+                dispatch(setNormalizerRecArea(data));
+            });
+    }
+}
 
 export default recreation_reducer;

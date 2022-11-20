@@ -1,0 +1,11 @@
+.paginator{
+
+}
+
+.paginator span{
+    cursor: pointer;
+}
+
+.paginator span:hover{
+    font-weight: bold;
+}
