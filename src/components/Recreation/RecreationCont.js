@@ -14,9 +14,9 @@ import Preloader from "../Preloader/Preloader";
 class RecreationCont extends React.Component {
 
     componentDidMount() {
-        this.props.setCurrentPage(0);
-        //let offset = this.props.getCurrentPage * this.props.getLimitPage - this.props.getLimitPage;
-        this.props.handleFetchEvents(this.props.getLimitPage, 0);
+        //this.props.setCurrentPage(0);
+        let offset = this.props.getCurrentPage * this.props.getLimitPage;
+        this.props.handleFetchEvents(this.props.getLimitPage, offset);
     }
 
     componentDidUpdate(prevProps) {
@@ -28,7 +28,7 @@ class RecreationCont extends React.Component {
 
     render() {
         let arrImg = [];
-        console.log(this.props.getEventsRecreation)
+        //console.log(this.props.getEventsRecreation)
         this.props.getEventsRecreation.map((r) => {
             arrImg.push(r.RecAreaID);
 

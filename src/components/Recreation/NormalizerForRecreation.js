@@ -40,7 +40,7 @@ class NormalizerForRecreation extends React.Component {
 
       let chapterNorm = this.props.getNormalizerRecArea;
 
-
+        let norm;
 /*        let nm = chapterNorm.find(function (item) {
             return id === item.RecAreaID
         })
@@ -56,13 +56,30 @@ class NormalizerForRecreation extends React.Component {
         let genre = 'undefined';
         let segment = 'undefined';
         if(chapterNorm.length!==0) {
-            let norm = chapterNorm[chapterNorm.length-1];
+
+            let nm = chapterNorm.find(function (item) {
+                return id === item.RecAreaID
+            })
+
+            if (nm !== undefined) {
+                norm = nm;
+                //let norm = chapterNorm[chapterNorm.length-1];
+                country = norm.RecAreaName;
+                city = norm.RecAreaName;
+                state = norm.RecAreaName;
+                address = norm.RecAreaName;
+                genre = undefined;
+                segment = norm.Keywords;
+
+            }
+
+/*            //let norm = chapterNorm[chapterNorm.length-1];
              country = norm.RecAreaName;
              city = norm.RecAreaName;
              state = norm.RecAreaName;
              address = norm.RecAreaName;
              genre = undefined;
-             segment = norm.Keywords;
+             segment = norm.Keywords;*/
         }
 
 /*        let country = norm.RECAREAADDRESS[0].AddressCountryCode;
