@@ -13,18 +13,19 @@ class NormalizerForRecreation extends React.Component {
 
     }
 
-/*        componentDidUpdate(prevProps) {
-            debugger;
-            if (this.props.getNormalizerRecArea.length !== prevProps.getNormalizerRecArea.length) {
-                let id = window.location.pathname.split('/')[2];
-                this.props.handleFetchRecArea(id);
-            }
-        }*/
+    /*        componentDidUpdate(prevProps) {
+                debugger;
+                if (this.props.getNormalizerRecArea.length !== prevProps.getNormalizerRecArea.length) {
+                    let id = window.location.pathname.split('/')[2];
+                    this.props.handleFetchRecArea(id);
+                }
+            }*/
 
     render() {
 
+
         let id = window.location.pathname.split('/')[2];
-        console.log(this.props.getNormalizerRecArea)
+        //console.log(this.props.getNormalizerRecArea)
         let chapterGet = this.props.getEventsRecreation;
         let image;
         let im = chapterGet.find(function (item) {
@@ -38,16 +39,16 @@ class NormalizerForRecreation extends React.Component {
         let url = image.url;
 
 
-      let chapterNorm = this.props.getNormalizerRecArea;
+        let chapterNorm = this.props.getNormalizerRecArea;
 
         let norm;
-/*        let nm = chapterNorm.find(function (item) {
-            return id === item.RecAreaID
-        })
+        /*        let nm = chapterNorm.find(function (item) {
+                    return id === item.RecAreaID
+                })
 
-        if (nm !== undefined) {
-            norm = nm;
-        }*/
+                if (nm !== undefined) {
+                    norm = nm;
+                }*/
 
         let country = 'undefined';
         let city = 'undefined';
@@ -55,7 +56,7 @@ class NormalizerForRecreation extends React.Component {
         let address = 'undefined';
         let genre = 'undefined';
         let segment = 'undefined';
-        if(chapterNorm.length!==0) {
+        if (chapterNorm.length !== 0) {
 
             let nm = chapterNorm.find(function (item) {
                 return id === item.RecAreaID
@@ -64,33 +65,33 @@ class NormalizerForRecreation extends React.Component {
             if (nm !== undefined) {
                 norm = nm;
                 //let norm = chapterNorm[chapterNorm.length-1];
-                country = norm.RecAreaName;
+                country = norm.RECAREAADDRESS ?? ' no data ';
                 city = norm.RecAreaName;
                 state = norm.RecAreaName;
                 address = norm.RecAreaName;
-                genre = undefined;
+                genre = 'undefined';
                 segment = norm.Keywords;
 
             }
 
-/*            //let norm = chapterNorm[chapterNorm.length-1];
-             country = norm.RecAreaName;
-             city = norm.RecAreaName;
-             state = norm.RecAreaName;
-             address = norm.RecAreaName;
-             genre = undefined;
-             segment = norm.Keywords;*/
+            /*            //let norm = chapterNorm[chapterNorm.length-1];
+                         country = norm.RecAreaName;
+                         city = norm.RecAreaName;
+                         state = norm.RecAreaName;
+                         address = norm.RecAreaName;
+                         genre = undefined;
+                         segment = norm.Keywords;*/
         }
 
-/*        let country = norm.RECAREAADDRESS[0].AddressCountryCode;
-        let city = norm.RECAREAADDRESS[0].City;
-        let state = norm.RECAREAADDRESS[0].AddressStateCode;
-        let address = norm.RECAREAADDRESS[0].RecAreaStreetAddress1;
-        let genre = '';
-        let segment = norm.Keywords;*/
+        /*        let country = norm.RECAREAADDRESS[0].AddressCountryCode;
+                let city = norm.RECAREAADDRESS[0].City;
+                let state = norm.RECAREAADDRESS[0].AddressStateCode;
+                let address = norm.RECAREAADDRESS[0].RecAreaStreetAddress1;
+                let genre = '';
+                let segment = norm.Keywords;*/
 
         return <>
-                        <EventMainPage city={city}
+            <EventMainPage city={city}
                            country={country}
                            state={state}
                            address={address}
