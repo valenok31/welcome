@@ -13,13 +13,6 @@ class NormalizerForRecreation extends React.Component {
 
     }
 
-    /*        componentDidUpdate(prevProps) {
-                debugger;
-                if (this.props.getNormalizerRecArea.length !== prevProps.getNormalizerRecArea.length) {
-                    let id = window.location.pathname.split('/')[2];
-                    this.props.handleFetchRecArea(id);
-                }
-            }*/
 
     render() {
 
