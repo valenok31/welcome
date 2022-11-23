@@ -43,7 +43,7 @@ class NormalizerForRecreation extends React.Component {
                     norm = nm;
                 }*/
 
-        let country = 'undefined';
+        let country = ', undefined';
         let city = 'undefined';
         let state = 'undefined';
         let address = 'undefined';
@@ -58,11 +58,14 @@ class NormalizerForRecreation extends React.Component {
             if (nm !== undefined) {
                 norm = nm;
                 //let norm = chapterNorm[chapterNorm.length-1];
-                country = norm.RECAREAADDRESS ?? ' no data ';
-                city = norm.RecAreaName;
-                state = norm.RecAreaName;
-                address = norm.RecAreaName;
-                genre = 'undefined';
+                //country = norm.RECAREAADDRESS ?? ' no data ';
+                if(norm.RECAREAADDRESS){
+                    country = norm.RECAREAADDRESS[0].AddressCountryCode;
+                    city = norm.RECAREAADDRESS[0].City;
+                    state = norm.RECAREAADDRESS[0].AddressStateCode;
+                    address = norm.RECAREAADDRESS[0].RecAreaStreetAddress1;
+
+                }
                 segment = norm.Keywords;
 
             }
