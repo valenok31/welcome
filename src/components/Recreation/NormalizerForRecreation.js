@@ -67,6 +67,7 @@ class NormalizerForRecreation extends React.Component {
 
                 }
                 segment = norm.Keywords;
+                genre = norm.RecAreaPhone;
 
             }
 
