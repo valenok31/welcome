@@ -71,21 +71,10 @@ class NormalizerForRecreation extends React.Component {
 
             }
 
-            /*            //let norm = chapterNorm[chapterNorm.length-1];
-                         country = norm.RecAreaName;
-                         city = norm.RecAreaName;
-                         state = norm.RecAreaName;
-                         address = norm.RecAreaName;
-                         genre = undefined;
-                         segment = norm.Keywords;*/
+
         }
 
-        /*        let country = norm.RECAREAADDRESS[0].AddressCountryCode;
-                let city = norm.RECAREAADDRESS[0].City;
-                let state = norm.RECAREAADDRESS[0].AddressStateCode;
-                let address = norm.RECAREAADDRESS[0].RecAreaStreetAddress1;
-                let genre = '';
-                let segment = norm.Keywords;*/
+
 
         return <>
             <EventMainPage city={city}
