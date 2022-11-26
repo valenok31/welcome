@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import EventMainPage from "../EventMainPage/EventMainPage";
-import {handleFetchRecArea} from "../../redux/recreation_reducer";
+import {handleFetchArr, handleFetchRecArea} from "../../redux/recreation_reducer";
 
 
 class NormalizerForRecreation extends React.Component {
@@ -18,7 +18,6 @@ class NormalizerForRecreation extends React.Component {
 
 
         let id = window.location.pathname.split('/')[2];
-        //console.log(this.props.getNormalizerRecArea)
         let chapterGet = this.props.getEventsRecreation;
         let image;
         let im = chapterGet.find(function (item) {
@@ -28,6 +27,9 @@ class NormalizerForRecreation extends React.Component {
         if (im !== undefined) {
             image = im;
             console.log(image)
+        }else{
+            alert(id);
+            this.props.handleFetchArr(id);
         }
         let name = image.RecAreaName;
         let url = image.url;
@@ -100,7 +102,7 @@ let mapStateToProps = (state) => {
     })
 };
 
-let resultConnecting = connect(mapStateToProps, {handleFetchRecArea})(NormalizerForRecreation);
+let resultConnecting = connect(mapStateToProps, {handleFetchRecArea, handleFetchArr})(NormalizerForRecreation);
 
 export default resultConnecting;
 
