@@ -57,15 +57,16 @@ class NormalizerForRecreation extends React.Component {
 
             if (nm !== undefined) {
                 norm = nm;
+                console.log(norm)
                 //let norm = chapterNorm[chapterNorm.length-1];
                 //country = norm.RECAREAADDRESS ?? ' no data ';
-                if(norm.RECAREAADDRESS){
-                    country = norm.RECAREAADDRESS[0].AddressCountryCode;
-                    city = norm.RECAREAADDRESS[0].City;
-                    state = norm.RECAREAADDRESS[0].AddressStateCode;
-                    address = norm.RECAREAADDRESS[0].RecAreaStreetAddress1;
 
-                }
+                    country = norm.AddressCountryCode + ', ' + norm.PostalCode;
+                    city = norm.City;
+                    state = norm.AddressStateCode;
+                    address = norm.RecAreaStreetAddress1;
+
+
                 segment = norm.Keywords;
                 genre = norm.RecAreaPhone;
 

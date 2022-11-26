@@ -44,11 +44,11 @@ export const fetchEvents = {
 
     fromRecreationRecArea(RecAreaID) {
         const instanceRecreation = axios.create({
-            baseURL: `https://ridb.recreation.gov/api/v1/recareas/${RecAreaID}?apikey=53351234-6c6c-4392-a4b8-d38d53df1462`,
+            baseURL: `https://ridb.recreation.gov/api/v1/recareas/${RecAreaID}/recareaaddresses?apikey=53351234-6c6c-4392-a4b8-d38d53df1462`,
         })
         return instanceRecreation.get()
             .then(response => {
-                return response.data;
+                return response.data.RECDATA[0];
             })
             .catch((err) => {
                 console.log(err)
