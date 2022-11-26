@@ -27,9 +27,11 @@ class NormalizerForRecreation extends React.Component {
 
         if (im !== undefined) {
             image = im;
+            console.log(image)
         }
         let name = image.RecAreaName;
         let url = image.url;
+        let description = image.RecAreaDescription;
 
 
         let chapterNorm = this.props.getNormalizerRecArea;
@@ -57,14 +59,14 @@ class NormalizerForRecreation extends React.Component {
 
             if (nm !== undefined) {
                 norm = nm;
-                console.log(norm)
+                //console.log(norm)
                 //let norm = chapterNorm[chapterNorm.length-1];
                 //country = norm.RECAREAADDRESS ?? ' no data ';
 
-                    country = norm.AddressCountryCode + ', ' + norm.PostalCode;
-                    city = norm.City;
-                    state = norm.AddressStateCode;
-                    address = norm.RecAreaStreetAddress1;
+                country = norm.AddressCountryCode + ', ' + norm.PostalCode;
+                city = norm.City;
+                state = norm.AddressStateCode;
+                address = norm.RecAreaStreetAddress1;
 
 
                 segment = norm.Keywords;
@@ -76,7 +78,6 @@ class NormalizerForRecreation extends React.Component {
         }
 
 
-
         return <>
             <EventMainPage city={city}
                            country={country}
@@ -85,7 +86,8 @@ class NormalizerForRecreation extends React.Component {
                            genre={genre}
                            segment={segment}
                            url={url}
-                           name={name}/>
+                           name={name}
+                           description={description}/>
         </>
     }
 }

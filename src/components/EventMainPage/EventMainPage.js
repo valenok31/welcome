@@ -7,6 +7,8 @@ export default function EventMainPage(props) {
         </div>
         <div>
             {props.name}
+            <br/>
+            {props.description}
             <hr/>
             {props.segment} - {props.genre}
             <br/>
