@@ -7,6 +7,7 @@ const SET_TOTAL_COUNT = 'SET_TOTAL_COUNT';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const TOGGLE_IS_LOADING = 'TOGGLE_IS_LOADING';
 const SET_NORMALIZER_RECAREA = 'SET_NORMALIZER_RECAREA';
+const SET_RECREATION_DATA = 'SET_RECREATION_DATA';
 
 const initialState = {
     eventsRecreation: [],
@@ -19,6 +20,7 @@ const initialState = {
     currentPage: 0,
     isLoading: false,
     normalizerRecArea:[],
+    recreationData: {},
 };
 
 const recreation_reducer = (state = initialState, action) => {
@@ -69,6 +71,12 @@ const recreation_reducer = (state = initialState, action) => {
                 normalizerRecArea: [...state.normalizerRecArea, action.normalizerRecArea],
             }
 
+        case SET_RECREATION_DATA:
+            return {
+                ...state,
+                recreationData: action.recreationData,
+            }
+
         default:
             return state;
     }
@@ -96,6 +104,10 @@ export const setCurrentPage = (currentPage) => ({
 
 export const setNormalizerRecArea = (normalizerRecArea) => ({
     type: SET_NORMALIZER_RECAREA, normalizerRecArea
+});
+
+export const setRecreationData = (recreationData) => ({
+    type: SET_RECREATION_DATA, recreationData
 });
 
 export const toggleIsLoading = (isLoading) => ({type: TOGGLE_IS_LOADING, isLoading});
@@ -132,6 +144,17 @@ export const handleFetchRecArea = (RecAreaID) => {
                // dispatch(toggleIsLoading(false));
                 dispatch(setNormalizerRecArea(data));
             });
+    }
+}
+
+export const handleFetchAreas = (RecAreaID) => {
+    //debugger;
+    return (dispatch) => {
+        //dispatch(toggleIsLoading(true));
+        fetchEvents.fromRecreationAreas(RecAreaID).then(data => {
+            // dispatch(toggleIsLoading(false));
+            dispatch(setRecreationData(data));
+        });
     }
 }
 

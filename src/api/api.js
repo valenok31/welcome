@@ -7,7 +7,7 @@ export const fetchEvents = {
         const instanceTicketmaster = axios.create({
             baseURL: "https://app.ticketmaster.com/discovery/v2/",
         })
-        return instanceTicketmaster.get(`events.json?size=${size}&page=${page}&countryCode=&keyword=katyPerry&classificationName=&apikey=zj1LCjwJVG5B88c4HGfjkaY6PAMxz6nV`)
+        return instanceTicketmaster.get(`events.json?size=${size}&page=${page}&countryCode=&keyword=obama&classificationName=&apikey=zj1LCjwJVG5B88c4HGfjkaY6PAMxz6nV`)
             .then(response => {
                 return response.data;
             })
@@ -54,4 +54,19 @@ export const fetchEvents = {
                 console.log(err)
             })
     },
+
+    fromRecreationAreas(RecAreaID) {
+        const instanceRecreation = axios.create({
+            baseURL: `https://ridb.recreation.gov/api/v1/recareas/${RecAreaID}?apikey=53351234-6c6c-4392-a4b8-d38d53df1462`,
+        })
+        return instanceRecreation.get()
+            .then(response => {
+                return response.data;
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    },
+
+
 }

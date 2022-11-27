@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import EventMainPage from "../EventMainPage/EventMainPage";
-import {handleFetchArr, handleFetchRecArea} from "../../redux/recreation_reducer";
+import {handleFetchAreas, handleFetchArr, handleFetchRecArea} from "../../redux/recreation_reducer";
 
 
 class NormalizerForRecreation extends React.Component {
@@ -9,30 +9,33 @@ class NormalizerForRecreation extends React.Component {
     componentDidMount() {
         //debugger;
         let id = window.location.pathname.split('/')[2];
-        this.props.handleFetchRecArea(id);
+        //this.props.handleFetchRecArea(id);
+        this.props.handleFetchAreas(id);
+
 
     }
 
 
     render() {
-
-
         let id = window.location.pathname.split('/')[2];
-        let chapterGet = this.props.getEventsRecreation;
-        let image;
+        //let chapterGet = this.props.getRecreationData;
+        //let chapterGet = this.props.getEventsRecreation;
+        let image = this.props.getRecreationData;
+        console.log(this.props.getRecreationData);
+/*        let image;
         let im = chapterGet.find(function (item) {
             return id === item.RecAreaID
         })
 
         if (im !== undefined) {
             image = im;
-            console.log(image)
-        }else{
-            alert(id);
-            this.props.handleFetchArr(id);
-        }
+            //console.log(image)
+        }*/
+
         let name = image.RecAreaName;
-        let url = image.url;
+        //let url = image.url;
+        let url = 'https://avatanplus.com/files/resources/mid/581ccfb952d8e158308b6bfb.jpg';
+
         let description = image.RecAreaDescription;
 
 
@@ -99,10 +102,11 @@ let mapStateToProps = (state) => {
     return ({
         getNormalizerRecArea: state.recreation_reducer.normalizerRecArea,
         getEventsRecreation: state.recreation_reducer.eventsRecreation,
+        getRecreationData: state.recreation_reducer.recreationData,
     })
 };
 
-let resultConnecting = connect(mapStateToProps, {handleFetchRecArea, handleFetchArr})(NormalizerForRecreation);
+let resultConnecting = connect(mapStateToProps, {handleFetchRecArea, handleFetchArr, handleFetchAreas})(NormalizerForRecreation);
 
 export default resultConnecting;
 
