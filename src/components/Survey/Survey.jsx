@@ -13,6 +13,9 @@ const Survey = (props) => {
             <NavLink to={props.choiceRight} className={style.survey__navLink}>
                 {props.choiceRight}
             </NavLink>
+            <NavLink to={props.choiceV} className={style.survey__navLink}>
+                {props.choiceV}
+            </NavLink>
         </div>
     )
 }

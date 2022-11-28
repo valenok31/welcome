@@ -9,7 +9,7 @@ class NormalizerForRecreation extends React.Component {
     componentDidMount() {
         //debugger;
         let id = window.location.pathname.split('/')[2];
-        //this.props.handleFetchRecArea(id);
+        this.props.handleFetchRecArea(id);
         this.props.handleFetchAreas(id);
 
 
