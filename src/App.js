@@ -25,7 +25,6 @@ let App = () => {
                 <Route path='/' element={<Survey choiceLeft='recreation' choiceRight='ticketmaster' choiceV='recreationV'/>}/>
                 <Route path='/ticketmaster' element={<TicketmasterCont/>}/>
                 <Route path='/recreation' element={<RecreationCont/>}/>
-                <Route path='/recreationV' element={<RecreationCont/>}/>
                 <Route path='/ticketmaster/*' element={<NormalizerForTicketmaster/>}/>
                 <Route path='/recreation/*' element={<NormalizerForRecreation/>}/>
 

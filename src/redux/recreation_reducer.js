@@ -11,9 +11,9 @@ const SET_RECREATION_DATA = 'SET_RECREATION_DATA';
 
 const initialState = {
     eventsRecreation: [],
-    eventsRecreationImages: [],
+    _eventsRecreationImages: [],
     getEventsRecreationImages() {
-        return this.eventsRecreationImages;
+        return this._eventsRecreationImages;
     },
     totalCount: 0,
     limitPage: 5,
@@ -43,7 +43,7 @@ const recreation_reducer = (state = initialState, action) => {
                 ...state,
                 currentPage: action.currentPage,
                 eventsRecreation: [],
-                eventsRecreationImages: []
+                _eventsRecreationImages: []
             }
 
         case SET_EVENTS_IMAGES_URL:
@@ -56,7 +56,7 @@ const recreation_reducer = (state = initialState, action) => {
         case SET_EVENTS_RECREATION_IMAGES:
             return {
                 ...state,
-                eventsRecreationImages: [...state.eventsRecreationImages, action.data],
+                _eventsRecreationImages: [...state._eventsRecreationImages, action.data],
             }
 
         case TOGGLE_IS_LOADING:

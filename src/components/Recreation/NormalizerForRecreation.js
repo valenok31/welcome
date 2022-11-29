@@ -81,7 +81,7 @@ class NormalizerForRecreation extends React.Component {
 
 
         }
-
+debugger;
 
         return <>
             <EventMainPage city={city}
