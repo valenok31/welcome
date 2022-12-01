@@ -22,7 +22,7 @@ class NormalizerForRecreation extends React.Component {
         //let chapterGet = this.props.getRecreationData;
         //let chapterGet = this.props.getEventsRecreation;
         let image = this.props.getRecreationData;
-        console.log(this.props.getURL.url);
+        console.log(image);
 /*        let image;
         let im = chapterGet.find(function (item) {
             return id === item.RecAreaID
@@ -84,7 +84,6 @@ class NormalizerForRecreation extends React.Component {
 
 
         }
-debugger;
 
         return <>
             <EventMainPage city={city}
