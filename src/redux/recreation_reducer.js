@@ -1,4 +1,5 @@
 import {fetchEvents} from "../api/api";
+import MediaURL from "../components/Recreation/MediaURL";
 
 const SET_EVENTS_RECREATION = 'SET_EVENTS_RECREATION';
 const SET_EVENTS_IMAGES_URL = 'SET_EVENTS_IMAGES_URL';
@@ -8,6 +9,7 @@ const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const TOGGLE_IS_LOADING = 'TOGGLE_IS_LOADING';
 const SET_NORMALIZER_RECAREA = 'SET_NORMALIZER_RECAREA';
 const SET_RECREATION_DATA = 'SET_RECREATION_DATA';
+const SET_URL = 'SET_URL';
 
 const initialState = {
     eventsRecreation: [],
@@ -19,8 +21,9 @@ const initialState = {
     limitPage: 5,
     currentPage: 0,
     isLoading: false,
-    normalizerRecArea:[],
+    normalizerRecArea: [],
     recreationData: {},
+    url:{},
 };
 
 const recreation_reducer = (state = initialState, action) => {
@@ -76,6 +79,11 @@ const recreation_reducer = (state = initialState, action) => {
                 ...state,
                 recreationData: action.recreationData,
             }
+        case SET_URL:
+            return {
+                ...state,
+                url: action.url,
+            }
 
         default:
             return state;
@@ -109,6 +117,9 @@ export const setNormalizerRecArea = (normalizerRecArea) => ({
 export const setRecreationData = (recreationData) => ({
     type: SET_RECREATION_DATA, recreationData
 });
+export const setURL = (url) => ({
+    type: SET_URL, url
+});
 
 export const toggleIsLoading = (isLoading) => ({type: TOGGLE_IS_LOADING, isLoading});
 
@@ -140,14 +151,14 @@ export const handleFetchRecArea = (RecAreaID) => {
     //debugger;
     return (dispatch) => {
         //dispatch(toggleIsLoading(true));
-            fetchEvents.fromRecreationRecArea(RecAreaID).then(data => {
-               // dispatch(toggleIsLoading(false));
-                dispatch(setNormalizerRecArea(data));
-            });
+        fetchEvents.fromRecreationRecArea(RecAreaID).then(data => {
+            // dispatch(toggleIsLoading(false));
+            dispatch(setNormalizerRecArea(data));
+        });
     }
 }
 
-export const handleFetchAreas = (RecAreaID) => {
+/*export const handleFetchAreas = (RecAreaID) => {
     //debugger;
     return (dispatch) => {
         //dispatch(toggleIsLoading(true));
@@ -155,6 +166,12 @@ export const handleFetchAreas = (RecAreaID) => {
             // dispatch(toggleIsLoading(false));
             dispatch(setRecreationData(data));
         });
+    }
+}*/
+export const handleFetchAreas = (RecAreaID) => {
+    //debugger;
+    return (dispatch) => {
+       MediaURL(RecAreaID)
     }
 }
 

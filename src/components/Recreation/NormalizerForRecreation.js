@@ -2,6 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import EventMainPage from "../EventMainPage/EventMainPage";
 import {handleFetchAreas, handleFetchArr, handleFetchRecArea} from "../../redux/recreation_reducer";
+import MediaURL from "./MediaURL";
 
 
 class NormalizerForRecreation extends React.Component {
@@ -11,7 +12,7 @@ class NormalizerForRecreation extends React.Component {
         let id = window.location.pathname.split('/')[2];
         this.props.handleFetchRecArea(id);
         this.props.handleFetchAreas(id);
-
+        this.props.MediaURL(id)
 
     }
 
@@ -21,7 +22,7 @@ class NormalizerForRecreation extends React.Component {
         //let chapterGet = this.props.getRecreationData;
         //let chapterGet = this.props.getEventsRecreation;
         let image = this.props.getRecreationData;
-        console.log(this.props.getRecreationData);
+        console.log(this.props.getURL.url);
 /*        let image;
         let im = chapterGet.find(function (item) {
             return id === item.RecAreaID
@@ -35,6 +36,8 @@ class NormalizerForRecreation extends React.Component {
         let name = image.RecAreaName;
         //let url = image.url;
         let url = 'https://avatanplus.com/files/resources/mid/581ccfb952d8e158308b6bfb.jpg';
+
+        url = this.props.getURL.url;
 
         let description = image.RecAreaDescription;
 
@@ -103,10 +106,11 @@ let mapStateToProps = (state) => {
         getNormalizerRecArea: state.recreation_reducer.normalizerRecArea,
         getEventsRecreation: state.recreation_reducer.eventsRecreation,
         getRecreationData: state.recreation_reducer.recreationData,
+        getURL: state.recreation_reducer.url,
     })
 };
 
-let resultConnecting = connect(mapStateToProps, {handleFetchRecArea, handleFetchArr, handleFetchAreas})(NormalizerForRecreation);
+let resultConnecting = connect(mapStateToProps, {handleFetchRecArea,MediaURL, handleFetchArr, handleFetchAreas})(NormalizerForRecreation);
 
 export default resultConnecting;
 
