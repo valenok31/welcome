@@ -75,6 +75,7 @@ const recreation_reducer = (state = initialState, action) => {
             }
 
         case SET_RECREATION_DATA:
+
             return {
                 ...state,
                 recreationData: action.recreationData,
@@ -171,7 +172,16 @@ export const handleFetchRecArea = (RecAreaID) => {
 export const handleFetchAreas = (RecAreaID) => {
     //debugger;
     return (dispatch) => {
-       MediaURL(RecAreaID)
+       MediaURL(RecAreaID);
+        fetchEvents.fromArrImages(RecAreaID).then(data => {
+            // dispatch(toggleIsLoading(false));
+            dispatch(setRecreationData(data));
+            dispatch(setURL(data));
+        });
+        fetchEvents.fromRecreationAreas(RecAreaID).then(data => {
+            // dispatch(toggleIsLoading(false));
+            dispatch(setRecreationData(data));
+        });
     }
 }
 
