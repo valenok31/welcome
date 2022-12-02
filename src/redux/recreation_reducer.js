@@ -18,7 +18,7 @@ const initialState = {
         return this._eventsRecreationImages;
     },
     totalCount: 0,
-    limitPage: 5,
+    limitPage: 10,
     currentPage: 0,
     isLoading: false,
     normalizerRecArea: [],
@@ -76,10 +76,27 @@ const recreation_reducer = (state = initialState, action) => {
 
         case SET_RECREATION_DATA:
 
-            return {
+/*            return {
                 ...state,
                 recreationData: action.recreationData,
+            }*/
+            if(action.recreationDataURL!=0){
+                state.recreationData.url = action.recreationDataURL.url
             }
+            if(action.recreationData!=0){
+                let a = state.recreationData.url;
+                state.recreationData = action.recreationData;
+                state.recreationData.url = a;
+            }
+
+            return {
+                ...state,
+                recreationData: state.recreationData
+            }
+
+
+
+
         case SET_URL:
             return {
                 ...state,
@@ -115,8 +132,8 @@ export const setNormalizerRecArea = (normalizerRecArea) => ({
     type: SET_NORMALIZER_RECAREA, normalizerRecArea
 });
 
-export const setRecreationData = (recreationData) => ({
-    type: SET_RECREATION_DATA, recreationData
+export const setRecreationData = (recreationData, recreationDataURL) => ({
+    type: SET_RECREATION_DATA, recreationData, recreationDataURL
 });
 export const setURL = (url) => ({
     type: SET_URL, url
@@ -172,15 +189,15 @@ export const handleFetchRecArea = (RecAreaID) => {
 export const handleFetchAreas = (RecAreaID) => {
     //debugger;
     return (dispatch) => {
-       MediaURL(RecAreaID);
+       //MediaURL(RecAreaID);
         fetchEvents.fromArrImages(RecAreaID).then(data => {
             // dispatch(toggleIsLoading(false));
-            dispatch(setRecreationData(data));
+            dispatch(setRecreationData(0, data));
             dispatch(setURL(data));
         });
         fetchEvents.fromRecreationAreas(RecAreaID).then(data => {
             // dispatch(toggleIsLoading(false));
-            dispatch(setRecreationData(data));
+            dispatch(setRecreationData(data, 0));
         });
     }
 }
