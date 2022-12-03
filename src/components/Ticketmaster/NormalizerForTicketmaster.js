@@ -29,10 +29,16 @@ class NormalizerForTicketmaster extends React.Component {
             state = image._embedded.venues[0].state.name + ', ' ?? 'undefined';
         }
         let address = image._embedded.venues[0].address.line1 ?? 'undefined';
-        let genre = image.classifications[0].genre.name;
-        let segment = image.classifications[0].segment.name;
+        let genre = '';
+        let segment = '';
+        if(image.classifications){
+            genre = image.classifications[0].genre.name;
+            segment = image.classifications[0].segment.name;
+        }
+
         let url = image.images[0].url;
         let name = image.name;
+
         return <>
             <EventMainPage city={city}
                            country={country}

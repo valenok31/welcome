@@ -12,7 +12,7 @@ export default function EventMainPage(props) {
             <hr/>
             {props.segment} - {props.genre}
             <br/>
-            {props.address}, {props.city}, {props.state}, {props.country}
+            {props.address}, {props.city}, {props.state} {props.country}
         </div>
     </>
 
