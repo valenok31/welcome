@@ -3,11 +3,11 @@ import React from "react";
 
 export const fetchEvents = {
 
-    fromTicketmaster(size = 5, page = 0, settings ) {
+    fromTicketmaster(size = 5, page = 0, settings) {
         const instanceTicketmaster = axios.create({
             baseURL: "https://app.ticketmaster.com/discovery/v2/",
         })
-        return instanceTicketmaster.get(`events.json?size=${size}&page=${page}&countryCode=&keyword=${settings.search}&source=&classificationName=${settings.classificationName}&apikey=zj1LCjwJVG5B88c4HGfjkaY6PAMxz6nV`)
+        return instanceTicketmaster.get(`events.json?size=${size}&page=${page}&stateCode=CO&countryCode=&keyword=${settings.search}&source=&classificationName=${settings.classificationName}&apikey=zj1LCjwJVG5B88c4HGfjkaY6PAMxz6nV`)
             .then(response => {
                 return response.data;
             })
@@ -16,6 +16,21 @@ export const fetchEvents = {
                 console.log(err.message)
             })
     },
+
+    fromTicketmasterDetails(id) {
+        const instanceTicketmaster = axios.create({
+            baseURL: "https://app.ticketmaster.com/discovery/v2/",
+        })
+        return instanceTicketmaster.get(`events/${id}.json?apikey=zj1LCjwJVG5B88c4HGfjkaY6PAMxz6nV`)
+            .then(response => {
+                return response.data;
+            })
+            .catch((err) => {
+                //console.log('hgakjshkwl')
+                console.log(err.message)
+            })
+    },
+
 
     fromRecreation(limit = 10, offset = 0) {
         const instanceRecreation = axios.create({

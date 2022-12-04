@@ -5,6 +5,7 @@ const SET_TOTAL_COUNT = 'SET_TOTAL_COUNT';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const TOGGLE_IS_LOADING = 'TOGGLE_IS_LOADING';
 const SET_SETTINGS = 'SET_SETTINGS';
+const SET_TICKETMASTER_DETAILS = 'SET_TICKETMASTER_DETAILS';
 
 const initialState = {
     eventsTicketmaster: [],
@@ -16,6 +17,7 @@ const initialState = {
         search: '',
         classificationName: '',
     },
+    ticketmasterDetails:{},
 };
 
 const ticketmaster_reducer = (state = initialState, action) => {
@@ -49,6 +51,11 @@ const ticketmaster_reducer = (state = initialState, action) => {
                 ...state,
                 settings: action.settings,
             }
+        case SET_TICKETMASTER_DETAILS:
+            return {
+                ...state,
+                ticketmasterDetails: action.ticketmasterDetails,
+            }
 
 
         default:
@@ -61,6 +68,7 @@ export const toggleIsLoading = (isLoading) => ({type: TOGGLE_IS_LOADING, isLoadi
 export const setTotalCount = (totalCount) => ({type: SET_TOTAL_COUNT, totalCount});
 export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
 export const setSettings = (settings) => ({type: SET_SETTINGS, settings});
+export const setTicketmasterDetails = (ticketmasterDetails) => ({type: SET_TICKETMASTER_DETAILS, ticketmasterDetails});
 
 export const handleFetchEvents = (size, page, settings) => {
     return (dispatch) => {
@@ -71,6 +79,13 @@ export const handleFetchEvents = (size, page, settings) => {
             dispatch(setEventsTicketmaster(data._embedded.events));
             dispatch(setTotalCount(data.page.totalElements));
 
+        });
+    }
+}
+export const handleFetchEventsDetails = (id) => {
+    return (dispatch) => {
+        fetchEvents.fromTicketmasterDetails(id).then(data => {
+            dispatch(setTicketmasterDetails(data));
         });
     }
 }

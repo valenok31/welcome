@@ -1,9 +1,11 @@
 import React from "react";
+import style from './EventMainPage.module.css'
+
 
 export default function EventMainPage(props) {
     return <>
         <div>
-            <img src={props.url}/>
+            <img src={props.url} />
         </div>
         <div>
             {props.name}

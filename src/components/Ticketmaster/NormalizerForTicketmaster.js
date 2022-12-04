@@ -1,43 +1,54 @@
 import React from "react";
 import {connect} from "react-redux";
-import style from "../EventCell/EventCell.module.css";
-import {NavLink, useHistory, useLocation} from "react-router-dom";
 import EventMainPage from "../EventMainPage/EventMainPage";
+import {handleFetchEventsDetails} from "../../redux/ticketmaster_reducer";
 
 
 class NormalizerForTicketmaster extends React.Component {
 
+    componentDidMount() {
+        let id = window.location.pathname.split('/')[2];
+
+        this.props.handleFetchEventsDetails(id);
+    }
+
+
 
     render() {
 
-        let id = window.location.pathname.split('/')[2];
-        let chapterGet = this.props.getEventsTicketmaster;
-
-        let image;
-        let im = chapterGet.find(function (item) {
-            return id === item.id
-        })
-
-        if (im !== undefined) {
-            image = im;
-        }
-
-        let city = image._embedded.venues[0].city.name ?? 'undefined';
-        let country = image._embedded.venues[0].country.countryCode ?? 'undefined';
+        let city = '';
+        let country = '';
         let state = '';
-        if (country == 'US') {
-            state = image._embedded.venues[0].state.name + ', ' ?? 'undefined';
-        }
-        let address = image._embedded.venues[0].address.line1 ?? 'undefined';
+        let address = '';
         let genre = '';
         let segment = '';
-        if(image.classifications){
-            genre = image.classifications[0].genre.name;
-            segment = image.classifications[0].segment.name;
-        }
+        let url = '';
+        let name = '';
 
-        let url = image.images[0].url;
-        let name = image.name;
+
+        let image = this.props.getTicketmasterDetails;
+        console.log(Object.entries(image).length != 0);
+        if(Object.entries(image).length != 0){
+            city = image._embedded.venues[0].city.name ?? 'undefined';
+            country = image._embedded.venues[0].country.countryCode ?? 'undefined';
+            state = '';
+            if (country == 'US') {
+                state = image._embedded.venues[0].state.name + ', ' ?? 'undefined';
+            }
+            address = image._embedded.venues[0].address.line1 ?? 'undefined';
+            genre = '';
+            segment = '';
+            if (image.classifications) {
+                if (image.classifications[0].genre) {
+                    genre = image.classifications[0].genre.name;
+                }
+                if (image.classifications[0].segment) {
+                    segment = image.classifications[0].segment.name;
+                }
+            }
+            url = image.images[0].url;
+            name = image.name;
+        }
 
         return <>
             <EventMainPage city={city}
@@ -54,11 +65,11 @@ class NormalizerForTicketmaster extends React.Component {
 
 let mapStateToProps = (state) => {
     return ({
-        getEventsTicketmaster: state.ticketmaster_reducer.eventsTicketmaster,
+        getTicketmasterDetails: state.ticketmaster_reducer.ticketmasterDetails,
     })
 };
 
-let resultConnecting = connect(mapStateToProps, {})(NormalizerForTicketmaster);
+let resultConnecting = connect(mapStateToProps, {handleFetchEventsDetails})(NormalizerForTicketmaster);
 
 export default resultConnecting;
 
