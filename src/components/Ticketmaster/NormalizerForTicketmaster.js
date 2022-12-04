@@ -49,7 +49,6 @@ class NormalizerForTicketmaster extends React.Component {
             url = image.images[0].url;
             name = image.name;
         }
-
         return <>
             <EventMainPage city={city}
                            country={country}

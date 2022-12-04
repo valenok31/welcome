@@ -7,6 +7,7 @@ import RecreationCont from "./components/Recreation/RecreationCont";
 import EventMainPage from "./components/EventMainPage/EventMainPage";
 import NormalizerForTicketmaster from "./components/Ticketmaster/NormalizerForTicketmaster";
 import NormalizerForRecreation from "./components/Recreation/NormalizerForRecreation";
+import Ymap from "./components/Ymap/Ymap";
 
 let App = () => {
     return (
@@ -27,6 +28,7 @@ let App = () => {
                 <Route path='/recreation' element={<RecreationCont/>}/>
                 <Route path='/ticketmaster/*' element={<NormalizerForTicketmaster/>}/>
                 <Route path='/recreation/*' element={<NormalizerForRecreation/>}/>
+                <Route path='/ymap' element={<Ymap/>}/>
 
             </Routes>
         </div>

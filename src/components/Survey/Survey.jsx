@@ -1,6 +1,7 @@
 import React from "react";
 import style from './Survey.module.css'
 import {NavLink} from "react-router-dom";
+import Ymap from "../Ymap/Ymap";
 
 
 
@@ -12,6 +13,10 @@ const Survey = (props) => {
             </NavLink>
             <NavLink to={props.choiceRight} className={style.survey__navLink}>
                 {props.choiceRight}
+            </NavLink>
+
+            <NavLink to='ymap' className={style.survey__navLink}>
+                ymap
             </NavLink>
         </div>
     )
