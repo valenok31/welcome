@@ -13,15 +13,16 @@ class Ymap extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            lng: -86.0091,
-            lat: 35.8473,
-            zoom: 6.76,
+            lng: -86.0,
+            lat: 35.8,
+            zoom: 6.7,
         };
         this.mapContainer = React.createRef();
     }
 
 
     componentDidMount() {
+        console.log(this.mapContainer.current)
         const { lng, lat, zoom } = this.state;
         const map = new mapboxgl.Map({
             container: this.mapContainer.current,
@@ -30,6 +31,22 @@ class Ymap extends React.Component {
             zoom: zoom
         });
 
+
+        const monument = [-86, 36];
+// create the popup
+        const popup = new mapboxgl.Popup({ offset: 25 }).setText(
+            'Construction on the Washington Monument began in 1848.'
+        );
+
+
+// create the marker
+        new mapboxgl.Marker()
+            .setLngLat(monument)
+            .setPopup(popup) // sets a popup on this marker
+            .addTo(map);
+
+
+
         map.on('move', () => {
             this.setState({
                 lng: map.getCenter().lng.toFixed(4),
@@ -37,6 +54,7 @@ class Ymap extends React.Component {
                 zoom: map.getZoom().toFixed(2)
             });
         });
+
 
     }
 
