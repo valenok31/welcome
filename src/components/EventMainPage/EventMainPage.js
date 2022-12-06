@@ -1,5 +1,6 @@
 import React from "react";
 import style from './EventMainPage.module.css'
+import Ymap from "../Ymap/Ymap";
 
 
 export default function EventMainPage(props) {
@@ -16,6 +17,7 @@ export default function EventMainPage(props) {
             <br/>
             {props.address}, {props.city}, {props.state} {props.country}
         </div>
+        <Ymap description={props.description} coordinates={props.coordinates} name={props.name} />
     </>
 
 }

@@ -13,8 +13,10 @@ class Ymap extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            lng: -86.0,
-            lat: 35.8,
+/*            lng: -86.0,
+            lat: 35.8,  */
+            lng: this.props.coordinates[0],
+            lat: this.props.coordinates[1],
             zoom: 6.7,
         };
         this.mapContainer = React.createRef();
@@ -22,20 +24,22 @@ class Ymap extends React.Component {
 
 
     componentDidMount() {
-        console.log(this.mapContainer.current)
+
+        //console.log(this.mapContainer.current)
         const { lng, lat, zoom } = this.state;
         const map = new mapboxgl.Map({
             container: this.mapContainer.current,
             style: 'mapbox://styles/mapbox/streets-v12',
-            center: [lng, lat],
+            center: this.props.coordinates,
             zoom: zoom
         });
 
 
-        const monument = [-86, 36];
+        const monument = this.props.coordinates;
 // create the popup
         const popup = new mapboxgl.Popup({ offset: 25 }).setText(
-            'Construction on the Washington Monument began in 1848.'
+            `${this.props.name} - 
+            ${this.props.description}`
         );
 
 

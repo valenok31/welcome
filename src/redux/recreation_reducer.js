@@ -10,6 +10,7 @@ const TOGGLE_IS_LOADING = 'TOGGLE_IS_LOADING';
 const SET_NORMALIZER_RECAREA = 'SET_NORMALIZER_RECAREA';
 const SET_RECREATION_DATA = 'SET_RECREATION_DATA';
 const SET_URL = 'SET_URL';
+const SET_COORDINATES = 'SET_COORDINATES';
 
 const initialState = {
     eventsRecreation: [],
@@ -21,9 +22,10 @@ const initialState = {
     limitPage: 10,
     currentPage: 0,
     isLoading: false,
-    normalizerRecArea: [],
+    normalizerRecArea: {},
     recreationData: {},
     url:{},
+    coordinates:[]
 };
 
 const recreation_reducer = (state = initialState, action) => {
@@ -71,27 +73,13 @@ const recreation_reducer = (state = initialState, action) => {
         case SET_NORMALIZER_RECAREA:
             return {
                 ...state,
-                normalizerRecArea: [...state.normalizerRecArea, action.normalizerRecArea],
+                normalizerRecArea: action.normalizerRecArea,
             }
 
         case SET_RECREATION_DATA:
-
-/*            return {
-                ...state,
-                recreationData: action.recreationData,
-            }*/
-            if(action.recreationDataURL!=0){
-                state.recreationData.url = action.recreationDataURL.url
-            }
-            if(action.recreationData!=0){
-                let a = state.recreationData.url;
-                state.recreationData = action.recreationData;
-                state.recreationData.url = a;
-            }
-
             return {
                 ...state,
-                recreationData: state.recreationData
+                recreationData: action.recreationData,
             }
 
 
@@ -101,6 +89,12 @@ const recreation_reducer = (state = initialState, action) => {
             return {
                 ...state,
                 url: action.url,
+            }
+
+        case SET_COORDINATES:
+            return {
+                ...state,
+                coordinates: action.coordinates,
             }
 
         default:
@@ -132,11 +126,15 @@ export const setNormalizerRecArea = (normalizerRecArea) => ({
     type: SET_NORMALIZER_RECAREA, normalizerRecArea
 });
 
-export const setRecreationData = (recreationData, recreationDataURL) => ({
-    type: SET_RECREATION_DATA, recreationData, recreationDataURL
+export const setRecreationData = (recreationData) => ({
+    type: SET_RECREATION_DATA, recreationData
 });
 export const setURL = (url) => ({
     type: SET_URL, url
+});
+
+export const setCoordinates = (coordinates) => ({
+    type: SET_COORDINATES, coordinates
 });
 
 export const toggleIsLoading = (isLoading) => ({type: TOGGLE_IS_LOADING, isLoading});
@@ -192,12 +190,16 @@ export const handleFetchAreas = (RecAreaID) => {
        //MediaURL(RecAreaID);
         fetchEvents.fromArrImages(RecAreaID).then(data => {
             // dispatch(toggleIsLoading(false));
-            dispatch(setRecreationData(0, data));
+            //dispatch(setRecreationData(0, data));
+            dispatch(setCoordinates([]));
             dispatch(setURL(data));
         });
         fetchEvents.fromRecreationAreas(RecAreaID).then(data => {
-            // dispatch(toggleIsLoading(false));
-            dispatch(setRecreationData(data, 0));
+            dispatch(setCoordinates([]));
+            dispatch(setRecreationData({}));
+            dispatch(setRecreationData(data));
+            dispatch(setCoordinates(data.GEOJSON.COORDINATES));
+
         });
     }
 }

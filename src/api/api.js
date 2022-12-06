@@ -63,7 +63,23 @@ export const fetchEvents = {
         })
         return instanceRecreation.get()
             .then(response => {
-                return response.data.RECDATA[0];
+                if(response.data.METADATA.RESULTS.TOTAL_COUNT>0){
+                    return response.data.RECDATA[0];
+                }else{
+                   return {
+                        "AddressCountryCode": "no data",
+                        "AddressStateCode": "no data",
+                        "City": "no data",
+                        "LastUpdatedDate": "no data",
+                        "PostalCode": "no data",
+                        "RecAreaAddressID": "no data",
+                        "RecAreaAddressType": "no data",
+                        "RecAreaID": RecAreaID,
+                        "RecAreaStreetAddress1": "no data",
+                        "RecAreaStreetAddress2": "no data",
+                        "RecAreaStreetAddress3": "no data"
+                    }
+                }
             })
             .catch((err) => {
                 console.log(err)
