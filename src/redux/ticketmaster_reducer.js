@@ -17,7 +17,7 @@ const initialState = {
         search: '',
         classificationName: '',
     },
-    ticketmasterDetails:{},
+    ticketmasterDetails: {},
 };
 
 const ticketmaster_reducer = (state = initialState, action) => {
@@ -84,8 +84,8 @@ export const handleFetchEvents = (size, page, settings) => {
 }
 export const handleFetchEventsDetails = (id) => {
     return (dispatch) => {
+        dispatch(setTicketmasterDetails({}));
         fetchEvents.fromTicketmasterDetails(id).then(data => {
-            dispatch(setTicketmasterDetails(null));
             dispatch(setTicketmasterDetails(data));
         });
     }
