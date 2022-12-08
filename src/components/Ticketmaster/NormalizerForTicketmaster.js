@@ -33,11 +33,11 @@ class NormalizerForTicketmaster extends React.Component {
 
 
 
+        image = image();
 
 
+               if(Object.entries(image).length != 0) {
 
-               if(Object.entries(image()).length != 0) {
-                   image = image();
 
 
 

@@ -85,6 +85,7 @@ export const handleFetchEvents = (size, page, settings) => {
 export const handleFetchEventsDetails = (id) => {
     return (dispatch) => {
         fetchEvents.fromTicketmasterDetails(id).then(data => {
+            dispatch(setTicketmasterDetails(null));
             dispatch(setTicketmasterDetails(data));
         });
     }
