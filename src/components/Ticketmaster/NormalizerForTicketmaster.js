@@ -2,6 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import EventMainPage from "../EventMainPage/EventMainPage";
 import {handleFetchEventsDetails} from "../../redux/ticketmaster_reducer";
+import Preloader from "../Preloader/Preloader";
 
 class NormalizerForTicketmaster extends React.Component {
 
@@ -55,27 +56,36 @@ class NormalizerForTicketmaster extends React.Component {
             url = image.images[0].url;
             name = image.name;
 
-            return <>
-                <EventMainPage city={city}
-                               country={country}
-                               state={state}
-                               address={address}
-                               genre={genre}
-                               segment={segment}
-                               url={url}
-                               name={name}
-                               description={description}
-                               coordinates={coordinates}
-                               lng={lng}
-                               lat={lat}/>
-            </>
+
+            if (this.props.getIsLoading) {
+                return <Preloader/>
+            } else {
+                return <>
+                    <EventMainPage city={city}
+                                   country={country}
+                                   state={state}
+                                   address={address}
+                                   genre={genre}
+                                   segment={segment}
+                                   url={url}
+                                   name={name}
+                                   description={description}
+                                   coordinates={coordinates}
+                                   lng={lng}
+                                   lat={lat}/>
+
+                </>
+            }
         }
+        return <Preloader/>
+
     }
 }
 
 let mapStateToProps = (state) => {
     return ({
         getTicketmasterDetails: state.ticketmaster_reducer.ticketmasterDetails,
+        getIsLoading: state.ticketmaster_reducer.isLoading,
     })
 };
 

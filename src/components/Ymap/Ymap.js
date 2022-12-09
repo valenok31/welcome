@@ -12,8 +12,11 @@ mapboxgl.accessToken = 'pk.eyJ1IjoidmFsZW5vazMxIiwiYSI6ImNsYjltM2Z3bjBxN3Mzbm41e
 class Ymap extends React.Component {
     constructor(props) {
         super(props);
+        let lngS = this.props.coordinates[0];
+        if(lngS>0){lngS=-lngS}
+
         this.state = {
-            lng: this.props.coordinates[0] ?? -1,
+            lng: lngS ?? -1,
             lat: this.props.coordinates[1] ?? 50,
             zoom: 6.7,
         };
@@ -25,15 +28,16 @@ class Ymap extends React.Component {
 
         //console.log(this.mapContainer.current)
         const { lng, lat, zoom } = this.state;
+        let coordinates = [lng, lat]
         const map = new mapboxgl.Map({
             container: this.mapContainer.current,
             style: 'mapbox://styles/mapbox/streets-v12',
-            center: this.props.coordinates,
+            center: coordinates,
             zoom: zoom
         });
 
 
-        const monument = this.props.coordinates;
+        const monument = coordinates;
 // create the popup
         const popup = new mapboxgl.Popup({ offset: 25 }).setText(
             `${this.props.name} - 

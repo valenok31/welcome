@@ -44,11 +44,7 @@ class NormalizerForRecreation extends React.Component {
         let lat;
         let coordinates = [];
 
-        if (this.props.getCoordinates.length !== 0) {
-            lng = () => this.props.getCoordinates[0];
-            lat = () => this.props.getCoordinates[1];
-            coordinates = this.props.getCoordinates;
-        }
+
 
         if (Object.entries(this.props.getURL).length !== 0) {
             url = this.props.getURL.url;
@@ -67,6 +63,14 @@ class NormalizerForRecreation extends React.Component {
             segment = norm.Keywords;
             genre = norm.RecAreaPhone;
         }
+
+        if (this.props.getCoordinates.length !== 0) {
+            lng = () => this.props.getCoordinates[0];
+            lat = () => this.props.getCoordinates[1];
+            coordinates = this.props.getCoordinates;
+        }
+
+
 
         return <>
             <EventMainPage city={city}
