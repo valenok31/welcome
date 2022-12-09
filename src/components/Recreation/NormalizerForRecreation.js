@@ -4,7 +4,6 @@ import EventMainPage from "../EventMainPage/EventMainPage";
 import {handleFetchAreas, handleFetchArr, handleFetchRecArea, setCoordinates} from "../../redux/recreation_reducer";
 import MediaURL from "./MediaURL";
 
-
 class NormalizerForRecreation extends React.Component {
 
     componentDidMount() {
@@ -20,7 +19,6 @@ class NormalizerForRecreation extends React.Component {
                 this.props.setCoordinates(this.props.getCoordinates)
             }
         }
-
 
     render() {
         let id = window.location.pathname.split('/')[2];
@@ -46,13 +44,11 @@ class NormalizerForRecreation extends React.Component {
         let lat;
         let coordinates = [];
 
-
         if (this.props.getCoordinates.length !== 0) {
             lng = () => this.props.getCoordinates[0];
             lat = () => this.props.getCoordinates[1];
             coordinates = this.props.getCoordinates;
         }
-
 
         if (Object.entries(this.props.getURL).length !== 0) {
             url = this.props.getURL.url;
@@ -61,7 +57,6 @@ class NormalizerForRecreation extends React.Component {
         if (Object.entries(image).length !== 0) {
             description = image.RecAreaDescription;
             name = image.RecAreaName;
-
         }
 
         if (Object.entries(norm).length !== 0) {
@@ -72,7 +67,6 @@ class NormalizerForRecreation extends React.Component {
             segment = norm.Keywords;
             genre = norm.RecAreaPhone;
         }
-        //console.log(lat +', '+lng );
 
         return <>
             <EventMainPage city={city}
