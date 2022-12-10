@@ -44,8 +44,6 @@ class NormalizerForRecreation extends React.Component {
         let lat;
         let coordinates = [];
 
-
-
         if (Object.entries(this.props.getURL).length !== 0) {
             url = this.props.getURL.url;
         }
@@ -69,7 +67,6 @@ class NormalizerForRecreation extends React.Component {
             lat = () => this.props.getCoordinates[1];
             coordinates = this.props.getCoordinates;
         }
-
 
 
         return <>

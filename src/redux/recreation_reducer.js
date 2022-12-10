@@ -24,8 +24,8 @@ const initialState = {
     isLoading: false,
     normalizerRecArea: {},
     recreationData: {},
-    url:{},
-    coordinates:[]
+    url: {},
+    coordinates: []
 };
 
 const recreation_reducer = (state = initialState, action) => {
@@ -81,8 +81,6 @@ const recreation_reducer = (state = initialState, action) => {
                 ...state,
                 recreationData: action.recreationData,
             }
-
-
 
 
         case SET_URL:
@@ -142,10 +140,10 @@ export const toggleIsLoading = (isLoading) => ({type: TOGGLE_IS_LOADING, isLoadi
 
 export const handleFetchEvents = (limit, offset) => {
     return (dispatch) => {
+        dispatch(setEventsRecreation([]));
         dispatch(toggleIsLoading(true));
         fetchEvents.fromRecreation(limit, offset).then(data => {
             dispatch(toggleIsLoading(false));
-            dispatch(setEventsRecreation([]));
             dispatch(setEventsRecreation(data.RECDATA));
             dispatch(setTotalCount(data.METADATA.RESULTS.TOTAL_COUNT));
         });
@@ -155,6 +153,7 @@ export const handleFetchEvents = (limit, offset) => {
 export const handleFetchArr = (arrImg) => {
     return (dispatch) => {
         arrImg.map((RecAreaID) => {
+            //dispatch(setEventsRecreationImages([]));
             fetchEvents.fromArrImages(RecAreaID).then(data => {
                 dispatch(setEventsRecreationImages(data));
             });
@@ -167,6 +166,7 @@ export const handleFetchRecArea = (RecAreaID) => {
     //debugger;
     return (dispatch) => {
         //dispatch(toggleIsLoading(true));
+        dispatch(setNormalizerRecArea({}));
         fetchEvents.fromRecreationRecArea(RecAreaID).then(data => {
             // dispatch(toggleIsLoading(false));
             dispatch(setNormalizerRecArea(data));
@@ -186,17 +186,17 @@ export const handleFetchRecArea = (RecAreaID) => {
 }*/
 export const handleFetchAreas = (RecAreaID) => {
     //debugger;
+
     return (dispatch) => {
-       //MediaURL(RecAreaID);
+        //MediaURL(RecAreaID);
+        dispatch(setRecreationData({}));
+        dispatch(setCoordinates([]));
+        dispatch(setURL({}));
+
         fetchEvents.fromArrImages(RecAreaID).then(data => {
-            // dispatch(toggleIsLoading(false));
-            //dispatch(setRecreationData(0, data));
-            dispatch(setCoordinates([]));
             dispatch(setURL(data));
         });
         fetchEvents.fromRecreationAreas(RecAreaID).then(data => {
-            dispatch(setCoordinates([]));
-            dispatch(setRecreationData({}));
             dispatch(setRecreationData(data));
             dispatch(setCoordinates(data.GEOJSON.COORDINATES));
 

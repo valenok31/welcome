@@ -16,9 +16,9 @@ class Ymap extends React.Component {
         if(lngS>0){lngS=-lngS}
 
         this.state = {
-            lng: lngS ?? -1,
-            lat: this.props.coordinates[1] ?? 50,
-            zoom: 6.7,
+            lng: lngS ?? 0,
+            lat: this.props.coordinates[1] ?? 6,
+            zoom: 10,
         };
         this.mapContainer = React.createRef();
     }
