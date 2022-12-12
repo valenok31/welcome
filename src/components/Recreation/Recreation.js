@@ -30,8 +30,8 @@ class Recreation extends React.Component {
                 image = im.url;
             }
 
-            //if (!this.props.getEventsRecreation[i].url || this.props.getEventsRecreation[i].url == 'https://avatanplus.com/files/resources/mid/581ccfb952d8e158308b6bfb.jpg') {
-            if (!this.props.getEventsRecreation[i].url) {
+            if (!this.props.getEventsRecreation[i].url || this.props.getEventsRecreation[i].url == 'https://avatanplus.com/files/resources/mid/581ccfb952d8e158308b6bfb.jpg') {
+            //if (!this.props.getEventsRecreation[i].url) {
                 this.props.setEventsImagesURL(i, image);
             }
 

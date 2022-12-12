@@ -3,22 +3,15 @@ import {connect} from "react-redux";
 import EventMainPage from "../EventMainPage/EventMainPage";
 import {handleFetchAreas, handleFetchArr, handleFetchRecArea, setCoordinates} from "../../redux/recreation_reducer";
 import MediaURL from "./MediaURL";
+import Preloader from "../Preloader/Preloader";
 
 class NormalizerForRecreation extends React.Component {
 
     componentDidMount() {
-        //debugger;
         let id = window.location.pathname.split('/')[2];
         this.props.handleFetchRecArea(id);
         this.props.handleFetchAreas(id);
-        // this.props.MediaURL(id)
     }
-
-/*        componentDidUpdate(prevProps, prevState, snapshot) {
-            if(this.props.getCoordinates[0]!==prevProps.getCoordinates[0]){
-                this.props.setCoordinates(this.props.getCoordinates)
-            }
-        }*/
 
     render() {
         let id = window.location.pathname.split('/')[2];
@@ -29,10 +22,8 @@ class NormalizerForRecreation extends React.Component {
 
         image = image();
         norm = norm();
-        console.log(image.RecAreaLongitude, image.RecAreaLatitude);
-        //console.log(456);
-        let url = 'https://avatanplus.com/files/resources/mid/581ccfb952d8e158308b6bfb.jpg';
 
+        let url = 'https://avatanplus.com/files/resources/mid/581ccfb952d8e158308b6bfb.jpg';
         let name = id;
         let description = id;
         let country = ', undefined';
@@ -43,25 +34,10 @@ class NormalizerForRecreation extends React.Component {
         let segment = 'undefined';
         let lng=0;
         let lat=0;
-        let coordinates = [image.RecAreaLongitude, image.RecAreaLatitude];
-
-        lng = image.RecAreaLongitude;
-        lat = image.RecAreaLatitude;
-
-       // if (this.props.getCoordinates.length !== 0) {
-           // lng = () => this.props.getCoordinates[0];
-           // lat = () => this.props.getCoordinates[1];
-            //coordinates = this.props.getCoordinates;
-      //  }
-
+        let coordinates=[];
 
         if (Object.entries(this.props.getURL).length !== 0) {
             url = this.props.getURL.url;
-        }
-
-        if (Object.entries(image).length !== 0) {
-            description = image.RecAreaDescription;
-            name = image.RecAreaName;
         }
 
         if (Object.entries(norm).length !== 0) {
@@ -73,24 +49,32 @@ class NormalizerForRecreation extends React.Component {
             genre = norm.RecAreaPhone;
         }
 
+        if (Object.entries(image).length !== 0) {
+            description = image.RecAreaDescription;
+            name = image.RecAreaName;
+            lng = image.RecAreaLongitude;
+            lat = image.RecAreaLatitude;
+            coordinates = this.props.getCoordinates;
 
+            return <>
+                <EventMainPage city={city}
+                               country={country}
+                               state={state}
+                               address={address}
+                               genre={genre}
+                               segment={segment}
+                               url={url}
+                               name={name}
+                               description={description}
+                               coordinates={coordinates}
+                               lng={lng}
+                               lat={lat}
+                />
+            </>
 
+        }
 
-        return <>
-            <EventMainPage city={city}
-                           country={country}
-                           state={state}
-                           address={address}
-                           genre={genre}
-                           segment={segment}
-                           url={url}
-                           name={name}
-                           description={description}
-                           coordinates={coordinates}
-                           lng={lng}
-                           lat={lat}
-            />
-        </>
+        return <><Preloader/></>
     }
 }
 

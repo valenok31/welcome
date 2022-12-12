@@ -13,6 +13,8 @@ import Preloader from "../Preloader/Preloader";
 
 class RecreationCont extends React.Component {
 
+
+
     componentDidMount() {
         //this.props.setCurrentPage(0);
         let offset = this.props.getCurrentPage * this.props.getLimitPage;
@@ -26,7 +28,10 @@ class RecreationCont extends React.Component {
         }
     }
 
+
+
     render() {
+
         let arrImg = [];
         //console.log(this.props.getEventsRecreation)
         this.props.getEventsRecreation.map((r) => {
@@ -49,7 +54,7 @@ class RecreationCont extends React.Component {
             } else {
                 visio = <Preloader/>
             }
-
+            console.log(this.props.getEventsRecreationImages)
 
             return <>
                 <div id='fieldPlaying' className={style.field__playing}>

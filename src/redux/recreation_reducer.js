@@ -62,9 +62,16 @@ const recreation_reducer = (state = initialState, action) => {
             }
 
         case SET_EVENTS_RECREATION_IMAGES:
-            return {
-                ...state,
-                _eventsRecreationImages: [...state._eventsRecreationImages, action.data],
+            if(action.data.url === 'https://avatanplus.com/files/resources/mid/581ccfb952d8e158308b6bfb.jpg'){
+                return {
+                    ...state,
+                    _eventsRecreationImages: [...state._eventsRecreationImages, action.data],
+                }
+            }else{
+                return {
+                    ...state,
+                    _eventsRecreationImages: [...state._eventsRecreationImages, action.data],
+                }
             }
 
         case TOGGLE_IS_LOADING:
