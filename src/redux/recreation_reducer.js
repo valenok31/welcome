@@ -25,7 +25,10 @@ const initialState = {
     normalizerRecArea: {},
     recreationData: {},
     url: {},
-    coordinates: []
+    coordinates: [],
+    getCoordinates() {
+        return this.coordinates;
+    },
 };
 
 const recreation_reducer = (state = initialState, action) => {
@@ -193,14 +196,15 @@ export const handleFetchAreas = (RecAreaID) => {
         dispatch(setCoordinates([]));
         dispatch(setURL({}));
 
-        fetchEvents.fromArrImages(RecAreaID).then(data => {
-            dispatch(setURL(data));
-        });
         fetchEvents.fromRecreationAreas(RecAreaID).then(data => {
             dispatch(setRecreationData(data));
             dispatch(setCoordinates(data.GEOJSON.COORDINATES));
-
         });
+
+        fetchEvents.fromArrImages(RecAreaID).then(data => {
+            dispatch(setURL(data));
+        });
+
     }
 }
 

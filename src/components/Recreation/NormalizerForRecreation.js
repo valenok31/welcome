@@ -14,11 +14,11 @@ class NormalizerForRecreation extends React.Component {
         // this.props.MediaURL(id)
     }
 
-        componentDidUpdate(prevProps, prevState, snapshot) {
+/*        componentDidUpdate(prevProps, prevState, snapshot) {
             if(this.props.getCoordinates[0]!==prevProps.getCoordinates[0]){
                 this.props.setCoordinates(this.props.getCoordinates)
             }
-        }
+        }*/
 
     render() {
         let id = window.location.pathname.split('/')[2];
@@ -26,10 +26,11 @@ class NormalizerForRecreation extends React.Component {
             return image = this.props.getRecreationData; // geo, name, img, description
         }
         let norm = () => this.props.getNormalizerRecArea; // adress
-        //console.log(image);
+
         image = image();
         norm = norm();
-
+        console.log(image.RecAreaLongitude, image.RecAreaLatitude);
+        //console.log(456);
         let url = 'https://avatanplus.com/files/resources/mid/581ccfb952d8e158308b6bfb.jpg';
 
         let name = id;
@@ -40,9 +41,19 @@ class NormalizerForRecreation extends React.Component {
         let address = 'undefined';
         let genre = 'undefined';
         let segment = 'undefined';
-        let lng;
-        let lat;
-        let coordinates = [];
+        let lng=0;
+        let lat=0;
+        let coordinates = [image.RecAreaLongitude, image.RecAreaLatitude];
+
+        lng = image.RecAreaLongitude;
+        lat = image.RecAreaLatitude;
+
+       // if (this.props.getCoordinates.length !== 0) {
+           // lng = () => this.props.getCoordinates[0];
+           // lat = () => this.props.getCoordinates[1];
+            //coordinates = this.props.getCoordinates;
+      //  }
+
 
         if (Object.entries(this.props.getURL).length !== 0) {
             url = this.props.getURL.url;
@@ -62,11 +73,7 @@ class NormalizerForRecreation extends React.Component {
             genre = norm.RecAreaPhone;
         }
 
-        if (this.props.getCoordinates.length !== 0) {
-            lng = () => this.props.getCoordinates[0];
-            lat = () => this.props.getCoordinates[1];
-            coordinates = this.props.getCoordinates;
-        }
+
 
 
         return <>
@@ -94,7 +101,7 @@ let mapStateToProps = (state) => {
         getEventsRecreation: state.recreation_reducer.eventsRecreation,
         getRecreationData: state.recreation_reducer.recreationData,
         getURL: state.recreation_reducer.url,
-        getCoordinates: state.recreation_reducer.coordinates,
+        getCoordinates: state.recreation_reducer.getCoordinates(),
     })
 };
 
