@@ -36,7 +36,7 @@ export const fetchEvents = {
         const instanceRecreation = axios.create({
             baseURL: `https://ridb.recreation.gov/api/v1/`,
         })
-        return instanceRecreation.get(`recareas?limit=${limit}&offset=${offset}&sort=ID&apikey=53351234-6c6c-4392-a4b8-d38d53df1462`)
+        return instanceRecreation.get(`facilities?limit=${limit}&offset=${offset}&apikey=53351234-6c6c-4392-a4b8-d38d53df1462`)
             .then(response => {
                 return response.data;
             })
@@ -46,7 +46,7 @@ export const fetchEvents = {
 
     fromArrImages(RecAreaID) {
         const instanceRecreation = axios.create({
-            baseURL: `https://ridb.recreation.gov/api/v1/recareas/${RecAreaID}/media?apikey=53351234-6c6c-4392-a4b8-d38d53df1462`,
+            baseURL: `https://ridb.recreation.gov/api/v1/facilities/${RecAreaID}/media?apikey=53351234-6c6c-4392-a4b8-d38d53df1462`,
         })
         return instanceRecreation.get()
             .then((response) => {
@@ -59,14 +59,15 @@ export const fetchEvents = {
 
     fromRecreationRecArea(RecAreaID) {
         const instanceRecreation = axios.create({
-            baseURL: `https://ridb.recreation.gov/api/v1/recareas/${RecAreaID}/recareaaddresses?apikey=53351234-6c6c-4392-a4b8-d38d53df1462`,
+            //baseURL: `https://ridb.recreation.gov/api/v1/recareas/${RecAreaID}/recareaaddresses?apikey=53351234-6c6c-4392-a4b8-d38d53df1462`,
+            baseURL: `https://ridb.recreation.gov/api/v1/facilities/${RecAreaID}/facilityaddresses?apikey=53351234-6c6c-4392-a4b8-d38d53df1462`,
         })
         return instanceRecreation.get()
             .then(response => {
                 if(response.data.METADATA.RESULTS.TOTAL_COUNT>0){
                     return response.data.RECDATA[0];
                 }else{
-                   return {
+/*                   return {
                         "AddressCountryCode": "no data",
                         "AddressStateCode": "no data",
                         "City": "no data",
@@ -78,6 +79,21 @@ export const fetchEvents = {
                         "RecAreaStreetAddress1": "no data",
                         "RecAreaStreetAddress2": "no data",
                         "RecAreaStreetAddress3": "no data"
+                    }*/
+                    return {
+                        "AddressCountryCode": "no data",
+                        "AddressStateCode": "no data",
+                        "City": "no data",
+                        "LastUpdatedDate": "no data",
+                        "PostalCode": "no data",
+
+
+                        "FacilityAddressID": "no data",
+                        "FacilityAddressType": "no data",
+                        "FacilityID": RecAreaID,
+                        "FacilityStreetAddress1": "no data",
+                        "FacilityStreetAddress2": "no data",
+                        "FacilityStreetAddress3": "no data",
                     }
                 }
             })
@@ -88,7 +104,7 @@ export const fetchEvents = {
 
     fromRecreationAreas(RecAreaID) {
         const instanceRecreation = axios.create({
-            baseURL: `https://ridb.recreation.gov/api/v1/recareas/${RecAreaID}?apikey=53351234-6c6c-4392-a4b8-d38d53df1462`,
+            baseURL: `https://ridb.recreation.gov/api/v1/facilities/${RecAreaID}?apikey=53351234-6c6c-4392-a4b8-d38d53df1462`,
         })
         return instanceRecreation.get()
             .then(response => {

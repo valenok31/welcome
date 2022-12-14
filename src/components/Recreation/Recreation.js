@@ -41,7 +41,7 @@ class Recreation extends React.Component {
                 return <Preloader/>;
             } else {
                 image = this.props.getEventsRecreation[i].url;
-                return <EventCell id={r.RecAreaID} image={image} name={r.RecAreaName}/>
+                return <EventCell id={r.FacilityID} image={image} name={r.FacilityName}/>
             }
         })
 
