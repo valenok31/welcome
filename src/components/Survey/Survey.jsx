@@ -14,7 +14,9 @@ const Survey = (props) => {
             <NavLink to={props.choiceRight} className={style.survey__navLink}>
                 {props.choiceRight}
             </NavLink>
-
+            <NavLink to='facility' className={style.survey__navLink}>
+                Facility
+            </NavLink>
             <NavLink to='ymap' className={style.survey__navLink}>
                 ymap
             </NavLink>
