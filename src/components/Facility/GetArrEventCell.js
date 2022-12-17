@@ -3,18 +3,29 @@ import style from "./Facility.module.css";
 import EventCell from "../EventCell/EventCell";
 import Preloader from "../Preloader/Preloader";
 
-export default function  GetArrEventCell(props) {
+export default function GetArrEventCell(props) {
 
-    let arrEventCell = props.arrayNameFacility.map(data =>{
-        let image = 'https://live.staticflickr.com/65535/49925175213_3c0d56078b_b.jpg';
-        if(props.getIsLoading){
+    let arrEventCell = props.arrayNameFacility.map(data => {
+        let image;
+
+        let result = props.arrayMediaFacility.find(function (item, index, array) {
+            return item.facilityId === data.FacilityID
+        });
+
+        if (result?.url === undefined) {
+            console.log(result?.url === undefined)
+            props.handleFetchFacilityMedia(data.FacilityID);
+        } else {
+            image = result.url;
+        }
+
+        if (props.getIsLoading) {
             return <Preloader/>
         }
         return <EventCell id={data.FacilityID} name={data.FacilityName} image={image}/>
     })
 
-
-   return <div className={style.box}>
+    return <div className={style.box}>
         {arrEventCell}
     </div>
 

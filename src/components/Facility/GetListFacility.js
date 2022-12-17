@@ -1,12 +1,12 @@
 import React from "react";
 import GetArrEventCell from "./GetArrEventCell";
 import {connect} from "react-redux";
-import {handleFetchFacility, setCurrentPage} from "../../redux/facility_reducer";
+import {handleFetchFacility, handleFetchFacilityMedia, setCurrentPage} from "../../redux/facility_reducer";
 import Paginator from "../Paginator/Paginator";
 
 class GetListFacility extends React.Component {
 
-    componentDidMount(){
+    componentDidMount() {
         let offset = this.props.getCurrentPage * this.props.getLimitPage;
         this.props.handleFetchFacility(this.props.getLimitPage, offset);
     }
@@ -20,7 +20,12 @@ class GetListFacility extends React.Component {
 
     render() {
         return <>
-            <GetArrEventCell arrayNameFacility={this.props.arrayNameFacility} getIsLoading={this.props.getIsLoading}/>
+            <GetArrEventCell
+                arrayNameFacility={this.props.arrayNameFacility}
+                arrayMediaFacility={this.props.arrayMediaFacility}
+                getIsLoading={this.props.getIsLoading}
+                handleFetchFacilityMedia ={this.props.handleFetchFacilityMedia}
+            />
             <Paginator
                 getTotalCount={this.props.getTotalCount}
                 getLimitPage={this.props.getLimitPage}
@@ -34,6 +39,7 @@ class GetListFacility extends React.Component {
 let mapStateToProps = (state) => {
     return ({
         arrayNameFacility: state.facility_reducer.getArrayNameFacility(),
+        arrayMediaFacility: state.facility_reducer.arrayMediaFacility,
         getTotalCount: state.facility_reducer.totalCount,
         getLimitPage: state.facility_reducer.limitPage,
         getCurrentPage: state.facility_reducer.currentPage,
@@ -42,6 +48,6 @@ let mapStateToProps = (state) => {
 };
 
 let resultConnecting = connect(mapStateToProps,
-    {handleFetchFacility, setCurrentPage})(GetListFacility);
+    {handleFetchFacility, setCurrentPage, handleFetchFacilityMedia})(GetListFacility);
 
 export default resultConnecting;

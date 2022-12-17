@@ -1,7 +1,7 @@
 import {fetchEvents} from "../api/api_facility";
-import {setNormalizerRecArea} from "./recreation_reducer";
 
 const SET_ARRAY_NAME_FACILITY = 'SET_ARRAY_NAME_FACILITY';
+const SET_ARRAY_MEDIA_FACILITY = 'SET_ARRAY_MEDIA_FACILITY';
 const SET_TOTAL_COUNT = 'SET_TOTAL_COUNT';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const TOGGLE_IS_LOADING = 'TOGGLE_IS_LOADING';
@@ -11,8 +11,9 @@ const initialState = {
     getArrayNameFacility() {
         return this.arrayNameFacility;
     },
+    arrayMediaFacility: [],
     totalCount: 0,
-    limitPage: 5,
+    limitPage: 10,
     currentPage: 0,
     isLoading: false,
 };
@@ -24,6 +25,13 @@ const facility_reducer = (state = initialState, action) => {
                 ...state,
                 arrayNameFacility: action.arrayNameFacility,
             }
+
+        case SET_ARRAY_MEDIA_FACILITY:
+            return {
+                ...state,
+                arrayMediaFacility: [...state.arrayMediaFacility, action.arrayMediaFacility],
+            }
+
         case SET_TOTAL_COUNT:
             return {
                 ...state,
@@ -47,24 +55,28 @@ const facility_reducer = (state = initialState, action) => {
     }
 };
 
-export const setArrayNameFacility = (arrayNameFacility) => ({
-    type: SET_ARRAY_NAME_FACILITY, arrayNameFacility
-});
-
+export const setArrayNameFacility = (arrayNameFacility) => ({type: SET_ARRAY_NAME_FACILITY, arrayNameFacility});
+export const setArrayMediaFacility = (arrayMediaFacility) => ({type: SET_ARRAY_MEDIA_FACILITY, arrayMediaFacility});
 export const setTotalCount = (totalCount) => ({type: SET_TOTAL_COUNT, totalCount});
 export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
 export const toggleIsLoading = (isLoading) => ({type: TOGGLE_IS_LOADING, isLoading});
 
 
 export const handleFetchFacility = (limit, offset) => {
-    //debugger;
     return (dispatch) => {
         dispatch(toggleIsLoading(true));
         fetchEvents.fromFacility(limit, offset).then(data => {
-            console.log(data.RECDATA)
             dispatch(toggleIsLoading(false));
             dispatch(setArrayNameFacility(data.RECDATA));
             dispatch(setTotalCount(data.METADATA.RESULTS.TOTAL_COUNT));
+        });
+    }
+}
+
+export const handleFetchFacilityMedia = (facilityId = 5) => {
+    return (dispatch) => {
+        fetchEvents.fromFacilityMedia(facilityId).then(data => {
+            dispatch(setArrayMediaFacility(data));
         });
     }
 }
