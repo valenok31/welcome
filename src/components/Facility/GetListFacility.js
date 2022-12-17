@@ -1,43 +1,47 @@
 import React from "react";
-import style from "./Facility.module.css";
-import EventCell from "../EventCell/EventCell";
 import GetArrEventCell from "./GetArrEventCell";
+import {connect} from "react-redux";
+import {handleFetchFacility, setCurrentPage} from "../../redux/facility_reducer";
+import Paginator from "../Paginator/Paginator";
 
 class GetListFacility extends React.Component {
 
-    constructor(props){
-        super(props);
-        this.state = {
-            arrName: [
-                {
-                    name: 'Altay',
-                    id: '1',
-                    image: 'https://live.staticflickr.com/65535/49925175213_3c0d56078b_b.jpg',
-                },
-                {
-                    name: 'Baykal',
-                    id: '2',
-                    image: 'https://dobrovestnik.ru/wp-content/uploads/2021/03/33-2.png',
-                },
-                {
-                    name: 'Kavkaz',
-                    id: '3',
-                    image: 'https://molotoff-hotel.ru/wp-content/uploads/0/e/2/0e2f6ec75e5d47e334f5953b4291ce86.jpeg',
-                }
-            ]
-        };
+    componentDidMount(){
+        let offset = this.props.getCurrentPage * this.props.getLimitPage;
+        this.props.handleFetchFacility(this.props.getLimitPage, offset);
     }
 
+    componentDidUpdate(prevProps) {
+        if (this.props.getCurrentPage !== prevProps.getCurrentPage) {
+            let offset = this.props.getCurrentPage * this.props.getLimitPage //- this.props.getLimitPage;
+            this.props.handleFetchFacility(this.props.getLimitPage, offset);
+        }
+    }
 
-
-    render(){
-
+    render() {
         return <>
-            <GetArrEventCell arrName={this.state.arrName}/>
+            <GetArrEventCell arrayNameFacility={this.props.arrayNameFacility} getIsLoading={this.props.getIsLoading}/>
+            <Paginator
+                getTotalCount={this.props.getTotalCount}
+                getLimitPage={this.props.getLimitPage}
+                getCurrentPage={this.props.getCurrentPage}
+                setCurrentPage={this.props.setCurrentPage}
+                deepPage={999 / this.props.getLimitPage}/>
         </>
     }
-
-
 }
 
-export default GetListFacility;
+let mapStateToProps = (state) => {
+    return ({
+        arrayNameFacility: state.facility_reducer.getArrayNameFacility(),
+        getTotalCount: state.facility_reducer.totalCount,
+        getLimitPage: state.facility_reducer.limitPage,
+        getCurrentPage: state.facility_reducer.currentPage,
+        getIsLoading: state.facility_reducer.isLoading,
+    })
+};
+
+let resultConnecting = connect(mapStateToProps,
+    {handleFetchFacility, setCurrentPage})(GetListFacility);
+
+export default resultConnecting;

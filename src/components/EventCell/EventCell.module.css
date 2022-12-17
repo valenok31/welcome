@@ -6,4 +6,10 @@
     align-items: center;
     background-color: skyblue;
     text-align: center;
+
+}
+
+a{
+    background-color: gray;
+    color:antiquewhite;
 }
