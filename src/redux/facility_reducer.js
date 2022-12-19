@@ -2,6 +2,9 @@ import {fetchEvents} from "../api/api_facility";
 
 const SET_ARRAY_NAME_FACILITY = 'SET_ARRAY_NAME_FACILITY';
 const SET_ARRAY_MEDIA_FACILITY = 'SET_ARRAY_MEDIA_FACILITY';
+const SET_CURRENT_FACILITY = 'SET_CURRENT_FACILITY';
+const SET_CURRENT_FACILITY_ADDRESS = 'SET_CURRENT_FACILITY_ADDRESS';
+
 const SET_TOTAL_COUNT = 'SET_TOTAL_COUNT';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const TOGGLE_IS_LOADING = 'TOGGLE_IS_LOADING';
@@ -12,6 +15,8 @@ const initialState = {
         return this.arrayNameFacility;
     },
     arrayMediaFacility: [],
+    currentFacility: {},
+    currentFacilityAddress: {},
     totalCount: 0,
     limitPage: 10,
     currentPage: 0,
@@ -30,6 +35,19 @@ const facility_reducer = (state = initialState, action) => {
             return {
                 ...state,
                 arrayMediaFacility: [...state.arrayMediaFacility, action.arrayMediaFacility],
+            }
+
+
+        case SET_CURRENT_FACILITY:
+            return {
+                ...state,
+                currentFacility: action.currentFacility,
+            }
+
+        case SET_CURRENT_FACILITY_ADDRESS:
+            return {
+                ...state,
+                currentFacilityAddress: action.currentFacilityAddress,
             }
 
         case SET_TOTAL_COUNT:
@@ -57,6 +75,8 @@ const facility_reducer = (state = initialState, action) => {
 
 export const setArrayNameFacility = (arrayNameFacility) => ({type: SET_ARRAY_NAME_FACILITY, arrayNameFacility});
 export const setArrayMediaFacility = (arrayMediaFacility) => ({type: SET_ARRAY_MEDIA_FACILITY, arrayMediaFacility});
+export const setCurrentFacility = (currentFacility) => ({type: SET_CURRENT_FACILITY, currentFacility});
+export const setCurrentFacilityAddress = (currentFacilityAddress) => ({type: SET_CURRENT_FACILITY_ADDRESS, currentFacilityAddress});
 export const setTotalCount = (totalCount) => ({type: SET_TOTAL_COUNT, totalCount});
 export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
 export const toggleIsLoading = (isLoading) => ({type: TOGGLE_IS_LOADING, isLoading});
@@ -77,6 +97,23 @@ export const handleFetchFacilityMedia = (facilityId = 5) => {
     return (dispatch) => {
         fetchEvents.fromFacilityMedia(facilityId).then(data => {
             dispatch(setArrayMediaFacility(data));
+        });
+    }
+}
+
+export const handleFetchCurrentFacility = (facilityId = 5) => {
+    return (dispatch) => {
+        dispatch(setCurrentFacility({}));
+        fetchEvents.fromFacilityId(facilityId).then(data => {
+            dispatch(setCurrentFacility(data));
+        });
+    }
+}
+export const handleFetchCurrentFacilityAddress = (facilityId = 5) => {
+    return (dispatch) => {
+        dispatch(setCurrentFacilityAddress({}));
+        fetchEvents.fromFacilityAddress(facilityId).then(data => {
+            dispatch(setCurrentFacilityAddress(data));
         });
     }
 }

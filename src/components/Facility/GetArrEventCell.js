@@ -13,7 +13,6 @@ export default function GetArrEventCell(props) {
         });
 
         if (result?.url === undefined) {
-            console.log(result?.url === undefined)
             props.handleFetchFacilityMedia(data.FacilityID);
         } else {
             image = result.url;

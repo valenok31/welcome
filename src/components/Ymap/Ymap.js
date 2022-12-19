@@ -6,19 +6,20 @@ import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-load
 mapboxgl.accessToken = 'pk.eyJ1IjoidmFsZW5vazMxIiwiYSI6ImNsYjltM2Z3bjBxN3Mzbm41eHM5bWNtenAifQ.L3wRr1NE1EXxr9YjsEx97Q';
 
 
-
 // Longitude: -86.0091 | Latitude: 35.8473 | Zoom: 6.76
 
 class Ymap extends React.Component {
     constructor(props) {
         super(props);
         let lngS = this.props.coordinates[0];
-        if(lngS>0){lngS=-lngS}
+        if (lngS > 0) {
+            lngS = -lngS
+        }
 
         this.state = {
-            lng: lngS ?? 0,
-            lat: this.props.coordinates[1] ?? 6,
-            zoom: 10,
+            lng: lngS ?? -98,
+            lat: this.props.coordinates[1] ?? 39,
+            zoom: 6,
         };
         this.mapContainer = React.createRef();
     }
@@ -27,19 +28,20 @@ class Ymap extends React.Component {
     componentDidMount() {
 
         //console.log(this.mapContainer.current)
-        const { lng, lat, zoom } = this.state;
+        const {lng, lat, zoom} = this.state;
         let coordinates = [lng, lat]
         const map = new mapboxgl.Map({
             container: this.mapContainer.current,
             style: 'mapbox://styles/mapbox/streets-v12',
             center: coordinates,
+            //center: [-98, 39],
             zoom: zoom
         });
 
 
         const monument = coordinates;
 // create the popup
-        const popup = new mapboxgl.Popup({ offset: 25 }).setText(
+        const popup = new mapboxgl.Popup({offset: 25}).setText(
             `${this.props.name} - 
             ${this.props.description}`
         );
@@ -50,7 +52,6 @@ class Ymap extends React.Component {
             .setLngLat(monument)
             .setPopup(popup) // sets a popup on this marker
             .addTo(map);
-
 
 
         map.on('move', () => {
@@ -65,18 +66,17 @@ class Ymap extends React.Component {
     }
 
     render() {
-        const { lng, lat, zoom } = this.state;
+        const {lng, lat, zoom} = this.state;
         return (
             <div>
                 <div className={style.sidebar}>
                     Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
                 </div>
-                <div ref={this.mapContainer} className={style.mapContainer} />
+                <div ref={this.mapContainer} className={style.mapContainer}/>
             </div>
         );
     }
 }
-
 
 
 export default Ymap;
