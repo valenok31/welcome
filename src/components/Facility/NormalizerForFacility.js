@@ -46,7 +46,7 @@ class NormalizerForFacility extends React.Component {
 
 
         if(Object.entries(this.props.currentFacility).length !== 0 && Object.entries(this.props.currentFacilityAddress).length !== 0){
-            console.log(this.props.currentFacilityAddress.METADATA.RESULTS.TOTAL_COUNT)
+            //console.log(this.props.currentFacilityAddress.METADATA.RESULTS.TOTAL_COUNT)
             let s = this.props.currentFacility;
             name = s?.FacilityName;
             description = s?.FacilityDescription;

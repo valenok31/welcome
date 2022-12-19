@@ -14,19 +14,14 @@ import Ymap from "./components/Ymap/Ymap";
 
 
 let App = () => {
+    let coordinates=[-88, 35];
+
     return (
         <div>
             <NavLink to="/">
                 home
             </NavLink>
             <Routes>
-                {/*<Route path='/' element={<Survey choiceLeft='nature' choiceRight='ticketmaster'/>}/>
-                <Route path='/ticketmaster'
-                       element={<Survey choiceLeft='ticketmaster5' choiceRight='ticketmaster'/>}/>
-                <Route path='/ticketmaster/ticketmaster5' element={<TicketmasterCont size="10"/>}/>
-                <Route path='/ticketmaster/ticketmaster' element={<TicketmasterCont/>}/>
-                <Route path='/nature' element={<Survey choiceLeft='recreation' choiceRight='manyN'/>}/>
-                <Route path='/nature/recreation' element={<RecreationCont/>}/>*/}
                 <Route path='/' element={<Survey choiceLeft='recreation' choiceRight='ticketmaster' choiceV='recreationV'/>}/>
                 <Route path='/ticketmaster' element={<TicketmasterCont/>}/>
                 <Route path='/recreation' element={<RecreationCont/>}/>
@@ -34,7 +29,7 @@ let App = () => {
                 <Route path='/facility/*' element={<NormalizerForFacility/>}/>
                 <Route path='/ticketmaster/*' element={<NormalizerForTicketmaster/>}/>
                 <Route path='/recreation/*' element={<NormalizerForRecreation/>}/>
-                <Route path='/ymap' element={<Ymap  lng={-8.0} lat={35.8}/>}/>
+                <Route path='/ymap' element={<Ymap   description='description' coordinates={coordinates} name='name' />}/>
 
             </Routes>
         </div>

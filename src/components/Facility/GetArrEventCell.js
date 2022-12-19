@@ -2,9 +2,10 @@ import React from "react";
 import style from "./Facility.module.css";
 import EventCell from "../EventCell/EventCell";
 import Preloader from "../Preloader/Preloader";
+import Ymap from "../Ymap/Ymap";
 
 export default function GetArrEventCell(props) {
-
+    //console.log(props.arrayNameFacility)
     let arrEventCell = props.arrayNameFacility.map(data => {
         let image;
 
@@ -24,8 +25,14 @@ export default function GetArrEventCell(props) {
         return <EventCell id={data.FacilityID} name={data.FacilityName} image={image}/>
     })
 
-    return <div className={style.box}>
-        {arrEventCell}
-    </div>
+
+        return <div className={style.box}>
+            {arrEventCell}
+
+
+
+        </div>
+
+
 
 }

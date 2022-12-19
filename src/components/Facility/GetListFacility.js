@@ -3,6 +3,7 @@ import GetArrEventCell from "./GetArrEventCell";
 import {connect} from "react-redux";
 import {handleFetchFacility, handleFetchFacilityMedia, setCurrentPage} from "../../redux/facility_reducer";
 import Paginator from "../Paginator/Paginator";
+import Ymap from "../Ymap/Ymap";
 
 class GetListFacility extends React.Component {
 
@@ -19,6 +20,12 @@ class GetListFacility extends React.Component {
     }
 
     render() {
+
+        let coordinates2=[-95, 37];
+        let arrInf = () => this.props.arrayNameFacility;
+
+
+
         return <>
             <GetArrEventCell
                 arrayNameFacility={this.props.arrayNameFacility}
@@ -32,6 +39,9 @@ class GetListFacility extends React.Component {
                 getCurrentPage={this.props.getCurrentPage}
                 setCurrentPage={this.props.setCurrentPage}
                 deepPage={999 / this.props.getLimitPage}/>
+
+            {/*<Ymap description='description' coordinates={coordinates2} name='name'/>*/}
+            <Ymap description='description' coordinates={coordinates2} name='name'  array={arrInf}/>
         </>
     }
 }
