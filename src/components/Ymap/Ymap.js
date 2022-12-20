@@ -1,10 +1,8 @@
 import React from 'react';
 import style from "./Ymap.module.css";
-
-import {connect} from "react-redux";
-
 import 'mapbox-gl/dist/mapbox-gl.css';
-import mapboxgl from '!mapbox-gl';
+import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
+
 mapboxgl.accessToken = 'pk.eyJ1IjoidmFsZW5vazMxIiwiYSI6ImNsYjltM2Z3bjBxN3Mzbm41eHM5bWNtenAifQ.L3wRr1NE1EXxr9YjsEx97Q';
 
 
@@ -31,107 +29,84 @@ class Ymap extends React.Component {
 
     componentDidMount() {
 
-        //console.log(this.mapContainer.current)
         const {lng, lat, zoom} = this.state;
         let coordinates = [lng, lat]
         const map = new mapboxgl.Map({
             container: this.mapContainer.current,
             style: 'mapbox://styles/mapbox/streets-v12',
             center: coordinates,
-            //center: [-98, 39],
             zoom: zoom
         });
 
-/*
-
-        const monument = coordinates;
-// create the popup
-        const popup = new mapboxgl.Popup({offset: 25}).setText(
-            `${this.props.name} - 
-            ${this.props.description}`
-        );
-*/
-
-
-// create the marker
         let arrayL = [
-            {
+           /* {
                 GEOJSON: {COORDINATES: [-98, 39]},
-                FacilityName:'1',
+                FacilityName: '1',
                 FacilityDescription: '11',
             },
             {
                 GEOJSON: {COORDINATES: [-97, 39]},
-                FacilityName:'2',
+                FacilityName: '2',
                 FacilityDescription: '22',
             },
             {
                 GEOJSON: {COORDINATES: [-98.1, 39.4]},
-                FacilityName:'3',
+                FacilityName: '3',
                 FacilityDescription: '33',
             },
             {
                 GEOJSON: {COORDINATES: [-98.8, 38.2]},
-                FacilityName:'4',
+                FacilityName: '4',
                 FacilityDescription: '44',
             },
             {
                 GEOJSON: {COORDINATES: [-98.2, 39.9]},
-                FacilityName:'5',
+                FacilityName: '5',
                 FacilityDescription: '55',
             },
             {
                 GEOJSON: {COORDINATES: [-97, 36]},
-                FacilityName:'1',
+                FacilityName: '1',
                 FacilityDescription: '11',
             },
             {
                 GEOJSON: {COORDINATES: [-97.1, 39.2]},
-                FacilityName:'2',
+                FacilityName: '2',
                 FacilityDescription: '22',
-            },
+            },*/
             {
                 GEOJSON: {COORDINATES: [-96.1, 39.4]},
-                FacilityName:'3',
+                FacilityName: '3',
                 FacilityDescription: '33',
             },
             {
                 GEOJSON: {COORDINATES: [-97.8, 36.2]},
-                FacilityName:'4',
+                FacilityName: '4',
                 FacilityDescription: '44',
             },
             {
-                GEOJSON: {COORDINATES:[-96.2, 34.9]
-    },
-                FacilityName:'5',
+                GEOJSON: {COORDINATES: [-96.2, 34.9]},
+                FacilityName: '5',
                 FacilityDescription: '55',
             },
 
         ];
-        console.log(this.props.arrayNameFacility)
-        if(this.props.array().length>0){
-            this.props.array().map((s) => {
-                // arrayL.map((s) => {
-                const popup2 = new mapboxgl.Popup({offset: 25}).setText(
-                    /*                `${s.FacilityName} -
-                                ${s.FacilityDescription}`*/
-                    'hakjsdfhal'
-                );
-                //console.log(s.GEOJSON.COORDINATES)
 
-                new mapboxgl.Marker()
-                    .setLngLat(s.GEOJSON.COORDINATES)
-                    .setPopup(popup2) // sets a popup on this marker
-                    .addTo(map);
+        arrayL.map((s) => {
+            // arrayL.map((s) => {
+            const popup2 = new mapboxgl.Popup({offset: 25}).setText(
+                `${s.FacilityName} -
+                                ${s.FacilityDescription}`
+            );
 
-            });
-        }
+            new mapboxgl.Marker()
+                .setLngLat(s.GEOJSON.COORDINATES)
+                .setPopup(popup2) // sets a popup on this marker
+                .addTo(map);
 
+            return true;
 
-        // new mapboxgl.Marker()
-        //     .setLngLat(monument)
-        //     .setPopup(popup) // sets a popup on this marker
-        //     .addTo(map);
+        });
 
 
         map.on('move', () => {
@@ -159,15 +134,14 @@ class Ymap extends React.Component {
 }
 
 
-
-let mapStateToProps = (state) => {
+/*let mapStateToProps = (state) => {
     return ({
         arrayNameFacility: state.facility_reducer.getArrayNameFacility(),
     })
-};
+};*/
 
-let resultConnecting = connect(mapStateToProps,
+/*let resultConnecting = connect(mapStateToProps,
     {})(Ymap);
 
-export default resultConnecting;
-//export default Ymap;
+export default resultConnecting;*/
+export default Ymap;

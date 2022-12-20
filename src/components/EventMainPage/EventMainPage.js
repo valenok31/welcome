@@ -17,7 +17,7 @@ export default function EventMainPage(props) {
             <br/>
             {props.address}, {props.city}, {props.state} {props.country}
         </div>
-        <Ymap description={props.description} coordinates={props.coordinates} name={props.name} array={[]} />
+        <Ymap description={props.description} coordinates={props.coordinates} name={props.name} />
     </>
 
 }

@@ -85,7 +85,7 @@ export const toggleIsLoading = (isLoading) => ({type: TOGGLE_IS_LOADING, isLoadi
 export const handleFetchFacility = (limit, offset) => {
     return (dispatch) => {
         dispatch(toggleIsLoading(true));
-        dispatch(setArrayNameFacility([]));
+        //dispatch(setArrayNameFacility([]));
         fetchEvents.fromFacility(limit, offset).then(data => {
             dispatch(toggleIsLoading(false));
             dispatch(setArrayNameFacility(data.RECDATA));
@@ -96,7 +96,7 @@ export const handleFetchFacility = (limit, offset) => {
 
 export const handleFetchFacilityMedia = (facilityId = 5) => {
     return (dispatch) => {
-        dispatch(setArrayMediaFacility([]));
+        //dispatch(setArrayMediaFacility([]));
         fetchEvents.fromFacilityMedia(facilityId).then(data => {
             dispatch(setArrayMediaFacility(data));
         });

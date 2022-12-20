@@ -2,10 +2,10 @@ import React from "react";
 import style from "./Facility.module.css";
 import EventCell from "../EventCell/EventCell";
 import Preloader from "../Preloader/Preloader";
-import Ymap from "../Ymap/Ymap";
+
 
 export default function GetArrEventCell(props) {
-    //console.log(props.arrayNameFacility)
+    console.log(props.arrayNameFacility)
     let arrEventCell = props.arrayNameFacility.map(data => {
         let image;
 
