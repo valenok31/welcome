@@ -6,6 +6,7 @@ import Preloader from "../Preloader/Preloader";
 
 export default function GetArrEventCell(props) {
     console.log(props.arrayNameFacility)
+    debugger;
     let arrEventCell = props.arrayNameFacility.map(data => {
         let image;
 

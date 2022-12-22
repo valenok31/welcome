@@ -23,7 +23,7 @@ class GetListFacility extends React.Component {
 
     render() {
 
-       // let coordinates2=[-95, 37];
+        let coordinates2=[-95, 37];
        // let arrInf = () => this.props.arrayNameFacility;
 
 

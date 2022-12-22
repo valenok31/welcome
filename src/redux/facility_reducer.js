@@ -85,7 +85,7 @@ export const toggleIsLoading = (isLoading) => ({type: TOGGLE_IS_LOADING, isLoadi
 export const handleFetchFacility = (limit, offset) => {
     return (dispatch) => {
         dispatch(toggleIsLoading(true));
-        //dispatch(setArrayNameFacility([]));
+        dispatch(setArrayNameFacility([]));
         fetchEvents.fromFacility(limit, offset).then(data => {
             dispatch(toggleIsLoading(false));
             dispatch(setArrayNameFacility(data.RECDATA));
