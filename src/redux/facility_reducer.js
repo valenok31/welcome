@@ -105,16 +105,20 @@ export const handleFetchFacilityMedia = (facilityId = 5) => {
 
 export const handleFetchCurrentFacility = (facilityId = 5) => {
     return (dispatch) => {
+        dispatch(toggleIsLoading(true));
         dispatch(setCurrentFacility({}));
         fetchEvents.fromFacilityId(facilityId).then(data => {
+            dispatch(toggleIsLoading(false));
             dispatch(setCurrentFacility(data));
         });
     }
 }
 export const handleFetchCurrentFacilityAddress = (facilityId = 5) => {
     return (dispatch) => {
+        dispatch(toggleIsLoading(true));
         dispatch(setCurrentFacilityAddress({}));
         fetchEvents.fromFacilityAddress(facilityId).then(data => {
+            dispatch(toggleIsLoading(false));
             dispatch(setCurrentFacilityAddress(data));
         });
     }
