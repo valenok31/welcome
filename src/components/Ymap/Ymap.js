@@ -38,42 +38,53 @@ class Ymap extends React.Component {
             zoom: zoom
         });
 
+
+        const popup = new mapboxgl.Popup({offset: 25}).setText(
+            `${this.props.FacilityName} -
+                                ${this.props.FacilityDescription}`
+        );
+        new mapboxgl.Marker()
+            .setLngLat(coordinates)
+            .setPopup(popup) // sets a popup on this marker
+            .addTo(map);
+
+
         let arrayL = [
-           /* {
-                GEOJSON: {COORDINATES: [-98, 39]},
-                FacilityName: '1',
-                FacilityDescription: '11',
-            },
-            {
-                GEOJSON: {COORDINATES: [-97, 39]},
-                FacilityName: '2',
-                FacilityDescription: '22',
-            },
-            {
-                GEOJSON: {COORDINATES: [-98.1, 39.4]},
-                FacilityName: '3',
-                FacilityDescription: '33',
-            },
-            {
-                GEOJSON: {COORDINATES: [-98.8, 38.2]},
-                FacilityName: '4',
-                FacilityDescription: '44',
-            },
-            {
-                GEOJSON: {COORDINATES: [-98.2, 39.9]},
-                FacilityName: '5',
-                FacilityDescription: '55',
-            },
-            {
-                GEOJSON: {COORDINATES: [-97, 36]},
-                FacilityName: '1',
-                FacilityDescription: '11',
-            },
-            {
-                GEOJSON: {COORDINATES: [-97.1, 39.2]},
-                FacilityName: '2',
-                FacilityDescription: '22',
-            },*/
+            /* {
+                 GEOJSON: {COORDINATES: [-98, 39]},
+                 FacilityName: '1',
+                 FacilityDescription: '11',
+             },
+             {
+                 GEOJSON: {COORDINATES: [-97, 39]},
+                 FacilityName: '2',
+                 FacilityDescription: '22',
+             },
+             {
+                 GEOJSON: {COORDINATES: [-98.1, 39.4]},
+                 FacilityName: '3',
+                 FacilityDescription: '33',
+             },
+             {
+                 GEOJSON: {COORDINATES: [-98.8, 38.2]},
+                 FacilityName: '4',
+                 FacilityDescription: '44',
+             },
+             {
+                 GEOJSON: {COORDINATES: [-98.2, 39.9]},
+                 FacilityName: '5',
+                 FacilityDescription: '55',
+             },
+             {
+                 GEOJSON: {COORDINATES: [-97, 36]},
+                 FacilityName: '1',
+                 FacilityDescription: '11',
+             },
+             {
+                 GEOJSON: {COORDINATES: [-97.1, 39.2]},
+                 FacilityName: '2',
+                 FacilityDescription: '22',
+             },*/
             {
                 GEOJSON: {COORDINATES: [-96.1, 39.4]},
                 FacilityName: '3',
