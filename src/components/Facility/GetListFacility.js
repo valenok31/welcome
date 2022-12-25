@@ -8,16 +8,17 @@ import Ymap from "../Ymap/Ymap";
 class GetListFacility extends React.Component {
 
     componentDidMount() {
-        debugger;
+        //debugger;
         let offset = this.props.getCurrentPage * this.props.getLimitPage;
         this.props.handleFetchFacility(this.props.getLimitPage, offset);
     }
 
     componentDidUpdate(prevProps) {
         if (this.props.getCurrentPage !== prevProps.getCurrentPage) {
-            debugger;
+           // debugger;
             let offset = this.props.getCurrentPage * this.props.getLimitPage //- this.props.getLimitPage;
             this.props.handleFetchFacility(this.props.getLimitPage, offset);
+            console.log(this.props.arrayNameFacility);
         }
     }
 
@@ -43,7 +44,7 @@ class GetListFacility extends React.Component {
                 deepPage={999 / this.props.getLimitPage}/>
 
             {/*<Ymap description='description' coordinates={coordinates2} name='name'/>*/}
-            {/*<Ymap description='description' coordinates={coordinates2} name='name'  array={arrInf}/>*/}
+            <Ymap description='description' coordinates={coordinates2} name='name'  array={this.props.arrayNameFacility}/>
         </>
     }
 }

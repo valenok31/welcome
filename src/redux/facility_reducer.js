@@ -78,8 +78,17 @@ export const setArrayMediaFacility = (arrayMediaFacility) => ({type: SET_ARRAY_M
 export const setCurrentFacility = (currentFacility) => ({type: SET_CURRENT_FACILITY, currentFacility});
 export const setCurrentFacilityAddress = (currentFacilityAddress) => ({type: SET_CURRENT_FACILITY_ADDRESS, currentFacilityAddress});
 export const setTotalCount = (totalCount) => ({type: SET_TOTAL_COUNT, totalCount});
-export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
+export const setCurrentPage2 = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
 export const toggleIsLoading = (isLoading) => ({type: TOGGLE_IS_LOADING, isLoading});
+
+export const setCurrentPage = (currentPage) => {
+    return (dispatch) => {
+        dispatch(setCurrentPage2(0));
+        dispatch(setCurrentPage2(currentPage));
+
+    }
+}
+
 
 
 export const handleFetchFacility = (limit, offset) => {

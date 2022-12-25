@@ -12,8 +12,7 @@ class GetArrEventCell extends React.Component {
     }
 
     render() {
-        debugger;
-        console.log(this.props.arrayNameFacility)
+
         let arrEventCell = this.props.arrayNameFacility.map(data => {
             let image='http://dummyimage.com/10.png/87CEEBFF&text=+';
 

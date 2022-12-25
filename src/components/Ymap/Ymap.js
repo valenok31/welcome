@@ -48,6 +48,12 @@ class Ymap extends React.Component {
             .setPopup(popup) // sets a popup on this marker
             .addTo(map);
 
+       // debugger;
+        console.log(this.props.description)
+        console.log(this.props.coordinates)
+        console.log(this.props.name)
+        console.log(this.props.array)
+        console.log('--------------')
 
         let arrayL = [
 
