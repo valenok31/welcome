@@ -18,7 +18,7 @@ const initialState = {
     currentFacility: {},
     currentFacilityAddress: {},
     totalCount: 0,
-    limitPage: 10,
+    limitPage: 5,
     currentPage: 0,
     isLoading: false,
 };

@@ -4,6 +4,7 @@ import EventCell from "../EventCell/EventCell";
 import Preloader from "../Preloader/Preloader";
 import {connect} from "react-redux";
 import {handleFetchFacility, handleFetchFacilityMedia, setCurrentPage} from "../../redux/facility_reducer";
+import Ymap from "../Ymap/Ymap";
 
 
 class GetArrEventCell extends React.Component {
@@ -12,7 +13,7 @@ class GetArrEventCell extends React.Component {
     }
 
     render() {
-
+        let coordinates2=[-95, 37];
         let arrEventCell = this.props.arrayNameFacility.map(data => {
             let image='http://dummyimage.com/10.png/87CEEBFF&text=+';
 
@@ -32,10 +33,13 @@ class GetArrEventCell extends React.Component {
             return <EventCell id={data.FacilityID} name={data.FacilityName} image={image}/>
         })
 
-        return (
+        return (<>
             <div className={style.box}>
                 {arrEventCell}
+
             </div>
+                <Ymap description='description' coordinates={coordinates2} name='name'  array={this.props.arrayNameFacility}/>
+            </>
         )
     }
 
@@ -45,7 +49,7 @@ class GetArrEventCell extends React.Component {
 
 let mapStateToProps = (state) => {
     return ({
-        getIsLoading: state.facility_reducer.isLoading,
+        //getIsLoading: state.facility_reducer.isLoading,
     });
 };
 let resultConnecting = connect(mapStateToProps,

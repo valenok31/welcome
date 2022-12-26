@@ -39,21 +39,25 @@ class Ymap extends React.Component {
         });
 
 
-        const popup = new mapboxgl.Popup({offset: 25}).setText(
+/*        const popup = new mapboxgl.Popup({offset: 25}).setText(
             `${this.props.FacilityName} -
                                 ${this.props.FacilityDescription}`
         );
         new mapboxgl.Marker()
             .setLngLat(coordinates)
             .setPopup(popup) // sets a popup on this marker
-            .addTo(map);
+            .addTo(map);*/
 
        // debugger;
-        console.log(this.props.description)
+/*        console.log(this.props.description)
         console.log(this.props.coordinates)
-        console.log(this.props.name)
-        console.log(this.props.array)
-        console.log('--------------')
+        console.log(this.props.name)*/
+        let array = this.props.array;
+
+        console.log(Object.entries(array).length);
+
+
+/*        console.log('--------------')*/
 
         let arrayL = [
 
@@ -75,21 +79,22 @@ class Ymap extends React.Component {
 
         ];
 
-        arrayL.map((s) => {
-            // arrayL.map((s) => {
-            const popup2 = new mapboxgl.Popup({offset: 25}).setText(
-                `${s.FacilityName} -
+        if(Object.entries(array).length>0){
+            array.map((s) => {
+                // arrayL.map((s) => {
+                let popup2 = new mapboxgl.Popup({offset: 25}).setText(
+                    `${s.FacilityName} -
                                 ${s.FacilityDescription}`
-            );
+                );
 
-            new mapboxgl.Marker()
-                .setLngLat(s.GEOJSON.COORDINATES)
-                .setPopup(popup2) // sets a popup on this marker
-                .addTo(map);
 
-            return true;
 
-        });
+                return new mapboxgl.Marker().setLngLat(s.GEOJSON.COORDINATES).setPopup(popup2).addTo(map);
+
+            });
+
+        }
+
 
 
         map.on('move', () => {

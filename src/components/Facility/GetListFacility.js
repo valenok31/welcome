@@ -18,16 +18,16 @@ class GetListFacility extends React.Component {
            // debugger;
             let offset = this.props.getCurrentPage * this.props.getLimitPage //- this.props.getLimitPage;
             this.props.handleFetchFacility(this.props.getLimitPage, offset);
-            console.log(this.props.arrayNameFacility);
+
         }
     }
 
     render() {
 
-        let coordinates2=[-95, 37];
+
        // let arrInf = () => this.props.arrayNameFacility;
 
-
+       // console.log(this.props.arrayNameFacility);
 
         return <>
             <GetArrEventCell
@@ -44,7 +44,7 @@ class GetListFacility extends React.Component {
                 deepPage={999 / this.props.getLimitPage}/>
 
             {/*<Ymap description='description' coordinates={coordinates2} name='name'/>*/}
-            <Ymap description='description' coordinates={coordinates2} name='name'  array={this.props.arrayNameFacility}/>
+
         </>
     }
 }
