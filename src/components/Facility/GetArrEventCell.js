@@ -32,7 +32,7 @@ class GetArrEventCell extends React.Component {
             }
             return <EventCell id={data.FacilityID} name={data.FacilityName} image={image}/>
         })
-
+        console.log('ljlj')
         return (<>
             <div className={style.box}>
                 {arrEventCell}

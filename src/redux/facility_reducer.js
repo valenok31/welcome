@@ -94,6 +94,7 @@ export const setCurrentPage = (currentPage) => {
 export const handleFetchFacility = (limit, offset) => {
     return (dispatch) => {
         dispatch(toggleIsLoading(true));
+        dispatch(setTotalCount('0'));
         dispatch(setArrayNameFacility([]));
         fetchEvents.fromFacility(limit, offset).then(data => {
             dispatch(toggleIsLoading(false));
