@@ -54,7 +54,7 @@ class Ymap extends React.Component {
         console.log(this.props.name)*/
         let array = this.props.array;
 
-        console.log(Object.entries(array).length);
+        console.log(array);
 
 
 /*        console.log('--------------')*/
@@ -78,13 +78,15 @@ class Ymap extends React.Component {
             },
 
         ];
-
+        //console.log(array.GEOJSON.COORDINATES)
         if(Object.entries(array).length>0){
-            array.map((s) => {
+            arrayL.map((s) => {
+
                 // arrayL.map((s) => {
                 let popup2 = new mapboxgl.Popup({offset: 25}).setText(
-                    `${s.FacilityName} -
-                                ${s.FacilityDescription}`
+/*                    `${s.FacilityName} -
+                                ${s.FacilityDescription}`*/
+                    'Description'
                 );
 
 
@@ -109,6 +111,7 @@ class Ymap extends React.Component {
     }
 
     render() {
+
         const {lng, lat, zoom} = this.state;
         return (
             <div>

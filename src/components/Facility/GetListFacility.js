@@ -22,12 +22,15 @@ class GetListFacility extends React.Component {
         }
     }
 
+
+
     render() {
 
 
-       // let arrInf = () => this.props.arrayNameFacility;
 
-       // console.log(this.props.arrayNameFacility);
+        // let arrInf = () => this.props.arrayNameFacility;
+
+
 
         return <>
             <GetArrEventCell
