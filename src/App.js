@@ -29,7 +29,6 @@ let App = () => {
                 <Route path='/facility/*' element={<NormalizerForFacility/>}/>
                 <Route path='/ticketmaster/*' element={<NormalizerForTicketmaster/>}/>
                 <Route path='/recreation/*' element={<NormalizerForRecreation/>}/>
-                <Route path='/ymap' element={<Ymap   description='description' coordinates={coordinates} name='name' />}/>
 
             </Routes>
         </div>
