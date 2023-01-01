@@ -12,14 +12,8 @@ class Ymap extends React.Component {
     constructor(props) {
         super(props);
 
-        //console.log(this.props.array)
-        let lngS = this.props.coordinates[0];
-        if (lngS > 0) {
-            lngS = -lngS
-        }
-
         this.state = {
-            lng: lngS ?? -98,
+            lng: this.props.coordinates[0] ?? -98,
             lat: this.props.coordinates[1] ?? 39,
             zoom: 5,
         };
@@ -91,7 +85,8 @@ class Ymap extends React.Component {
 
 
 
-                return new mapboxgl.Marker().setLngLat(s.GEOJSON.COORDINATES).setPopup(popup2).addTo(map);
+                 new mapboxgl.Marker().setLngLat(s.GEOJSON.COORDINATES).setPopup(popup2).addTo(map);
+                return true;
 
             });
 

@@ -14,33 +14,25 @@ class GetArrEventCell extends React.Component {
 
     render() {
 
-        let coordinates2=[-95, 37];
-        let yau =<Preloader/>
+        let coordinates2 = [-95, 37];
+        let yau = <Preloader/>
+        let arrEventCell = <Preloader/>
         //console.log(this.props.arrayNameFacility);
-        if(Object.entries(this.props.arrayNameFacility).length>0){
-            yau =<Ymap description='description' coordinates={coordinates2} name='name'  array={this.props.arrayNameFacility}/>
-        }
+        if (Object.entries(this.props.arrayNameFacility).length > 0) {
+            yau = <Ymap description='description' coordinates={coordinates2} name='name'
+                        array={this.props.arrayNameFacility}/>
 
 
 
-        let arrEventCell = this.props.arrayNameFacility.map(data => {
-            let image='http://dummyimage.com/10.png/87CEEBFF&text=+';
-
-/*            let result = this.props.arrayMediaFacility.find(function (item, index, array) {
-                return item.facilityId === data.FacilityID
-            });
-
-            if (result?.url === undefined) {
-                this.props.handleFetchFacilityMedia(data.FacilityID);
-            } else {
-                image = result.url;
-            }*/
+        arrEventCell = this.props.arrayNameFacility.map(data => {
+            let image = 'http://dummyimage.com/10.png/87CEEBFF&text=+';
 
             if (this.props.getIsLoading) {
                 return <Preloader/>
             }
             return <EventCell id={data.FacilityID} name={data.FacilityName} image={image}/>
         })
+    }
 
         return (<>
             <div className={style.box}>
