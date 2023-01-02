@@ -3,7 +3,6 @@ import style from "./Facility.module.css";
 import EventCell from "../EventCell/EventCell";
 import Preloader from "../Preloader/Preloader";
 import {connect} from "react-redux";
-import {handleFetchFacility, handleFetchFacilityMedia, setCurrentPage} from "../../redux/facility_reducer";
 import Ymap from "../Ymap/Ymap";
 
 
@@ -14,7 +13,7 @@ class GetArrEventCell extends React.Component {
 
     render() {
 
-        let coordinates2 = [-95, 37];
+        let coordinates2 = [-80, 39];
         let yau = <Preloader/>
         let arrEventCell = <Preloader/>
 

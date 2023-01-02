@@ -1,4 +1,5 @@
 import React from 'react';
+
 import style from "./Ymap.module.css";
 import 'mapbox-gl/dist/mapbox-gl.css';
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
@@ -15,7 +16,7 @@ class Ymap extends React.Component {
         this.state = {
             lng: this.props.coordinates[0] ?? -98,
             lat: this.props.coordinates[1] ?? 39,
-            zoom: 3.18,
+            zoom: 5.9,
         };
         this.mapContainer = React.createRef();
     }
@@ -32,24 +33,8 @@ class Ymap extends React.Component {
             zoom: zoom
         });
 
-
-        /*        const popup = new mapboxgl.Popup({offset: 25}).setText(
-                    `${this.props.FacilityName} -
-                                        ${this.props.FacilityDescription}`
-                );
-                new mapboxgl.Marker()
-                    .setLngLat(coordinates)
-                    .setPopup(popup) // sets a popup on this marker
-                    .addTo(map);*/
-
-        // debugger;
-        /*        console.log(this.props.description)
-                console.log(this.props.coordinates)
-                console.log(this.props.name)*/
         let array = this.props.array;
 
-
-        /*        console.log('--------------')*/
 
         let arrayL = [
 
@@ -70,20 +55,24 @@ class Ymap extends React.Component {
             },
 
         ];
-        //console.log(array.GEOJSON.COORDINATES)
+
         console.log(array);
+
+
+
         if (Object.entries(array).length > 0) {
             array.map((s) => {
-                let popup2 = new mapboxgl.Popup({offset: 25}).setText(
-                    /*`${s.FacilityName} - ${s.FacilityDescription}`*/
-                    'Description'
+
+               // let popup2 = new mapboxgl.Popup({offset: 25}).setText(
+                let popup2 = new mapboxgl.Popup({offset: 25}).setHTML(
+                    `<b>${s.FacilityName}</b>`
                 );
                 let coordinat = s.GEOJSON.COORDINATES;
-                if(coordinat===null){
+                if (coordinat === null) {
                     coordinat = [-96.2, 34.9]
                 }
 
-                return new mapboxgl.Marker().setLngLat(coordinat).setPopup(popup2).addTo(map);
+                return new mapboxgl.Marker({ color: 'black', rotation: 45 }).setLngLat(coordinat).setPopup(popup2).addTo(map);
             });
         }
 
@@ -113,15 +102,4 @@ class Ymap extends React.Component {
     }
 }
 
-
-/*let mapStateToProps = (state) => {
-    return ({
-        arrayNameFacility: state.facility_reducer.getArrayNameFacility(),
-    })
-};*/
-
-/*let resultConnecting = connect(mapStateToProps,
-    {})(Ymap);
-
-export default resultConnecting;*/
 export default Ymap;
