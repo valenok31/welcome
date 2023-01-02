@@ -17,12 +17,11 @@ class GetArrEventCell extends React.Component {
         let coordinates2 = [-95, 37];
         let yau = <Preloader/>
         let arrEventCell = <Preloader/>
-        //console.log(this.props.arrayNameFacility);
+
         if (Object.entries(this.props.arrayNameFacility).length > 0) {
+
             yau = <Ymap description='description' coordinates={coordinates2} name='name'
                         array={this.props.arrayNameFacility}/>
-
-
 
         arrEventCell = this.props.arrayNameFacility.map(data => {
             let image = 'http://dummyimage.com/10.png/87CEEBFF&text=+';
@@ -37,9 +36,9 @@ class GetArrEventCell extends React.Component {
         return (<>
             <div className={style.box}>
                 {arrEventCell}
-                {yau}
-            </div>
 
+            </div>
+                {yau}
             </>
         )
     }

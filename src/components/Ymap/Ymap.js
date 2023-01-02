@@ -15,7 +15,7 @@ class Ymap extends React.Component {
         this.state = {
             lng: this.props.coordinates[0] ?? -98,
             lat: this.props.coordinates[1] ?? 39,
-            zoom: 5,
+            zoom: 3.18,
         };
         this.mapContainer = React.createRef();
     }
@@ -33,25 +33,23 @@ class Ymap extends React.Component {
         });
 
 
-/*        const popup = new mapboxgl.Popup({offset: 25}).setText(
-            `${this.props.FacilityName} -
-                                ${this.props.FacilityDescription}`
-        );
-        new mapboxgl.Marker()
-            .setLngLat(coordinates)
-            .setPopup(popup) // sets a popup on this marker
-            .addTo(map);*/
+        /*        const popup = new mapboxgl.Popup({offset: 25}).setText(
+                    `${this.props.FacilityName} -
+                                        ${this.props.FacilityDescription}`
+                );
+                new mapboxgl.Marker()
+                    .setLngLat(coordinates)
+                    .setPopup(popup) // sets a popup on this marker
+                    .addTo(map);*/
 
-       // debugger;
-/*        console.log(this.props.description)
-        console.log(this.props.coordinates)
-        console.log(this.props.name)*/
+        // debugger;
+        /*        console.log(this.props.description)
+                console.log(this.props.coordinates)
+                console.log(this.props.name)*/
         let array = this.props.array;
 
-        console.log(array);
 
-
-/*        console.log('--------------')*/
+        /*        console.log('--------------')*/
 
         let arrayL = [
 
@@ -73,25 +71,21 @@ class Ymap extends React.Component {
 
         ];
         //console.log(array.GEOJSON.COORDINATES)
-        if(Object.entries(array).length>0){
-            arrayL.map((s) => {
-
-                // arrayL.map((s) => {
+        console.log(array);
+        if (Object.entries(array).length > 0) {
+            array.map((s) => {
                 let popup2 = new mapboxgl.Popup({offset: 25}).setText(
-/*                    `${s.FacilityName} -
-                                ${s.FacilityDescription}`*/
+                    /*`${s.FacilityName} - ${s.FacilityDescription}`*/
                     'Description'
                 );
+                let coordinat = s.GEOJSON.COORDINATES;
+                if(coordinat===null){
+                    coordinat = [-96.2, 34.9]
+                }
 
-
-
-                 new mapboxgl.Marker().setLngLat(s.GEOJSON.COORDINATES).setPopup(popup2).addTo(map);
-                return true;
-
+                return new mapboxgl.Marker().setLngLat(coordinat).setPopup(popup2).addTo(map);
             });
-
         }
-
 
 
         map.on('move', () => {
