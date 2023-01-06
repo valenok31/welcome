@@ -22,21 +22,29 @@ class GetArrEventCell extends React.Component {
             yau = <Ymap description='description' coordinates={coordinates2} name='name'
                         array={this.props.arrayNameFacility}/>
 
-        arrEventCell = this.props.arrayNameFacility.map(data => {
-            let image = 'http://dummyimage.com/10.png/87CEEBFF&text=+';
+            arrEventCell = this.props.arrayNameFacility.map(data => {
+                let image = 'http://dummyimage.com/10.png/87CEEBFF&text=+';
 
-            if (this.props.getIsLoading) {
-                return <Preloader/>
-            }
-            return <EventCell id={data.FacilityID} name={data.FacilityName} image={image}/>
-        })
-    }
+                if (this.props.getIsLoading) {
+                    return <Preloader/>
+                }
+                return <EventCell id={data.FacilityID} name={data.FacilityName} image={image}/>
+            })
+        } else {
+            return <>
+                <div>
+                    Don't
+                </div>
+            </>
+
+
+        }
 
         return (<>
-            <div className={style.box}>
-                {arrEventCell}
+                <div className={style.box}>
+                    {arrEventCell}
 
-            </div>
+                </div>
                 {yau}
             </>
         )

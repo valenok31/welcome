@@ -29,6 +29,7 @@ class Ymap extends React.Component {
         const map = new mapboxgl.Map({
             container: this.mapContainer.current,
             style: 'mapbox://styles/mapbox/streets-v12',
+            //style: 'mapbox://styles/mapbox/satellite-v9',
             center: coordinates,
             zoom: zoom
         });
@@ -72,7 +73,7 @@ class Ymap extends React.Component {
                     coordinat = [-96.2, 34.9]
                 }
 
-                return new mapboxgl.Marker({ color: 'black', rotation: 45 }).setLngLat(coordinat).setPopup(popup2).addTo(map);
+                return new mapboxgl.Marker({ color: 'black', rotation: 0 }).setLngLat(coordinat).setPopup(popup2).addTo(map);
             });
         }
 
