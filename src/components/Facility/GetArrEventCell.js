@@ -31,13 +31,7 @@ class GetArrEventCell extends React.Component {
                 return <EventCell id={data.FacilityID} name={data.FacilityName} image={image}/>
             })
         } else {
-            return <>
-                <div>
-                    Don't
-                </div>
-            </>
-
-
+            return <Preloader/>
         }
 
         return (<>
