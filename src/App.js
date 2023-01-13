@@ -10,6 +10,7 @@ import EventMainPage from "./components/EventMainPage/EventMainPage";
 import NormalizerForTicketmaster from "./components/Ticketmaster/NormalizerForTicketmaster";
 import NormalizerForRecreation from "./components/Recreation/NormalizerForRecreation";
 import Ymap from "./components/Ymap/Ymap";
+import Welcome from "./components/Welcome/Welcome";
 
 
 
@@ -30,6 +31,7 @@ let App = () => {
                 <Route path='/ticketmaster/*' element={<NormalizerForTicketmaster/>}/>
                 <Route path='/recreation/*' element={<NormalizerForRecreation/>}/>
                 <Route path='/ymap' element={<Ymap   description='description' coordinates={coordinates} name='name' />}/>
+                <Route path='/welcome' element={<Welcome />}/>
 
             </Routes>
         </div>
