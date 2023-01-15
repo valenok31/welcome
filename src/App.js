@@ -31,7 +31,7 @@ let App = () => {
                 <Route path='/ticketmaster/*' element={<NormalizerForTicketmaster/>}/>
                 <Route path='/recreation/*' element={<NormalizerForRecreation/>}/>
                 <Route path='/ymap' element={<Ymap   description='description' coordinates={coordinates} name='name' />}/>
-                <Route path='/welcome' element={<Welcome />}/>
+                <Route path='/welcome' element={<Welcome stateButton='0'/>}/>
 
             </Routes>
         </div>
