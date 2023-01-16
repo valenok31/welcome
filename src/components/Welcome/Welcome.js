@@ -2,15 +2,16 @@ import React from "react";
 import s from './Welcome.module.css'
 
 function Welcome(props) {
-   let  stateButton = props.stateButton;
-    let currentPlus = ()=>{
-        alert('34')
-        return stateButton=5;
-    }
+   let  stateButton = [2,3,5,3,5,6,43,5]
+    let currentPlus = stateButton.map((r)=>{
+        return <div>
+            {r}
+        </div>
+    })
 
     return (
         <div className={s.borderBox}>
-            <button onClick={currentPlus}>{stateButton}</button>
+            {currentPlus}
         </div>
     )
 }
