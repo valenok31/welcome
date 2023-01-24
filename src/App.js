@@ -11,6 +11,7 @@ import NormalizerForTicketmaster from "./components/Ticketmaster/NormalizerForTi
 import NormalizerForRecreation from "./components/Recreation/NormalizerForRecreation";
 import Ymap from "./components/Ymap/Ymap";
 import Welcome from "./components/Welcome/Welcome";
+import Weather from "./components/Weather/Weather";
 
 
 
@@ -31,7 +32,7 @@ let App = () => {
                 <Route path='/ticketmaster/*' element={<NormalizerForTicketmaster/>}/>
                 <Route path='/recreation/*' element={<NormalizerForRecreation/>}/>
                 <Route path='/ymap' element={<Ymap   description='description' coordinates={coordinates} name='name' />}/>
-                <Route path='/welcome' element={<Welcome stateButton='0'/>}/>
+                <Route path='/weather' element={<Weather stateButton='0'/>}/>
 
             </Routes>
         </div>
