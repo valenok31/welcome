@@ -1,3 +1,38 @@
-.borderBox{
-    margin: 50px;
+.container{
+    max-width: 830px;
+    padding: 0 15px;
+    margin: 0 auto;
+    font-size: 20px;
 }
+
+.header{
+    background-color: cornflowerblue;
+    height: 100vh;
+}
+
+.header__top{
+    min-height: 50px;
+    text-align: center;
+    padding: 20px;
+}
+
+.header__content{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    min-height: 400px;
+    text-align: center;
+    justify-items: center;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.content__temp_current{
+    text-align: center;
+    font-size: 120px;
+
+}
+.content__temp_hour_ahead{
+    text-align: center;
+    font-size: 50px;
+}
+
