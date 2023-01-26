@@ -13,25 +13,46 @@ class Weather extends React.Component {
     render() {
         console.log(!!this.props.getCurrentWeather.current)
         if (!!this.props.getCurrentWeather.current) {
-            let currentHours = this.props.getCurrentWeather.location.localtime
-            currentHours = +currentHours.slice(11, 13)
 
+            let currentLocation = this.props.getCurrentWeather.location
+            let currentHours = currentLocation.localtime
+
+            currentHours = +currentHours.slice(-5,-3)
             console.log(currentHours)
+            let forecast = this.props.getCurrentWeather.forecast.forecastday[0].hour
+            let windDegree=this.props.getCurrentWeather.current.wind_degree+90;
+            //let windDegree=0+90;
+            let windKph=3000/this.props.getCurrentWeather.current.wind_kph;
+            let divStyle = (x)=>{
+                return {
+                    transform: `rotate(${windDegree+x}deg)`,
+                    animationDuration: `${windKph}s`,
+                    width: `${2000+x*10}%`,
+                    height: `${2000+x*10}%`
+                }
+            }
+
+
+
+
             return (
                 <div className={s.header}>
+                    <div className={s.windDirection} style={divStyle(-3)}></div>
+                    <div className={s.windDirection} style={divStyle(0)}></div>
+                    <div className={s.windDirection} style={divStyle(3)}></div>
                     <div className={s.container}>
                         <div className={s.header__top}>
-                            {this.props.getCurrentWeather.location.name} / {this.props.getCurrentWeather.location.region}, {this.props.getCurrentWeather.location.country}
+                            {currentLocation.name} / {currentLocation.region}, {currentLocation.country}
                         </div>
                         <div className={s.header__content}>
-                            <div className={s.content__temp_hour_ahead} title={currentHours===0 ? 23 : currentHours-1}>
-                                {this.props.getCurrentWeather.forecast.forecastday[0].hour[currentHours===0 ? 23 : currentHours-1].temp_c}
+                            <div className={s.content__temp_hour_ahead} title={currentHours===0 ? 23 : currentHours}>
+                                {forecast[currentHours===0 ? 23 : currentHours].temp_c}
                             </div>
                             <div className={s.content__temp_current} title={currentHours}>
                                 {this.props.getCurrentWeather.current.temp_c}
                             </div>
                             <div className={s.content__temp_hour_ahead} title={currentHours>22 ? 0 : currentHours+1}>
-                                {this.props.getCurrentWeather.forecast.forecastday[0].hour[currentHours===23 ? 0 : currentHours+1].temp_c}
+                                {forecast[currentHours===23 ? 0 : currentHours+1].temp_c}
                             </div>
                         </div>
                     </div>

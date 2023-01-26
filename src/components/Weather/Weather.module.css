@@ -3,11 +3,44 @@
     padding: 0 15px;
     margin: 0 auto;
     font-size: 20px;
+    position: relative;
+}
+@keyframes scroll {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 100% 0;
+    }
+}
+.header{
+/*    background-color: cornflowerblue;*/
+    width: 100vw;
+    height: 100vh;
+/*    height: 100%;
+    width: 100%;
+    background-image: url(../../assistive/snowForBackground.jpg);*/
+    position: relative;
+    overflow: hidden;
 }
 
-.header{
-    background-color: cornflowerblue;
-    height: 100vh;
+.windDirection {
+    content: "";
+    position: absolute;
+    width: 2000%;
+    height: 2000%;
+    top: -1000%;
+    left: -1000%;
+    z-index: -1;
+    background: url(../../assistive/snowForBackground_2.jpg) 0 0 repeat;
+    background-size: auto auto;
+    opacity: 0.7;
+    animation: scroll linear 10s infinite;
+    /*    -webkit-transform: rotate(30deg);
+    -moz-transform: rotate(30deg);
+    -ms-transform: rotate(30deg);
+    -o-transform: rotate(30deg);
+    transform: rotate(0deg);*/
 }
 
 .header__top{
