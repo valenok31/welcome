@@ -14,8 +14,8 @@
     }
 }
 .header{
-    width: 100vw;
-    height: 100vh;
+    /*width: 100vw;*/
+    height: auto;
     background-color: rgba(255, 255, 255, 0.64);
     position: relative;
     overflow: hidden;
@@ -41,7 +41,7 @@
 
 .header__content{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat(5, 1fr);
     min-height: 400px;
     text-align: center;
     justify-items: center;
@@ -56,6 +56,6 @@
 }
 .content__temp_hour_ahead{
     text-align: center;
-    font-size: 50px;
+    font-size: 30px;
 }
 

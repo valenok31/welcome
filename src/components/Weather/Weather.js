@@ -29,9 +29,9 @@ class Weather extends React.Component {
             let temp = currentWeather.temp_c;
             let forecastTomorrow = getWeather.forecast.forecastday[1]
             let forecastDayAfterTomorrow = getWeather.forecast.forecastday[2]
+            let nextDay = getWeather.forecast.forecastday
             let windDegree = currentWeather.wind_degree;
             let windKph = currentWeather.wind_kph;
-
             return (
                 <div className={s.header} style={temperatureGradient(temp)}>
                     {/*{windKph < 5 ? <div> </div> : windVisualization(windDegree, windKph)}*/}
@@ -49,11 +49,18 @@ class Weather extends React.Component {
                             <div className={s.content__temp_current}>
                                 {temp > 0 ? '+' : ''}{temp}°
                             </div>
+
                             <div className={s.content__temp_hour_ahead}>
-                                {forecastTomorrow.day.avgtemp_c > 0 ? '+' : ''}{forecastTomorrow.day.avgtemp_c}°
+                                {nextDay[1].day.avgtemp_c > 0 ? '+' : ''}{nextDay[1].day.avgtemp_c}°
                             </div>
                             <div className={s.content__temp_hour_ahead}>
-                                {forecastDayAfterTomorrow.day.avgtemp_c > 0 ? '+' : ''}{forecastDayAfterTomorrow.day.avgtemp_c}°
+                                {nextDay[2].day.avgtemp_c > 0 ? '+' : ''}{nextDay[2].day.avgtemp_c}°
+                            </div>
+                            <div className={s.content__temp_hour_ahead}>
+                                {nextDay[3].day.avgtemp_c > 0 ? '+' : ''}{nextDay[3].day.avgtemp_c}°
+                            </div>
+                            <div className={s.content__temp_hour_ahead}>
+                                {nextDay[4].day.avgtemp_c > 0 ? '+' : ''}{nextDay[4].day.avgtemp_c}°
                             </div>
                         </div>
                     </div>
