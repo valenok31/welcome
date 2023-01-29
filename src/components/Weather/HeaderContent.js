@@ -14,7 +14,11 @@ export function HeaderContent(props) {
         )
     }
 
-    return <div className={s.header__content}>
+    function getOnWheel() {
+        console.log('scroll!')
+    }
+
+    return <div className={s.header__content} onWheel={() => getOnWheel()}>
         <div className={s.content__current_weather}>
             <div className={s.content__data_current}>
                 {props.currentWeather.last_updated}
@@ -23,9 +27,15 @@ export function HeaderContent(props) {
                 {temp > 0 ? '+' : ''}{temp}°
             </div>
             <div className={s.content__details_current}>
-                <div className={s.details_current__parameter}>Pressure: </div><div className={s.details_current__value}>{Math.round(props.currentWeather.pressure_mb * 0.750064)} mmHg</div>
-                <div className={s.details_current__parameter}>Humidity:  </div><div className={s.details_current__value}>{Math.round(props.currentWeather.humidity)}%</div>
-                <div className={s.details_current__parameter}>Wind:  </div><div className={s.details_current__value}>{Math.round(props.currentWeather.wind_mph * 10 / 3.6) / 10} m/s
+                <div className={s.details_current__parameter}>Pressure:</div>
+                <div
+                    className={s.details_current__value}>{Math.round(props.currentWeather.pressure_mb * 0.750064)} mmHg
+                </div>
+                <div className={s.details_current__parameter}>Humidity:</div>
+                <div className={s.details_current__value}>{Math.round(props.currentWeather.humidity)}%</div>
+                <div className={s.details_current__parameter}>Wind:</div>
+                <div
+                    className={s.details_current__value}>{Math.round(props.currentWeather.wind_mph * 10 / 3.6) / 10} m/s
                     ({props.currentWeather.wind_dir})
                 </div>
             </div>

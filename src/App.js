@@ -14,9 +14,8 @@ import Welcome from "./components/Welcome/Welcome";
 import Weather from "./components/Weather/Weather";
 
 
-
 let App = () => {
-    let coordinates=[-88, 35];
+    let coordinates = [-88, 35];
 
     return (
         <div>
@@ -24,14 +23,15 @@ let App = () => {
                 home
             </NavLink>
             <Routes>
-                <Route path='/' element={<Survey choiceLeft='recreation' choiceRight='ticketmaster' choiceV='recreationV'/>}/>
+                <Route path='/'
+                       element={<Survey choiceLeft='recreation' choiceRight='ticketmaster' choiceV='recreationV'/>}/>
                 <Route path='/ticketmaster' element={<TicketmasterCont/>}/>
                 <Route path='/recreation' element={<RecreationCont/>}/>
                 <Route path='/facility' element={<GetListFacility/>}/>
                 <Route path='/facility/*' element={<NormalizerForFacility/>}/>
                 <Route path='/ticketmaster/*' element={<NormalizerForTicketmaster/>}/>
                 <Route path='/recreation/*' element={<NormalizerForRecreation/>}/>
-                <Route path='/ymap' element={<Ymap   description='description' coordinates={coordinates} name='name' />}/>
+                <Route path='/ymap' element={<Ymap description='description' coordinates={coordinates} name='name'/>}/>
                 <Route path='/weather' element={<Weather stateButton='0'/>}/>
 
             </Routes>
