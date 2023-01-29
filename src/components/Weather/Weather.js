@@ -6,6 +6,7 @@ import Preloader from "../Preloader/Preloader";
 import LocationSearch from "./LocationSearch/LocationSearch";
 import {temperatureGradient} from "./accessoryFunctions/temperatureGradient";
 import {windVisualization} from "./accessoryFunctions/windVisualization";
+import {HeaderContent} from "./HeaderContent";
 
 class Weather extends React.Component {
 
@@ -23,12 +24,9 @@ class Weather extends React.Component {
 
         if (!!this.props.getCurrentWeather.current) {
             let getWeather = this.props.getCurrentWeather
-
+            let temp = getWeather.current.temp_c;
             let currentLocation = getWeather.location
             let currentWeather = getWeather.current
-            let temp = currentWeather.temp_c;
-            let forecastTomorrow = getWeather.forecast.forecastday[1]
-            let forecastDayAfterTomorrow = getWeather.forecast.forecastday[2]
             let nextDay = getWeather.forecast.forecastday
             let windDegree = currentWeather.wind_degree;
             let windKph = currentWeather.wind_kph;
@@ -44,25 +42,7 @@ class Weather extends React.Component {
                                                 getSettings={this.props.getSettings}/>
                             </div>
                         </div>
-                        <div className={s.header__content}>
-
-                            <div className={s.content__temp_current}>
-                                {temp > 0 ? '+' : ''}{temp}°
-                            </div>
-
-                            <div className={s.content__temp_hour_ahead}>
-                                {nextDay[1].day.avgtemp_c > 0 ? '+' : ''}{nextDay[1].day.avgtemp_c}°
-                            </div>
-                            <div className={s.content__temp_hour_ahead}>
-                                {nextDay[2].day.avgtemp_c > 0 ? '+' : ''}{nextDay[2].day.avgtemp_c}°
-                            </div>
-                            <div className={s.content__temp_hour_ahead}>
-                                {nextDay[3].day.avgtemp_c > 0 ? '+' : ''}{nextDay[3].day.avgtemp_c}°
-                            </div>
-                            <div className={s.content__temp_hour_ahead}>
-                                {nextDay[4].day.avgtemp_c > 0 ? '+' : ''}{nextDay[4].day.avgtemp_c}°
-                            </div>
-                        </div>
+                        <HeaderContent currentWeather={currentWeather} nextDay={nextDay}/>
                     </div>
 
                 </div>
