@@ -1,87 +1,68 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import s from "./Weather.module.css";
+import {windVisualization} from "./accessoryFunctions/windVisualization";
+
 
 export function HeaderContent(props) {
-    let k = 0;
-    let temp = props.currentWeather.temp_c;
-    let arr = [];
-    //for (let i = 0; i < 5; i++) {
-        function arrFunc(i){
 
 
-        let tempI = props.nextDay[i].day.avgtemp_c;
-        tempI = Math.round(tempI);
-        arr.push(
-            /*            <div className={s.content__temp_forecast}>
-                            <div className={s.content__data_current}>{props.nextDay[i].date}</div>
-                            {props.nextDay[i].day.avgtemp_c > 0 ? '+' : ''}{props.nextDay[i].day.avgtemp_c}°
-                        </div>*/
-            <div className={s.content__current_weather}>
-                <div className={s.content__data_current}>
-                    {props.nextDay[i].date}
-                </div>
-                <div className={s.content__temp_current}>
-                    {tempI > 0 ? '+' : ''}{tempI}°
-                </div>
-                <div className={s.content__details_current}>
-                    <div className={s.details_current__parameter}>Pressure:</div>
-                    <div className={s.details_current__value}>
-                        {Math.round(props.nextDay[i].hour[12].pressure_mb * 0.750064)} mmHg
-                    </div>
-                    <div className={s.details_current__parameter}>Humidity:</div>
-                    <div className={s.details_current__value}>{Math.round(props.nextDay[i].hour[12].humidity)}%</div>
-                    <div className={s.details_current__parameter}>Wind:</div>
-                    <div
-                        className={s.details_current__value}>{Math.round(props.nextDay[i].hour[12].wind_mph * 10 / 3.6) / 10} m/s
-                        ({props.nextDay[i].hour[12].wind_dir})
-                    </div>
-                </div>
-            </div>
-        )
-    }
+
+
+
+    const [k, valueChange] = useState(0);
+
+
+
+    //let tempI = props.nextDay[1].day.avgtemp_c;
+    let tempI = props.nextDay[1].hour[k].temp_c
+    tempI = Math.round(tempI);
+
+    let windDegree = props.nextDay[1].hour[k].wind_degree
+    let windKph = props.nextDay[1].hour[k].wind_mph;
 
     function getOnWheel(e) {
 
         if (e.deltaY < 0) {
-            if (k <= 0) k = 0
-            if (k > 0) k--
+            if (k < 0) valueChange(0)
+            if (k > 0) valueChange(k - 1)
             console.log(k)
-            arrFunc(k)
+            //arrFunc(k)
         }
         if (e.deltaY > 0) {
-            if (k >= 5) k = 5
-            if (k < 5) k++
+            if (k > 23) valueChange(23)
+            if (k < 23) valueChange(k + 1)
             console.log(k)
-            arrFunc(k)
+            //arrFunc(k)
         }
     }
 
+
     return <div className={s.header__content} onWheel={(e) => getOnWheel(e)}>
-        {/*      <div className={s.content__current_weather}>
+        {windVisualization(windDegree, windKph)}
+        <div className={s.content__current_weather}>
             <div className={s.content__data_current}>
-                {props.currentWeather.last_updated}
+                {props.nextDay[1].hour[k].time}
             </div>
             <div className={s.content__temp_current}>
-                {temp > 0 ? '+' : ''}{temp}°
+                {tempI > 0 ? '+' : ''}{tempI}°
             </div>
             <div className={s.content__details_current}>
                 <div className={s.details_current__parameter}>Pressure:</div>
                 <div className={s.details_current__value}>
-                    {Math.round(props.currentWeather.pressure_mb * 0.750064)} mmHg
+                    {Math.round(props.nextDay[1].hour[k].pressure_mb * 0.750064)} mmHg
                 </div>
                 <div className={s.details_current__parameter}>Humidity:</div>
-                <div className={s.details_current__value}>{Math.round(props.currentWeather.humidity)}%</div>
+                <div className={s.details_current__value}>{Math.round(props.nextDay[1].hour[k].humidity)}%
+                </div>
                 <div className={s.details_current__parameter}>Wind:</div>
                 <div
-                    className={s.details_current__value}>{Math.round(props.currentWeather.wind_mph * 10 / 3.6) / 10} m/s
-                    ({props.currentWeather.wind_dir})
+                    className={s.details_current__value}>{Math.round(props.nextDay[1].hour[k].wind_mph * 10 / 3.6) / 10} m/s
+                    ({props.nextDay[1].hour[k].wind_dir})
                 </div>
             </div>
+        </div>
 
-        </div>*/}
-        {/*        <div className={s.content__forecast_weather}>
-
-        </div>*/}
-        {arr}
     </div>
+
+
 }

@@ -30,11 +30,11 @@ class Weather extends React.Component {
             let nextDay = getWeather.forecast.forecastday
             let windDegree = currentWeather.wind_degree;
             let windKph = currentWeather.wind_kph;
-            console.log(window)
+            //console.log(window)
             return (
                 <div className={s.header} style={temperatureGradient(temp)}>
                     {/*{windKph < 5 ? <div> </div> : windVisualization(windDegree, windKph)}*/}
-                    {windVisualization(windDegree, windKph)}
+
                     <div className={s.container}>
                         <div className={s.header__top}>
                             {currentLocation.name} / {currentLocation.region}, {currentLocation.country}
@@ -43,7 +43,7 @@ class Weather extends React.Component {
                                                 getSettings={this.props.getSettings}/>
                             </div>
                         </div>
-                        <HeaderContent currentWeather={currentWeather} nextDay={nextDay}/>
+                        <HeaderContent currentWeather={currentWeather} nextDay={nextDay} windDegree={windDegree} windKph={windKph}/>
                     </div>
 
                 </div>
