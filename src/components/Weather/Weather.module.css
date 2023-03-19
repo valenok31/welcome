@@ -34,9 +34,17 @@
 }
 
 .header__top{
+    position: absolute;
+    width:100%;
     min-height: 50px;
     text-align: center;
     padding: 20px;
+    z-index: 199;
+}
+
+.iconSearch{
+    width:30px;
+    height:30px;
 }
 
 .header__content{
@@ -62,6 +70,7 @@
     grid-template-areas:
     "A A A A A"
     "B B C C C";
+    z-index: 99;
 }
 .content__data_current{
     grid-area: A;

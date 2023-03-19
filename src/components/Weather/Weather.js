@@ -7,6 +7,7 @@ import LocationSearch from "./LocationSearch/LocationSearch";
 import {temperatureGradient} from "./accessoryFunctions/temperatureGradient";
 import {windVisualization} from "./accessoryFunctions/windVisualization";
 import {HeaderContent} from "./HeaderContent";
+import iconSearch from "./icons/iconSearch.png"
 
 class Weather extends React.Component {
 
@@ -31,25 +32,32 @@ class Weather extends React.Component {
             let windDegree = currentWeather.wind_degree;
             let windKph = currentWeather.wind_kph;
             //console.log(window)
-            return (
-                <div className={s.header} style={temperatureGradient(temp)}>
-                    {/*{windKph < 5 ? <div> </div> : windVisualization(windDegree, windKph)}*/}
+            let icon = <img src={iconSearch} className={s.iconSearch}/>;
+            let jfsla = true ? currentLocation.name + " / " + currentLocation.region + ", " + currentLocation.country + " " + `${icon}` :
+                <LocationSearch setSettings={this.props.setSettings}
+                                getSettings={this.props.getSettings}/>
+            return (<>
+                    <div className={s.header__top}>
+                        {/*                        {currentLocation.name} / {currentLocation.region}, {currentLocation.country}
+                        <img src={iconSearch} className={s.iconSearch}/>
 
-                    <div className={s.container}>
-                        <div className={s.header__top}>
-                            {currentLocation.name} / {currentLocation.region}, {currentLocation.country}
-                            <div>
-                                <LocationSearch setSettings={this.props.setSettings}
-                                                getSettings={this.props.getSettings}/>
-                            </div>
-                        </div>
-                        <HeaderContent currentWeather={currentWeather} nextDay={nextDay} windDegree={windDegree} windKph={windKph}/>
+                        <LocationSearch setSettings={this.props.setSettings}
+                                        getSettings={this.props.getSettings}/>*/}
+                        {jfsla}
                     </div>
+                    <div className={s.header} style={temperatureGradient(temp)}>
 
-                </div>
+                        {/*{windKph < 5 ? <div> </div> : windVisualization(windDegree, windKph)}*/}
+                        <div className={s.container}>
+
+                            <HeaderContent currentWeather={currentWeather} nextDay={nextDay} windDegree={windDegree}
+                                           windKph={windKph}/>
+                        </div>
+                    </div>
+                </>
             )
         } else {
-            return <Preloader />
+            return <Preloader/>
         }
     }
 }
@@ -65,3 +73,4 @@ let mapStateToProps = (state) => {
 let resultConnecting = connect(mapStateToProps, {handleCurrentWeather, setSettings})(Weather);
 
 export default resultConnecting;
+
