@@ -11,6 +11,7 @@ const initialState = {
     },
     settings: {
         location: 'Novoaltaysk',
+        //location: 'Tokyo',
     },
     isLoading: false,
 };

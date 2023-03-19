@@ -1,19 +1,12 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import s from "./Weather.module.css";
 import {windVisualization} from "./accessoryFunctions/windVisualization";
 
 
 export function HeaderContent(props) {
 
-
-
-
-
     const [k, valueChange] = useState(0);
 
-
-
-    //let tempI = props.nextDay[1].day.avgtemp_c;
     let tempI = props.nextDay[1].hour[k].temp_c
     tempI = Math.round(tempI);
 
@@ -21,21 +14,15 @@ export function HeaderContent(props) {
     let windKph = props.nextDay[1].hour[k].wind_mph;
 
     function getOnWheel(e) {
-
         if (e.deltaY < 0) {
             if (k < 0) valueChange(0)
             if (k > 0) valueChange(k - 1)
-            console.log(k)
-            //arrFunc(k)
         }
         if (e.deltaY > 0) {
             if (k > 23) valueChange(23)
             if (k < 23) valueChange(k + 1)
-            console.log(k)
-            //arrFunc(k)
         }
     }
-
 
     return <div className={s.header__content} onWheel={(e) => getOnWheel(e)}>
         {windVisualization(windDegree, windKph)}
@@ -47,22 +34,19 @@ export function HeaderContent(props) {
                 {tempI > 0 ? '+' : ''}{tempI}°
             </div>
             <div className={s.content__details_current}>
-                <div className={s.details_current__parameter}>Pressure:</div>
+                <div className={s.details_current__parameter}>Pressure: </div>
                 <div className={s.details_current__value}>
                     {Math.round(props.nextDay[1].hour[k].pressure_mb * 0.750064)} mmHg
                 </div>
-                <div className={s.details_current__parameter}>Humidity:</div>
+                <div className={s.details_current__parameter}>Humidity: </div>
                 <div className={s.details_current__value}>{Math.round(props.nextDay[1].hour[k].humidity)}%
                 </div>
-                <div className={s.details_current__parameter}>Wind:</div>
+                <div className={s.details_current__parameter}>Wind: </div>
                 <div
                     className={s.details_current__value}>{Math.round(props.nextDay[1].hour[k].wind_mph * 10 / 3.6) / 10} m/s
                     ({props.nextDay[1].hour[k].wind_dir})
                 </div>
             </div>
         </div>
-
     </div>
-
-
 }

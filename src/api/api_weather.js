@@ -10,7 +10,7 @@ export const fetchWeather  = {
         //return instanceRecreation.get(`current.json?key=4e29dfe6fb834ea29ab152532232301&q=${settings.location}`)
         return instanceRecreation.get(`forecast.json?key=4e29dfe6fb834ea29ab152532232301&q=${settings.location}&days=5`) //Novoaltaysk
        // return instanceRecreation.get(`forecast.json?key=4e29dfe6fb834ea29ab152532232301&q=51.90,143.16`) //Nogliki
-        //return instanceRecreation.get(`forecast.json?key=4e29dfe6fb834ea29ab152532232301&q=Tokyo`) //Yakutsk
+        //return instanceRecreation.get(`forecast.json?key=4e29dfe6fb834ea29ab152532232301&q=Tokyo&days=5`) //Yakutsk
         //return instanceRecreation.get(`forecast.json?key=4e29dfe6fb834ea29ab152532232301&q=Evindarholar`) //Iceland
             .then(response => {
 
